@@ -103,13 +103,44 @@
     position: relative;
     width: 100%;
     padding: 20px;
+    & .menu-icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
     & .menu-icon {
-      // width: 50px;
       font-size: 2.5rem;
       z-index: 10;
-      // display: inline-block;
-      transition: all 0.2s ease-in-out !important;
+      &.close {
+        animation: close 0.2s ease-out;
+        @keyframes close {
+          from {
+            font-size: 1rem;
+            transform: rotate(0deg);
+          }
+          to {
+            font-size: 2.5rem;
+            transform: rotate(180deg);
+          }
+        }
+      }
+      &.open {
+        animation: open 0.2s ease-out;
+        @keyframes open {
+          from {
+            font-size: 1rem;
+            transform: rotate(180deg);
+          }
+          to {
+            font-size: 2.5rem;
+            transform: rotate(0deg);
+          }
+        }
+      }
     }
+
     & .list {
       height: calc(100vh - 83px) !important;
       z-index: 100;
