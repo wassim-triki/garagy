@@ -1,0 +1,103 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  // height: 80px;
+  width: 100%;
+  background: $white;
+  color: $black;
+  display: flex;
+  padding: 20px 100px;
+  align-items: center;
+  box-shadow: 0px 0px 2px 1px rgb(224, 224, 224);
+  justify-content: space-between;
+
+  & .brand {
+    display: flex;
+    gap: 0.3rem;
+    &__logo {
+      font-size: 2.5rem;
+      color: $accent;
+    }
+    &__name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: $black;
+    }
+  }
+
+  & .list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15%;
+    gap: 3rem;
+    margin-left: 5rem;
+    &__item {
+      list-style: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+      & a {
+        color: $black;
+        &:hover {
+          color: $accent;
+        }
+      }
+      &:last-child {
+        margin-left: auto;
+        margin-right: 1.5rem;
+        & a:hover {
+          color: $black;
+        }
+      }
+    }
+  }
+
+  & .btn {
+    display: inline-block;
+    padding: 0.5rem;
+    background: $white;
+    font-size: 1.2rem;
+    font-family: $mainFont;
+    border: none;
+    padding: 0.5rem 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+
+    &.join {
+      font-weight: 400;
+      border: 1px solid $black;
+      border-radius: 30px;
+      background-color: $white;
+      transition: all 0.1s ease-in-out;
+      position: relative;
+      & svg {
+        font-size: 1rem;
+        position: absolute;
+        right: -50px;
+        transition: all 0.2s ease-in-out;
+        color: transparent;
+      }
+      &:hover,
+      &:active {
+        background-color: $black;
+        color: $white;
+        padding: 0.5rem 3rem 0.5rem 2.5rem;
+        position: relative;
+        & svg {
+          color: $white;
+          right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $phone-breakpoint) {
+  .navbar {
+  }
+}
