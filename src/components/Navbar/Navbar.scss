@@ -2,6 +2,7 @@
 
 .navbar {
   // height: 80px;
+  z-index: 10;
   width: 100%;
   background: $white;
   color: $black;
@@ -43,7 +44,7 @@
           color: $accent;
         }
       }
-      &:last-child {
+      &.login {
         margin-left: auto;
         margin-right: 1.5rem;
         & a:hover {
@@ -99,5 +100,60 @@
 
 @media (max-width: $phone-breakpoint) {
   .navbar {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    & .menu-icon {
+      // width: 50px;
+      font-size: 2.5rem;
+      z-index: 10;
+      // display: inline-block;
+      transition: all 0.2s ease-in-out !important;
+    }
+    & .list {
+      height: calc(100vh - 83px) !important;
+      z-index: 100;
+      height: max-content;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 2rem !important;
+      padding: 0;
+      gap: 2rem;
+      background: $white;
+      margin-top: 83px;
+      // display: none;
+      left: -100%;
+      transition: all 0.2s ease-in-out;
+      &.visible {
+        left: 0;
+      }
+      &__item {
+        margin: 0;
+        font-size: 1.5rem;
+        &.login {
+          margin: 0;
+        }
+      }
+    }
+    & .btn.join {
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+      transition: none;
+      &:hover,
+      &:active {
+        padding: 0.5rem 1rem;
+      }
+      & svg {
+        transition: none;
+        color: $black;
+        position: static !important;
+      }
+    }
   }
 }
