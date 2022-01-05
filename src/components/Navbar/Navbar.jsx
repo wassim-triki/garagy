@@ -16,6 +16,7 @@ const Navbar = () => {
 
   const ref = useRef(null);
   useOnClickOutside(ref, () => setDropDownVisible(false));
+  // useOnClickOutside(searchRef, () => setDropDownVisible(false));
 
   const toggledropDown = () => {
     setDropDownVisible(!dropDownVisible);
@@ -57,27 +58,23 @@ const Navbar = () => {
         </div>
       </Link>
       <form className="form">
-        <div className="container">
+        <div ref={ref} className="container">
           <div className="form__buttons">
             <button type="submit" className="form-btn form-btn-search">
               <AiOutlineSearch className="search" />
             </button>
-            <button
-              ref={ref}
-              type="button"
-              onClick={toggledropDown}
-              className="form-btn"
-            >
+            <button type="button" onClick={toggledropDown} className="form-btn">
               <RiArrowDropDownFill className="arrow" />
             </button>
-            <input
-              className="form__search"
-              value={search}
-              type="text"
-              placeholder="Search"
-              onChange={(e) => setSearch(e.target.value)}
-            />
           </div>
+          <input
+            className="form__search"
+            value={search}
+            type="text"
+            placeholder="Search"
+            onChange={(e) => setSearch(e.target.value)}
+            onFocus={() => setDropDownVisible(true)}
+          />
           {dropDownVisible && (
             <ul className="dropDown">
               <li onClick={toggledropDown} className="dropDown__item">
@@ -130,12 +127,14 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <Link to="/join" className="link-join">
-        <button className="btn btn-join" onClick={(e) => setIsVesible(false)}>
-          Join
-          <BsArrowBarRight />
-        </button>
-      </Link>
+      <div className="join__container">
+        <Link to="/join" className="link-join">
+          <button className="btn btn-join" onClick={(e) => setIsVesible(false)}>
+            Join
+            <BsArrowBarRight />
+          </button>
+        </Link>
+      </div>
     </nav>
   );
 };
