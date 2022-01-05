@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaCar, FaCarSide, FaUser } from "react-icons/fa";
-import { BsArrowUpRight, BsArrowBarRight } from "react-icons/bs";
+import { BsArrowBarRight } from "react-icons/bs";
 import { AiOutlineMenuUnfold, AiOutlineSearch } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 const Navbar = () => {
   const [isVisible, setIsVesible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const [search, setSearch] = useState("");
   const [dropDownVisible, setDropDownVisible] = useState(false);
+
+  const ref = useRef(null);
+  useOnClickOutside(ref, () => setDropDownVisible(false));
+
   const toggledropDown = () => {
     setDropDownVisible(!dropDownVisible);
   };
@@ -24,7 +29,9 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("resize", resizeOnWidth);
-    return () => window.removeEventListener("resize", resizeOnWidth);
+    return () => {
+      window.removeEventListener("resize", resizeOnWidth);
+    };
   });
 
   const toggleMenu = () => {
@@ -55,8 +62,13 @@ const Navbar = () => {
             <button type="submit" className="form-btn form-btn-search">
               <AiOutlineSearch className="search" />
             </button>
-            <button type="button" className="form-btn">
-              <RiArrowDropDownFill className="arrow" onClick={toggledropDown} />
+            <button
+              ref={ref}
+              type="button"
+              onClick={toggledropDown}
+              className="form-btn"
+            >
+              <RiArrowDropDownFill className="arrow" />
             </button>
             <input
               className="form__search"
