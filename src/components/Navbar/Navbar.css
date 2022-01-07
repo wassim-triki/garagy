@@ -36,7 +36,11 @@
 }
 
 .navbar .form {
-  width: 50%;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  min-width: 300px;
+  height: 2.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,36 +50,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 5rem;
-}
-
-.navbar .form .container {
+  margin: 0 3rem;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   border: 1px solid #373737;
   border-radius: 50px;
-  padding: 0;
-  padding-left: 7px;
   position: relative;
+  padding: 0.2rem;
+  margin-right: auto;
 }
 
-.navbar .form .container:focus-within {
-  border-color: rgba(29, 188, 114, 0.5);
-  -webkit-box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
-          box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
-}
-
-.navbar .form .container .dropDown {
+.navbar .form .dropDown {
   width: 100%;
   padding: 0.5rem;
   position: absolute;
@@ -97,7 +82,7 @@
   gap: 1rem;
 }
 
-.navbar .form .container .dropDown__item {
+.navbar .form .dropDown__item {
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -108,20 +93,20 @@
   padding: 0.5rem;
 }
 
-.navbar .form .container .dropDown__item svg {
+.navbar .form .dropDown__item svg {
   font-size: 1.5rem;
 }
 
-.navbar .form .container .dropDown__item__title {
+.navbar .form .dropDown__item__title {
   font-weight: 700;
   margin-bottom: 0.1rem;
 }
 
-.navbar .form .container .dropDown__item__desc {
+.navbar .form .dropDown__item__desc {
   font-size: 0.7rem;
 }
 
-.navbar .form .container .dropDown__item:hover {
+.navbar .form .dropDown__item:hover {
   background-color: rgba(29, 188, 114, 0.1);
 }
 
@@ -139,6 +124,15 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  border-radius: 50px;
+  width: 2.5rem;
 }
 
 .navbar .form__buttons .form-btn {
@@ -159,11 +153,21 @@
 }
 
 .navbar .form__buttons .form-btn-search {
-  padding-top: 2px;
+  margin-left: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar .form:focus-within {
+  border-color: rgba(29, 188, 114, 0.5);
+  -webkit-box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
+          box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
 }
 
 .navbar .list {
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,11 +193,6 @@
 
 .navbar .list__item a:hover {
   color: #1dbc72;
-}
-
-.navbar .list__item.login {
-  margin-left: auto;
-  margin-right: 1.5rem;
 }
 
 .navbar .list__item.login a:hover {
@@ -405,6 +404,48 @@
   .navbar {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+}
+
+@media (max-width: 1368px) {
+  .navbar .form {
+    min-width: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+    padding: 0;
+  }
+  .navbar .form-btn-search {
+    padding-left: 1px;
+  }
+  .navbar .form:hover, .navbar .form:active {
+    border-color: rgba(29, 188, 114, 0.5);
+    -webkit-box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
+            box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
+    background-color: rgba(29, 188, 114, 0.1);
+  }
+  .navbar .form__search,
+  .navbar .form .form-btn-arrow {
+    display: none;
+  }
+  .navbar .form .form-btn-search {
+    margin-left: 0px;
+  }
+  .navbar .form.expanded {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 0.3rem;
+  }
+  .navbar .form.expanded .form__search,
+  .navbar .form.expanded .form-btn-arrow {
+    display: inline;
+  }
+  .navbar .form.expanded:active, .navbar .form.expanded:hover {
+    border-color: rgba(29, 188, 114, 0.5);
+    -webkit-box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
+            box-shadow: 0px 0px 1px 2px rgba(29, 188, 114, 0.5);
+    background-color: #fff !important;
   }
 }
 /*# sourceMappingURL=Navbar.css.map */
