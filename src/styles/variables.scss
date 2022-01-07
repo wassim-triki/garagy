@@ -6,5 +6,7 @@ $darkgrey: rgb(99, 99, 99);
 $highlight: #f6f5f1;
 $mainFont: "Quicksand", sans-serif;
 
-$phone-breakpoint: 500px;
-$tablet-breakpoint: 950px;
+$phone-max-breakpoint: 700px;
+$tablet-max-breakpoint: 900px;
+$laptop-max-breakpoint: 1199px;
+$desktop-min-breakpoint: 1200px;

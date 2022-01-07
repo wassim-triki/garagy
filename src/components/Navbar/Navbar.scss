@@ -27,19 +27,19 @@
   }
 
   & .form {
-    width: min-content;
+    width: 100%;
     min-width: 300px;
     height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 3rem;
+    // margin: 0 3rem;
     transition: all 0.2s ease-in-out;
     border: 1px solid $black;
     border-radius: 50px;
     position: relative;
     padding: 0.2rem;
-    margin-right: auto;
+    // margin-right: auto;
     & .dropDown {
       width: 100%;
       padding: 0.5rem;
@@ -118,19 +118,20 @@
 
   & .list {
     width: 100%;
-    margin-left: auto;
     margin-right: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 2rem;
+    // margin-right: 2rem;
+    margin-left: 4rem;
     &__item {
       &:first-of-type {
-        // margin-left: auto;
+        margin-right: 2rem;
+        width: 300px;
       }
       white-space: nowrap;
       list-style: none;
-      font-size: 1.2rem;
+      font-size: 1.1 rem;
       font-weight: 500;
       & a {
         color: $black;
@@ -139,7 +140,7 @@
         }
       }
       &.login {
-        // margin-left: auto;
+        margin-left: auto;
         & a:hover {
           color: $black;
         }
@@ -147,9 +148,10 @@
     }
   }
   & .join__container {
-    width: 23.5%;
+    // border: 1px solid red;
     display: flex;
     justify-content: flex-end;
+    width: 225px;
   }
   & .btn {
     display: inline-block;
@@ -195,7 +197,61 @@
   }
 }
 
-@media (max-width: $tablet-breakpoint) {
+@media (max-width: $laptop-max-breakpoint) {
+  .navbar {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    & .form {
+      min-width: 2.5rem;
+      width: 2.5rem;
+
+      &-btn-search {
+        padding-left: 1px;
+      }
+      cursor: pointer;
+      padding: 0;
+      &:hover,
+      &:active {
+        @include glowEdge($accent);
+        background-color: rgba($accent, 0.1);
+      }
+      .container {
+      }
+      &__search,
+      & .form-btn-arrow {
+        display: none;
+      }
+      & .form-btn-search {
+        margin-left: 0px;
+      }
+      &.expanded {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 0.3rem;
+        & .form__search,
+        & .form-btn-arrow {
+          display: inline;
+        }
+        &:active,
+        &:hover {
+          @include glowEdge($accent);
+          background-color: $white !important;
+        }
+      }
+    }
+  }
+  & .list {
+    margin-right: 2rem;
+    &__item:first-of-type {
+      width: min-content !important;
+    }
+    & .li__expanded {
+      width: 100% !important;
+    }
+  }
+}
+
+@media (max-width: $tablet-max-breakpoint) {
   .navbar {
     position: relative;
     width: 100%;
@@ -290,55 +346,18 @@
         position: static !important;
       }
     }
+    .join__container {
+      width: min-content;
+    }
   }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: $phone-max-breakpoint) {
   .navbar {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media (max-width: 1368px) {
-  .navbar {
-    & .form {
-      min-width: 2.5rem;
-      width: 2.5rem;
-
-      &-btn-search {
-        padding-left: 1px;
-      }
-      cursor: pointer;
-      padding: 0;
-      &:hover,
-      &:active {
-        @include glowEdge($accent);
-        background-color: rgba($accent, 0.1);
-      }
-      .container {
-      }
-      &__search,
-      & .form-btn-arrow {
-        display: none;
-      }
-      & .form-btn-search {
-        margin-left: 0px;
-      }
-      &.expanded {
-        width: 100%;
-        justify-content: space-between;
-        padding: 0 0.3rem;
-        & .form__search,
-        & .form-btn-arrow {
-          display: inline;
-        }
-        &:active,
-        &:hover {
-          @include glowEdge($accent);
-          background-color: $white !important;
-        }
-      }
+    .join__container {
+      width: min-content !important;
+    }
+    .list {
     }
   }
 }
