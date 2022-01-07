@@ -1,6 +1,11 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import About from "./components/About/About";
+import BecomeASeller from "./components/BecomeASeller/BecomeASeller";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Join from "./components/Join/Join";
 
 function App() {
   return (
@@ -8,10 +13,11 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
-          <Route path="/explore" element={<h1>Explore</h1>} />
-          <Route path="become-a-seller" element={<h1>Become a seller</h1>} />
-          <Route path="contact" element={<h1>Contact</h1>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/become-a-seller" element={<BecomeASeller />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/join" element={<Join />} />
         </Routes>
       </Router>
     </div>

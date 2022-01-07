@@ -110,9 +110,31 @@
       }
     }
     &:focus-within {
-      // border-color: rgba($accent, 0.5);
-      // box-shadow: 0px 0px 1px 2px rgba($accent, 0.5);
       @include glowEdge($accent);
+    }
+    &.shrink {
+      min-width: 2.5rem;
+      width: 2.5rem;
+
+      &-btn-search {
+        padding-left: 1px;
+      }
+      cursor: pointer;
+      padding: 0;
+      &:hover,
+      &:active {
+        @include glowEdge($accent);
+        background-color: rgba($accent, 0.1);
+      }
+      .container {
+      }
+      & .form__search,
+      & .form-btn-arrow {
+        display: none;
+      }
+      & .form-btn-search {
+        margin-left: 0px;
+      }
     }
   }
 
@@ -121,12 +143,14 @@
     margin-right: auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     // margin-right: 2rem;
     margin-left: 4rem;
     &__item {
-      &:first-of-type {
-        margin-right: 2rem;
+      margin-left: auto;
+      &__Form {
+        margin-left: 0;
         width: 300px;
       }
       white-space: nowrap;
@@ -201,49 +225,11 @@
   .navbar {
     padding-left: 5rem;
     padding-right: 5rem;
-    & .form {
-      min-width: 2.5rem;
-      width: 2.5rem;
-
-      &-btn-search {
-        padding-left: 1px;
-      }
-      cursor: pointer;
-      padding: 0;
-      &:hover,
-      &:active {
-        @include glowEdge($accent);
-        background-color: rgba($accent, 0.1);
-      }
-      .container {
-      }
-      &__search,
-      & .form-btn-arrow {
-        display: none;
-      }
-      & .form-btn-search {
-        margin-left: 0px;
-      }
-      &.expanded {
-        width: 100%;
-        justify-content: space-between;
-        padding: 0 0.3rem;
-        & .form__search,
-        & .form-btn-arrow {
-          display: inline;
-        }
-        &:active,
-        &:hover {
-          @include glowEdge($accent);
-          background-color: $white !important;
-        }
-      }
-    }
   }
   & .list {
     margin-right: 2rem;
-    &__item:first-of-type {
-      width: min-content !important;
+    &__item__Form {
+      width: 100% !important;
     }
     & .li__expanded {
       width: 100% !important;
@@ -309,13 +295,13 @@
       bottom: 0;
       margin: 0;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: space-around;
       padding-top: 2rem !important;
       padding: 0;
-      gap: 2rem;
+      gap: 4rem;
+      padding: 0 4rem;
       background: $white;
       margin-top: 83px;
-      // display: none;
       left: -100%;
       transition: all 0.2s ease-in-out;
       &.visible {
@@ -323,7 +309,7 @@
       }
       &__item {
         &:first-of-type {
-          margin-left: 0;
+          // margin: 0;
         }
         margin: 0;
         font-size: 1.5rem;
