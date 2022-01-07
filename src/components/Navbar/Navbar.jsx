@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCar } from "react-icons/fa";
 import { BsArrowBarRight } from "react-icons/bs";
-import { AiOutlineMenuUnfold, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
 import SearchForm from "./SearchForm/SearchForm";
 const Navbar = () => {
   const [isVisible, setTabletView] = useState(false);
@@ -14,13 +13,12 @@ const Navbar = () => {
     setTabletView(!isVisible);
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
   const [expandForm, setExpandForm] = useState(false);
 
-  let maxMobile = screenWidth <= 700;
   let maxTablet = screenWidth <= 900;
   let maxLaptop = screenWidth <= 1199;
   let minDesktop = screenWidth > 1200;
+
   const resizeOnWidth = (e) => {
     setScreenWidth(window.innerWidth);
   };
@@ -30,6 +28,7 @@ const Navbar = () => {
       window.removeEventListener("resize", resizeOnWidth);
     };
   });
+
   return (
     <nav className="navbar">
       <div className="menu-icon-container">
