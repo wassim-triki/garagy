@@ -51,7 +51,11 @@ const Navbar = () => {
 
       <ul className={`list${isVisible ? " visible" : ""}`}>
         {(minDesktop || (maxLaptop && !maxTablet)) && (
-          <li className="list__item list__itemForm">
+          <li
+            className={`list__item list__itemForm ${
+              expandForm ? "expand" : ""
+            }`}
+          >
             <SearchForm
               shrink={maxLaptop}
               desktop={minDesktop}

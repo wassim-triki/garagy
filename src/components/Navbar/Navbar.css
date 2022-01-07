@@ -211,9 +211,12 @@
   font-weight: 500;
 }
 
-.navbar .list__item__Form {
+.navbar .list__itemForm {
   margin-left: 0;
-  width: 300px;
+}
+
+.navbar .list__item.expand {
+  width: 100%;
 }
 
 .navbar .list__item a {
