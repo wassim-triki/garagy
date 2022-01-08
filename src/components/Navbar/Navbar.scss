@@ -168,8 +168,13 @@
       }
       &.login {
         margin-left: auto;
-        & a:hover {
-          color: $black;
+        letter-spacing: 0.1rem;
+        & a {
+          // color: $accent;
+          &:hover {
+            color: $black;
+            text-decoration: underline;
+          }
         }
       }
     }

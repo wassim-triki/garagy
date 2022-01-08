@@ -229,10 +229,12 @@
 
 .navbar .list__item.login {
   margin-left: auto;
+  letter-spacing: 0.1rem;
 }
 
 .navbar .list__item.login a:hover {
   color: #373737;
+  text-decoration: underline;
 }
 
 .navbar .join__container {
