@@ -15,7 +15,10 @@ const Navbar = () => {
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [expandForm, setExpandForm] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
+  const applyScrollEffect = () => {
+    setScrolled(window.scrollY > 100);
+  };
   let maxTablet = screenWidth <= 900;
   let maxLaptop = screenWidth <= 1199;
   let minDesktop = screenWidth > 1200;
@@ -23,15 +26,19 @@ const Navbar = () => {
   const resizeOnWidth = (e) => {
     setScreenWidth(window.innerWidth);
   };
+
   useEffect(() => {
+    console.log(window.scrollY);
     window.addEventListener("resize", resizeOnWidth);
+    window.addEventListener("scroll", applyScrollEffect);
     return () => {
       window.removeEventListener("resize", resizeOnWidth);
+      window.removeEventListener("scroll", applyScrollEffect);
     };
   });
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
         {maxTablet &&
           (isVisible ? (

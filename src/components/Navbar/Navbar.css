@@ -1,12 +1,16 @@
 .navbar {
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
   z-index: 10;
   width: 100%;
+  top: 0;
+  left: 0;
   color: #373737;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 20px 100px;
-  position: absolute !important;
+  position: fixed;
   background: transparent;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -14,6 +18,10 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.navbar.scrolled {
+  background: #ffffff;
 }
 
 .navbar .brand {
@@ -66,7 +74,7 @@
   -webkit-box-shadow: 0px 0px 2px 1px #a8a8a8;
           box-shadow: 0px 0px 2px 1px #a8a8a8;
   border-radius: 8px;
-  background: #f7f7f7;
+  background: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -252,7 +260,7 @@
 .navbar .btn {
   display: inline-block;
   padding: 0.5rem;
-  background: #f7f7f7;
+  background: #ffffff;
   font-size: 1.2rem;
   font-family: "Quicksand", sans-serif;
   border: none;
@@ -293,13 +301,13 @@
 
 .navbar .btn-join:hover, .navbar .btn-join:active {
   background-color: #373737;
-  color: #f7f7f7;
+  color: #ffffff;
   padding: 0.5rem 3rem 0.5rem 2.5rem;
   position: relative;
 }
 
 .navbar .btn-join:hover svg, .navbar .btn-join:active svg {
-  color: #f7f7f7;
+  color: #ffffff;
   right: 10px;
 }
 
@@ -421,7 +429,7 @@
     padding: 0;
     gap: 4rem;
     padding: 0 4rem;
-    background: #f7f7f7;
+    background: #ffffff;
     margin-top: 83px;
     left: -100%;
     -webkit-transition: all 0.2s ease-in-out;
