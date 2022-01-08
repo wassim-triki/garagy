@@ -3,6 +3,7 @@ import { FaCar } from "react-icons/fa";
 import { BsArrowBarRight } from "react-icons/bs";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
+import { GiSteeringWheel } from "react-icons/gi";
 
 import { Link } from "react-router-dom";
 import "./Navbar.css";
@@ -44,7 +45,7 @@ const Navbar = () => {
       </div>
       <Link to={"/"}>
         <div className="brand">
-          <FaCar className="brand__logo" />
+          <GiSteeringWheel className="brand__logo" />
           <span className="brand__name">Garagy</span>
         </div>
       </Link>
