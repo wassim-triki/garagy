@@ -9,15 +9,18 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import SearchForm from "./SearchForm/SearchForm";
 const Navbar = () => {
-  const [isVisible, setTabletView] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
-    setTabletView(!isVisible);
+    setIsVisible(!isVisible);
+  };
+  const closeMenu = () => {
+    setIsVisible(false);
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [expandForm, setExpandForm] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const applyScrollEffect = () => {
-    setScrolled(window.scrollY > 100);
+    setScrolled(window.scrollY > 50);
   };
   let maxTablet = screenWidth <= 900;
   let maxLaptop = screenWidth <= 1199;
@@ -38,7 +41,7 @@ const Navbar = () => {
   });
 
   return (
-    <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
+    <nav className={`navbar${scrolled || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
         {maxTablet &&
           (isVisible ? (
@@ -50,7 +53,7 @@ const Navbar = () => {
             />
           ))}
       </div>
-      <Link to={"/"}>
+      <Link to={"/"} onClick={closeMenu}>
         <div className="brand">
           <GiSteeringWheel className="brand__logo" />
           <span className="brand__name">Garagy</span>
@@ -75,19 +78,19 @@ const Navbar = () => {
         {!expandForm && (
           <>
             <li className="list__item">
-              <Link to="/about" onClick={toggleMenu}>
+              <Link to="/about" onClick={closeMenu}>
                 About
               </Link>
             </li>
             <li className="list__item">
-              <Link to="/become-a-seller" onClick={toggleMenu}>
+              <Link to="/become-a-seller" onClick={closeMenu}>
                 Become a Seller
               </Link>
             </li>
           </>
         )}
         <li className="list__item login">
-          <Link to="/login" onClick={toggleMenu}>
+          <Link to="/login" onClick={closeMenu}>
             Login
           </Link>
         </li>
@@ -96,10 +99,7 @@ const Navbar = () => {
 
       <div className="join__container">
         <Link to="/join" className="link-join">
-          <button
-            className="btn btn-join"
-            onClick={(e) => setTabletView(false)}
-          >
+          <button className="btn btn-join" onClick={(e) => setIsVisible(false)}>
             Join
             <BsArrowBarRight />
           </button>

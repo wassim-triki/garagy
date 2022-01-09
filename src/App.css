@@ -18,3 +18,12 @@ a {
 li {
   list-style: none;
 }
+button,
+a {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.95);
+}

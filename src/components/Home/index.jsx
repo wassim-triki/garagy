@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
@@ -12,7 +13,9 @@ const Home = () => {
             <h2 className="hero__subtitle">
               Get a car wherever and whenever you need it with any device
             </h2>
-            <button className="btn btn-join">Join</button>
+            <Link to={"/join"}>
+              <button className="btn btn-join">Join NOW !</button>
+            </Link>
           </div>
           <img
             className="hero__img"
