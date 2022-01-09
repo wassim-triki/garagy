@@ -136,8 +136,7 @@
         @include glowEdge($accent);
         background-color: rgba($accent, 0.1);
       }
-      .container {
-      }
+
       & .form__search,
       & .form-btn-arrow {
         display: none;
@@ -199,7 +198,7 @@
   & .btn {
     display: inline-block;
     padding: 0.5rem;
-    background: $white;
+    background: transparent;
     font-size: 1.2rem;
     font-family: $mainFont;
     border: none;
@@ -243,16 +242,19 @@
 
 @media (max-width: $laptop-max-breakpoint) {
   .navbar {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-  & .list {
-    margin-right: 2rem;
-    &__item__Form {
-      width: 100% !important;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    & .list {
+      margin-right: 2rem;
+      &__item__Form {
+        width: 100% !important;
+      }
+      & .li__expanded {
+        width: 100% !important;
+      }
     }
-    & .li__expanded {
-      width: 100% !important;
+    & .join__container {
+      width: 255px;
     }
   }
 }
@@ -261,7 +263,8 @@
   .navbar {
     position: relative;
     width: 100%;
-    padding: 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
     & .menu-icon-container {
       // margin-right: auto;
       display: flex;
@@ -301,8 +304,6 @@
         }
       }
     }
-    & .brand {
-    }
 
     & .list {
       height: calc(100vh - 83px) !important;
@@ -328,9 +329,6 @@
         left: 0;
       }
       &__item {
-        &:first-of-type {
-          // margin: 0;
-        }
         margin: 0;
         font-size: 1.5rem;
         &.login {
@@ -362,8 +360,6 @@
   .navbar {
     .join__container {
       width: min-content !important;
-    }
-    .list {
     }
   }
 }

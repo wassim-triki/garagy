@@ -12,6 +12,7 @@ const Home = () => {
             <h2 className="hero__subtitle">
               Get a car wherever and whenever you need it with any device
             </h2>
+            <button className="btn btn-join">Join</button>
           </div>
           <img
             className="hero__img"

@@ -1,4 +1,5 @@
 import "./App.css";
+import "./styles/global.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/About";
@@ -13,7 +14,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/become-a-seller" element={<BecomeASeller />} />
           <Route path="/login" element={<Login />} />
