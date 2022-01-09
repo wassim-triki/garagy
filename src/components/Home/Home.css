@@ -9,9 +9,9 @@
 }
 
 .hero {
-  background-color: rbga(#000, 0.5);
-  background: #f7f7f7;
-  background: radial-gradient(circle, #f7f7f7 73%, #e8e8e8 100%);
+  background: #4cb944;
+  background: radial-gradient(circle, #4cb944 0%, #3a9034 100%);
+  color: #ffffff;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top 25% right 50%;
@@ -29,6 +29,7 @@
   flex-direction: column;
   gap: 2rem;
   width: 750px;
+  margin-top: 3rem;
 }
 .hero .container .hero__text .hero__title {
   font-size: 5rem;
@@ -37,14 +38,14 @@
 }
 .hero .container .hero__text .hero__subtitle {
   font-size: 1.2rem;
-  color: #636363;
+  color: #dddddd;
   font-weight: 500;
   line-height: 2rem;
   width: 50%;
 }
 .hero .container .hero__text .btn {
   width: 46%;
-  background: #2d82b7;
+  background: #ff9000;
   color: #ffffff;
   border: none;
   border-radius: 50px;
@@ -67,7 +68,7 @@
   .hero .container .hero__img {
     width: 800px;
     height: auto;
-    top: -21%;
+    top: -15%;
     right: -400px;
   }
   .hero .container .hero__text {
@@ -107,7 +108,7 @@
     font-size: 0.9rem;
   }
   .hero .container .hero__text .btn {
-    margin-top: 5rem;
+    margin-top: 2.5rem;
     width: 50%;
   }
 }

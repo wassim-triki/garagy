@@ -15,18 +15,50 @@
 .navbar.scrolled {
   background: #ffffff;
 }
+.navbar.scrolled .brand__name {
+  color: #373737;
+}
+.navbar.scrolled .form {
+  border: 1px solid #dddddd;
+}
+.navbar.scrolled .form__search {
+  color: #373737;
+}
+.navbar.scrolled .form__search::-moz-placeholder {
+  color: #636363;
+}
+.navbar.scrolled .form__search:-ms-input-placeholder {
+  color: #636363;
+}
+.navbar.scrolled .form__search::placeholder {
+  color: #636363;
+}
+.navbar.scrolled .form__buttons .form-btn {
+  color: #636363;
+}
+.navbar.scrolled .list__item a {
+  color: #373737;
+}
+.navbar.scrolled .list__item a:hover, .navbar.scrolled .list__item a:focus {
+  color: #ff9000;
+}
+.navbar.scrolled .form:focus-within {
+  border-color: rgba(221, 221, 221, 0.5) !important;
+  box-shadow: 0px 0px 1px 2px rgba(221, 221, 221, 0.5) !important;
+}
 .navbar .brand {
   display: flex;
   gap: 0.3rem;
 }
 .navbar .brand__logo {
   font-size: 2.5rem;
-  color: #2d82b7;
+  color: #ff9000;
 }
 .navbar .brand__name {
   font-size: 2rem;
   font-weight: 800;
   color: #373737;
+  color: #ffffff;
 }
 .navbar .form {
   width: 100%;
@@ -36,7 +68,7 @@
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
-  border: 1px solid rgba(55, 55, 55, 0.3);
+  border: 1px solid #dddddd;
   border-radius: 50px;
   position: relative;
   padding: 0.2rem;
@@ -87,6 +119,19 @@
   border: none;
   font-family: "Quicksand", sans-serif;
   padding: 0.5rem;
+  color: #ffffff;
+}
+.navbar .form__search::-moz-placeholder {
+  color: #dddddd;
+  font-weight: 800;
+}
+.navbar .form__search:-ms-input-placeholder {
+  color: #dddddd;
+  font-weight: 800;
+}
+.navbar .form__search::placeholder {
+  color: #dddddd;
+  font-weight: 800;
 }
 .navbar .form__buttons {
   display: flex;
@@ -102,8 +147,8 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  border: 1px solid #373737;
   border: none;
+  color: #dddddd;
   background: none;
 }
 .navbar .form__buttons .form-btn-search {
@@ -112,8 +157,15 @@
   height: 100%;
 }
 .navbar .form:focus-within {
-  border-color: rgba(45, 130, 183, 0.5);
-  box-shadow: 0px 0px 1px 2px rgba(45, 130, 183, 0.5);
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0px 0px 1px 2px rgba(255, 255, 255, 0.5) !important;
+  background: #ffffff;
+}
+.navbar .form:focus-within .form__search {
+  color: #373737;
+}
+.navbar .form:focus-within .form-btn {
+  color: #373737;
 }
 .navbar .form.shrink {
   min-width: 2.5rem;
@@ -125,9 +177,9 @@
   padding-left: 1px;
 }
 .navbar .form.shrink:hover, .navbar .form.shrink:focus {
-  border-color: rgba(45, 130, 183, 0.5);
-  box-shadow: 0px 0px 1px 2px rgba(45, 130, 183, 0.5);
-  background-color: rgba(45, 130, 183, 0.1);
+  border-color: rgba(255, 144, 0, 0.5) !important;
+  box-shadow: 0px 0px 1px 2px rgba(255, 144, 0, 0.5) !important;
+  background-color: rgba(255, 144, 0, 0.1);
 }
 .navbar .form.shrink .form__search, .navbar .form.shrink .form-btn-arrow {
   display: none;
@@ -149,7 +201,7 @@
   white-space: nowrap;
   list-style: none;
   font-size: 1.1 rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .navbar .list__itemForm {
   margin-left: 0;
@@ -158,10 +210,10 @@
   width: 100%;
 }
 .navbar .list__item a {
-  color: #373737;
+  color: #ffffff;
 }
 .navbar .list__item a:hover, .navbar .list__item a:focus {
-  color: #2d82b7;
+  color: #ff9000;
 }
 .navbar .list__item.login {
   margin-left: auto;
@@ -195,11 +247,11 @@
 .navbar .btn-join {
   background: transparent;
   font-weight: 400;
-  border: 1px solid #373737;
-  border: 1px solid rgba(55, 55, 55, 0.3);
+  border: 1px solid #ffffff;
   border-radius: 30px;
   transition: all 0.1s ease-in-out;
   position: relative;
+  color: #ffffff;
 }
 .navbar .btn-join svg {
   font-size: 1rem;
@@ -211,6 +263,7 @@
 .navbar .btn-join:hover, .navbar .btn-join:focus {
   background-color: #373737;
   color: #ffffff;
+  border: 1px solid transparent;
   padding: 0.5rem 3rem 0.5rem 2.5rem;
   position: relative;
 }
@@ -242,6 +295,21 @@
     width: 100%;
     padding-left: 20px !important;
     padding-right: 20px !important;
+  }
+  .navbar .open {
+    color: #ffffff;
+  }
+  .navbar.scrolled .open {
+    color: #373737;
+  }
+  .navbar.scrolled .btn-join {
+    color: #373737;
+    border-color: rgba(55, 55, 55, 0.3);
+  }
+  .navbar.scrolled .btn-join svg {
+    transition: none;
+    color: #373737;
+    position: static !important;
   }
   .navbar .menu-icon-container {
     display: flex;
@@ -346,7 +414,7 @@
   }
   .navbar .btn-join svg {
     transition: none;
-    color: #373737;
+    color: #ffffff;
     position: static !important;
   }
   .navbar .join__container {
