@@ -22,13 +22,13 @@ const SearchForm = ({
     e.preventDefault();
     if (shrunk) {
       setShrunk(false);
-      setExpandForm(true);
+      setExpandForm && setExpandForm(true);
     }
   };
   useOnClickOutside(formRef, () => {
     setDropdown(false);
     setShrunk(true);
-    setExpandForm(false);
+    setExpandForm && setExpandForm(false);
   });
 
   return (

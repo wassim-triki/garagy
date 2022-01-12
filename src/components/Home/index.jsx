@@ -1,6 +1,9 @@
 import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { ReactComponent as FlexibleRentalIcon } from "../../assets/images/flexible.svg";
+import { ReactComponent as FeesIcon } from "../../assets/images/fees.svg";
+import { ReactComponent as DeliveryIcon } from "../../assets/images/delivery.svg";
 const Home = () => {
   return (
     <>
@@ -17,14 +20,45 @@ const Home = () => {
               <button className="btn btn-join">Join NOW !</button>
             </Link>
           </div>
-          <img
+          {/* <img
             className="hero__img"
             src={require("../../assets/images/herocar.png")}
             alt=""
-          />
+          /> */}
         </div>
       </section>
-      <section className="section"></section>
+      <section className="section features">
+        <div className="container">
+          <div className="feature">
+            <FlexibleRentalIcon className="feature__icon" />
+            <div className="feature__text">
+              <h3 className="feature__text__title">Flexible rentals</h3>
+              <p className="feature__text__disc">
+                Cancel or change most bookings for free up to 48 hours before
+                pick-up
+              </p>
+            </div>
+          </div>
+          <div className="feature">
+            <FeesIcon className="feature__icon" />
+            <div className="feature__text">
+              <h3 className="feature__text__title">No hidden fees</h3>
+              <p className="feature__text__disc">
+                Know exactly what you're paying
+              </p>
+            </div>
+          </div>
+          <div className="feature">
+            <DeliveryIcon className="feature__icon" />
+            <div className="feature__text">
+              <h3 className="feature__text__title">Fast car delivery</h3>
+              <p className="feature__text__disc">
+                Your cars will be delivered as fast as possible
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

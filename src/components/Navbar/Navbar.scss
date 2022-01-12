@@ -37,6 +37,10 @@
     .form:focus-within {
       @include glowEdge($lighgrey);
     }
+    & .btn-join {
+      color: $black;
+      border: 1px solid $lighgrey;
+    }
   }
   transition: all 0.2s ease-in;
   z-index: 10;
@@ -46,7 +50,7 @@
   color: $black;
   display: flex;
   padding: $padXl 100px;
-  position: fixed;
+  position: fixed !important;
   background: transparent;
   align-items: center;
   justify-content: space-between;
@@ -307,6 +311,7 @@
 
 @media (max-width: $tablet-max-breakpoint) {
   .navbar {
+    width: 100vw !important;
     & .open {
       color: $white;
     }
