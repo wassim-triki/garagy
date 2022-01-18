@@ -20,11 +20,6 @@ const Home = () => {
               <button className="btn btn-join">Join NOW !</button>
             </Link>
           </div>
-          {/* <img
-            className="hero__img"
-            src={require("../../assets/images/herocar.png")}
-            alt=""
-          /> */}
         </div>
       </section>
       <section className="section features">
@@ -57,6 +52,16 @@ const Home = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="section customer">
+        <div className="container">
+          <h2>As a customer</h2>
+        </div>
+      </section>
+      <section className="section seller">
+        <div className="container">
+          <h2>As a Seller</h2>
         </div>
       </section>
     </>
