@@ -7,6 +7,7 @@ import BecomeASeller from "./components/BecomeASeller";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Join from "./components/Join";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

@@ -76,9 +76,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="section footer">
-        <div className="container"></div>
-      </section>
     </>
   );
 };

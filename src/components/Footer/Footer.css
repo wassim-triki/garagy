@@ -1,0 +1,85 @@
+.footer {
+  background: #373737;
+  width: 100vw;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+.footer .container {
+  padding: 2rem 0;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+.footer .container .useful-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer .container .useful-links .link {
+  font-size: 0.9rem;
+}
+.footer .container .useful-links .link a {
+  color: #ffffff;
+}
+.footer .container .useful-links .link a:hover {
+  opacity: 0.6;
+  transition: none;
+}
+.footer .container-join {
+  display: flex;
+  flex-direction: column;
+}
+.footer .container-join button {
+  font-size: 1rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: #ffffff;
+}
+.footer .container-join p a {
+  color: #f4b251;
+}
+.footer .container-join p a:hover {
+  text-decoration: underline;
+}
+.footer .container__bottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.footer .container__bottom h3 {
+  font-weight: 500;
+}
+.footer .container__bottom .links {
+  display: flex;
+  gap: 2rem;
+  color: #ffffff;
+}
+.footer .container__bottom .links a {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+.footer .container__bottom .links a:hover {
+  opacity: 0.6;
+  transition: none;
+}
+
+@media (max-width: 900px) {
+  .footer .container__bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer .container__bottom .useful-links {
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+  }
+}
+/*# sourceMappingURL=Footer.css.map */
