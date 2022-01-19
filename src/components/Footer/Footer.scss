@@ -87,6 +87,12 @@
           align-items: center;
           margin: 2rem 0;
         }
+        & .copyright {
+          text-align: center;
+          & span {
+            display: inline-block;
+          }
+        }
       }
     }
   }

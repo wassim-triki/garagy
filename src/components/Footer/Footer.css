@@ -81,5 +81,11 @@
     align-items: center;
     margin: 2rem 0;
   }
+  .footer .container__bottom .copyright {
+    text-align: center;
+  }
+  .footer .container__bottom .copyright span {
+    display: inline-block;
+  }
 }
 /*# sourceMappingURL=Footer.css.map */
