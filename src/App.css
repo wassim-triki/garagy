@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Quicksand", sans-serif;
   width: 100%;
@@ -26,4 +27,26 @@ a {
 
 button:active {
   transform: scale(0.95);
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #f4b251 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: px;
+  background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #f4b251;
+  border-radius: 50px;
 }

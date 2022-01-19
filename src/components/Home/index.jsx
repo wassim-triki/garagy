@@ -56,13 +56,28 @@ const Home = () => {
       </section>
       <section className="section customer">
         <div className="container">
-          <h2>As a customer</h2>
+          <div className="preview">
+            <h2>As a customer</h2>
+            <p>Browse a multitude of different cars for rent.</p>
+            <p>Pay safely with your favourite method.</p>
+            <p>Enjoy fast and secure service.</p>
+            <p>Rate and share your experiences with others.</p>
+          </div>
         </div>
       </section>
       <section className="section seller">
         <div className="container">
-          <h2>As a Seller</h2>
+          <div className="preview">
+            <h2>as a Seller</h2>
+            <p>Upload details of your cars and share them for rental.</p>
+            <p>Look for customers who are looking for cars.</p>
+            <p>Talk with a client.</p>
+            <p>Get paid.</p>
+          </div>
         </div>
+      </section>
+      <section className="section footer">
+        <div className="container"></div>
       </section>
     </>
   );
