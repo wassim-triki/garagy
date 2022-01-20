@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import NavbarContext from "../../context/NavbarContext/NavbarContext";
 
 const About = () => {
   return (
-    <h1
-      style={{
-        textAlign: "center",
-        marginTop: "15%",
-        fontSize: "5rem",
-      }}
-    >
-      About
-    </h1>
+    <section className="section about">
+      <h1 className="title">About</h1>
+    </section>
   );
 };
 

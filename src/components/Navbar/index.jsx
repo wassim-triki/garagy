@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaCar } from "react-icons/fa";
 import { BsArrowBarRight } from "react-icons/bs";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 import { GiSteeringWheel } from "react-icons/gi";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import SearchForm from "./SearchForm/SearchForm";
+import NavbarContext from "../../context/NavbarContext/NavbarContext";
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
@@ -18,9 +19,10 @@ const Navbar = () => {
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [expandForm, setExpandForm] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const { transparent, setTransparent } = useContext(NavbarContext);
+  const location = useLocation();
   const applyScrollEffect = () => {
-    setScrolled(window.scrollY > 50);
+    setTransparent(window.scrollY < 50 && location.pathname === "/");
   };
   let maxTablet = screenWidth <= 900;
   let maxLaptop = screenWidth <= 1199;
@@ -31,17 +33,18 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(window.scrollY);
     window.addEventListener("resize", resizeOnWidth);
     window.addEventListener("scroll", applyScrollEffect);
+    setTransparent(location.pathname === "/");
     return () => {
       window.removeEventListener("resize", resizeOnWidth);
+
       window.removeEventListener("scroll", applyScrollEffect);
     };
-  });
+  }, [location.pathname]);
 
   return (
-    <nav className={`navbar${scrolled || isVisible ? " scrolled" : ""}`}>
+    <nav className={`navbar${!transparent || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
         {maxTablet &&
           (isVisible ? (
