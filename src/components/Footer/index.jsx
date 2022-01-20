@@ -3,6 +3,7 @@ import "./Footer.css";
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
 import { useNavigate, Link } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
   const navigate = useNavigate();
   return (
