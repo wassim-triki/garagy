@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import { NavbarProvider } from "./context/NavbarContext/NavbarContext";
 import ScrollToTop from "react-scroll-to-top";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import ScrollTopOnRouteChange from "./components/ScrollTopOnRouteChange";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -20,24 +21,22 @@ const scrollToTopStyles = {
   justifyContent: "center",
   // fontSize: "0rem",
 };
+const svgStyles = {
+  color: "#f4b251",
+  width: "100%",
+  fontSize: "3rem",
+  borderRadius: "50px",
+};
 function App() {
   return (
     <div className="App">
       <ScrollToTop
         smooth
         style={scrollToTopStyles}
-        component={
-          <BsFillArrowUpCircleFill
-            style={{
-              color: "#f4b251",
-              width: "100%",
-              fontSize: "3rem",
-              borderRadius: "50px",
-            }}
-          />
-        }
+        component={<BsFillArrowUpCircleFill style={svgStyles} />}
       />
       <Router>
+        <ScrollTopOnRouteChange />
         <NavbarProvider>
           <Navbar />
           <Routes>
