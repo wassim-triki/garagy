@@ -19,6 +19,7 @@ const scrollToTopStyles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  zIndex: "100",
   // fontSize: "0rem",
 };
 const svgStyles = {

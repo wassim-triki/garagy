@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as FlexibleRentalIcon } from "../../assets/images/flexible.svg";
 import { ReactComponent as FeesIcon } from "../../assets/images/fees.svg";
 import { ReactComponent as DeliveryIcon } from "../../assets/images/delivery.svg";
+import ContentBox from "../ContentBox";
 const Home = () => {
   return (
     <>
@@ -56,13 +57,20 @@ const Home = () => {
       </section>
       <section className="section customer">
         <div className="container">
-          <div className="preview">
+          {/* <div className="preview">
             <h2>As a customer</h2>
             <p>Browse a multitude of different cars for rent.</p>
             <p>Pay safely with your favourite method.</p>
             <p>Enjoy fast and secure service.</p>
             <p>Rate and share your experiences with others.</p>
-          </div>
+          </div> */}
+          <ContentBox>
+            <h2>As a customer</h2>
+            <p>Browse a multitude of different cars for rent.</p>
+            <p>Pay safely with your favourite method.</p>
+            <p>Enjoy fast and secure service.</p>
+            <p>Rate and share your experiences with others.</p>
+          </ContentBox>
         </div>
       </section>
       <section className="section seller">

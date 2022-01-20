@@ -2,15 +2,11 @@ import React from "react";
 
 const Join = () => {
   return (
-    <h1
-      style={{
-        textAlign: "center",
-        marginTop: "15%",
-        fontSize: "5rem",
-      }}
-    >
-      Join
-    </h1>
+    <section className="section join">
+      <div className="container">
+        <h1>Join</h1>
+      </div>
+    </section>
   );
 };
 
