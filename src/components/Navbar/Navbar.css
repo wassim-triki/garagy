@@ -19,7 +19,7 @@
   color: #373737;
 }
 .navbar.scrolled .form {
-  border: 1px solid #dddddd;
+  border: 1px solid #ebebeb;
 }
 .navbar.scrolled .form__search {
   color: #373737;
@@ -43,12 +43,12 @@
   color: #f4b251;
 }
 .navbar.scrolled .form:focus-within {
-  border-color: rgba(221, 221, 221, 0.5) !important;
-  box-shadow: 0px 0px 1px 2px rgba(221, 221, 221, 0.5) !important;
+  border-color: rgba(235, 235, 235, 0.5) !important;
+  box-shadow: 0px 0px 1px 2px rgba(235, 235, 235, 0.5) !important;
 }
 .navbar.scrolled .btn-join {
   color: #373737;
-  border: 1px solid #dddddd;
+  border: 1px solid #ebebeb;
 }
 .navbar .brand {
   display: flex;
@@ -72,7 +72,7 @@
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
-  border: 1px solid #dddddd;
+  border: 1px solid #ebebeb;
   border-radius: 50px;
   position: relative;
   padding: 0.2rem;
@@ -126,15 +126,15 @@
   color: #ffffff;
 }
 .navbar .form__search::-moz-placeholder {
-  color: #dddddd;
+  color: #ebebeb;
   font-weight: 800;
 }
 .navbar .form__search:-ms-input-placeholder {
-  color: #dddddd;
+  color: #ebebeb;
   font-weight: 800;
 }
 .navbar .form__search::placeholder {
-  color: #dddddd;
+  color: #ebebeb;
   font-weight: 800;
 }
 .navbar .form__buttons {
@@ -152,7 +152,7 @@
   justify-content: center;
   font-size: 1.2rem;
   border: none;
-  color: #dddddd;
+  color: #ebebeb;
   background: none;
 }
 .navbar .form__buttons .form-btn-search {
@@ -213,15 +213,22 @@
 .navbar .list__item.expand {
   width: 100%;
 }
-.navbar .list__item a {
+.navbar .list__item a, .navbar .list__item {
   color: #ffffff;
 }
-.navbar .list__item a:hover, .navbar .list__item a:focus {
+.navbar .list__item a:hover, .navbar .list__item a:focus, .navbar .list__item:hover, .navbar .list__item:focus {
   color: #f4b251;
 }
 .navbar .list__item.login {
   margin-left: auto;
   letter-spacing: 0.1rem;
+}
+.navbar .list__item.login .logout {
+  color: #373737;
+  cursor: pointer;
+}
+.navbar .list__item.login .logout:hover, .navbar .list__item.login .logout:focus {
+  text-decoration: underline;
 }
 .navbar .list__item.login a:hover, .navbar .list__item.login a:focus {
   color: #373737;

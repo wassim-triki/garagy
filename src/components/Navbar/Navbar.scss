@@ -216,14 +216,24 @@
       &.expand {
         width: 100%;
       }
-      & a {
+      & a,
+      & {
         color: $white;
         &:hover,
         &:focus {
           color: $accent;
         }
       }
+
       &.login {
+        & .logout {
+          color: $black;
+          cursor: pointer;
+          &:hover,
+          &:focus {
+            text-decoration: underline;
+          }
+        }
         margin-left: auto;
         letter-spacing: 0.1rem;
         & a {

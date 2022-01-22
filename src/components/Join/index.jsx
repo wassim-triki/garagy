@@ -64,11 +64,11 @@ const Join = () => {
             email,
             password,
             type,
+            img: user.photoURL,
           };
           setUser(currentUser);
-          localStorage.setItem("user", JSON.stringify(currentUser));
-          console.log(currentUser.type);
-          navigate(currentUser.type === "seller" ? "/customers" : "/cars");
+          // localStorage.setItem("user", JSON.stringify(currentUser));
+          // navigate(currentUser.type === "seller" ? "/customers" : "/cars");
         }
       });
     } catch (err) {

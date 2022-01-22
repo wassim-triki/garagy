@@ -5,11 +5,16 @@ import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 import { GiSteeringWheel } from "react-icons/gi";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import SearchForm from "./SearchForm/SearchForm";
 import NavbarContext from "../../context/NavbarContext";
+import UserContext from "../../context/UserContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase-config";
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
     setIsVisible(!isVisible);
@@ -32,6 +37,16 @@ const Navbar = () => {
     setScreenWidth(window.innerWidth);
   };
 
+  const handleLogout = () => {
+    closeMenu();
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+        setUser(null);
+      })
+      .catch((err) => alert(err.message));
+  };
+
   useEffect(() => {
     window.addEventListener("resize", resizeOnWidth);
     window.addEventListener("scroll", applyScrollEffect);
@@ -42,7 +57,10 @@ const Navbar = () => {
       window.removeEventListener("scroll", applyScrollEffect);
     };
   }, [location.pathname]);
-
+  useEffect(() => {
+    console.log("auth: " + auth.currentUser);
+    console.log("state: " + user);
+  }, [user, auth.currentUser]);
   return (
     <nav className={`navbar${!transparent || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
@@ -93,21 +111,32 @@ const Navbar = () => {
           </>
         )}
         <li className="list__item login">
-          <Link to="/login" onClick={closeMenu}>
-            Login
-          </Link>
+          {user ? (
+            <span className="logout" onClick={handleLogout}>
+              Logout
+            </span>
+          ) : (
+            <Link to="/login" onClick={closeMenu}>
+              Login
+            </Link>
+          )}
         </li>
+
         {maxTablet && <SearchForm showDropdown={false} />}
       </ul>
-
-      <div className="join__container">
-        <Link to="/join" className="link-join">
-          <button className="btn btn-join" onClick={(e) => setIsVisible(false)}>
-            Join
-            <BsArrowBarRight />
-          </button>
-        </Link>
-      </div>
+      {!user && (
+        <div className="join__container">
+          <Link to="/join" className="link-join">
+            <button
+              className="btn btn-join"
+              onClick={(e) => setIsVisible(false)}
+            >
+              Join
+              <BsArrowBarRight />
+            </button>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
