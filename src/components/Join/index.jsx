@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ContentBox from "../ContentBox";
 import { useState } from "react/cjs/react.development";
 import UserContext from "../../context/UserContext";
@@ -30,6 +30,8 @@ const Join = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
 
@@ -65,6 +67,8 @@ const Join = () => {
           };
           setUser(currentUser);
           localStorage.setItem("user", JSON.stringify(currentUser));
+          console.log(currentUser.type);
+          navigate(currentUser.type === "seller" ? "/customers" : "/cars");
         }
       });
     } catch (err) {

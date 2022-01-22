@@ -6,6 +6,7 @@ import { RiArrowDropDownFill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { useEffect } from "react/cjs/react.development";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import { Link } from "react-router-dom";
 
 const SearchForm = ({
   desktop = false,
@@ -63,22 +64,26 @@ const SearchForm = ({
       />
       {showDropdown && dropdown && (
         <ul className="dropDown">
-          <li onClick={() => setDropdown(false)} className="dropDown__item">
-            <FaCarSide />
-            <div className="dropDown__item__text">
-              <p className="dropDown__item__title">Cars</p>
-              <p className="dropDown__item__desc">
-                Browse available cars for rental.
-              </p>
-            </div>
-          </li>
-          <li onClick={() => setDropdown(false)} className="dropDown__item">
-            <FaUser />
-            <div className="dropDown__item__text">
-              <p className="dropDown__item__title">Customers</p>
-              <p className="dropDown__item__desc">Browse looking for cars.</p>
-            </div>
-          </li>
+          <Link to={"/cars"}>
+            <li onClick={() => setDropdown(false)} className="dropDown__item">
+              <FaCarSide />
+              <div className="dropDown__item__text">
+                <p className="dropDown__item__title">Cars</p>
+                <p className="dropDown__item__desc">
+                  Browse available cars for rental.
+                </p>
+              </div>
+            </li>
+          </Link>
+          <Link to={"/customers"}>
+            <li onClick={() => setDropdown(false)} className="dropDown__item">
+              <FaUser />
+              <div className="dropDown__item__text">
+                <p className="dropDown__item__title">Customers</p>
+                <p className="dropDown__item__desc">Browse looking for cars.</p>
+              </div>
+            </li>
+          </Link>
         </ul>
       )}
     </form>

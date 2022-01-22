@@ -13,6 +13,8 @@ import ScrollToTop from "react-scroll-to-top";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import ScrollTopOnRouteChange from "./components/ScrollTopOnRouteChange";
 import { UserProvider } from "./context/UserContext";
+import Cars from "./components/Cars";
+import Customers from "./components/Customers";
 
 const scrollToTopStyles = {
   borderRadius: "50px",
@@ -45,6 +47,8 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/cars" element={<Cars />} />
+              <Route path="/customers" element={<Customers />} />
               <Route path="/about" element={<About />} />
               <Route path="/become-a-seller" element={<BecomeASeller />} />
               <Route path="/login" element={<Login />} />
