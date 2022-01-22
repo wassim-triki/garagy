@@ -36,10 +36,13 @@
 .navbar.scrolled .form__buttons .form-btn {
   color: #636363;
 }
-.navbar.scrolled .list__item a {
+.navbar.scrolled .list__item a,
+.navbar.scrolled .list__item span {
   color: #373737;
 }
-.navbar.scrolled .list__item a:hover, .navbar.scrolled .list__item a:focus {
+.navbar.scrolled .list__item a:hover, .navbar.scrolled .list__item a:focus,
+.navbar.scrolled .list__item span:hover,
+.navbar.scrolled .list__item span:focus {
   color: #f4b251;
 }
 .navbar.scrolled .form:focus-within {
@@ -234,11 +237,37 @@
   color: #373737;
   text-decoration: underline;
 }
+.navbar .list .white-logout {
+  color: #ffffff !important;
+}
 .navbar .join__container {
   background: transparent;
   display: flex;
   justify-content: flex-end;
   width: 225px;
+}
+.navbar .userIconContainer {
+  border: 1px solid rgba(55, 55, 55, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.navbar .userIconContainer.white {
+  color: #ffffff;
+  border-color: #f3f3f3;
+}
+.navbar .userIconContainer.white:hover, .navbar .userIconContainer.white:focus {
+  background: rgba(0, 0, 0, 0.1);
+}
+.navbar .userIconContainer:hover, .navbar .userIconContainer:focus {
+  background: #f3f3f3;
 }
 .navbar .btn {
   display: inline-block;

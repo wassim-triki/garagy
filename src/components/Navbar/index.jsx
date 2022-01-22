@@ -12,6 +12,7 @@ import NavbarContext from "../../context/NavbarContext";
 import UserContext from "../../context/UserContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
+import { BiUser } from "react-icons/bi";
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -112,7 +113,10 @@ const Navbar = () => {
         )}
         <li className="list__item login">
           {user ? (
-            <span className="logout" onClick={handleLogout}>
+            <span
+              className={`logout ${transparent && "white-logout"}`}
+              onClick={handleLogout}
+            >
               Logout
             </span>
           ) : (
@@ -124,8 +128,12 @@ const Navbar = () => {
 
         {maxTablet && <SearchForm showDropdown={false} />}
       </ul>
-      {!user && (
-        <div className="join__container">
+      <div className="join__container">
+        {user ? (
+          <div className={`userIconContainer ${transparent && "white"}`}>
+            <BiUser />
+          </div>
+        ) : (
           <Link to="/join" className="link-join">
             <button
               className="btn btn-join"
@@ -135,8 +143,8 @@ const Navbar = () => {
               <BsArrowBarRight />
             </button>
           </Link>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 };
