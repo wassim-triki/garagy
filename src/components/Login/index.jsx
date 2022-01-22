@@ -29,6 +29,11 @@ const Join = () => {
     e.preventDefault();
     try {
       setLoading(true);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
     } catch (err) {
       setError(err.message);
     } finally {

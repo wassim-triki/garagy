@@ -4,6 +4,7 @@
   color: #ffffff;
   display: flex;
   justify-content: center;
+  margin-top: 4rem !important;
 }
 .footer .container {
   padding: 2rem 0;

@@ -67,8 +67,8 @@ const Join = () => {
             img: user.photoURL,
           };
           setUser(currentUser);
-          // localStorage.setItem("user", JSON.stringify(currentUser));
-          // navigate(currentUser.type === "seller" ? "/customers" : "/cars");
+          localStorage.setItem("user", JSON.stringify(currentUser));
+          navigate(currentUser.type === "seller" ? "/customers" : "/cars");
         }
       });
     } catch (err) {

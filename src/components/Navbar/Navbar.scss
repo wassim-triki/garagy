@@ -1,6 +1,9 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 .navbar {
+  & > * {
+    height: 50px;
+  }
   &.scrolled {
     background: $white;
 
@@ -416,11 +419,11 @@
     }
 
     & .list {
-      height: calc(100vh - 83px) !important;
+      height: calc(100vh - 80px) !important;
       z-index: 100;
       height: max-content;
       position: absolute;
-      top: -1px;
+      top: -3px;
       left: 0;
       right: 0;
       bottom: 0;
