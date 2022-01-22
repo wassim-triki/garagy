@@ -8,7 +8,7 @@ import { GiSteeringWheel } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import SearchForm from "./SearchForm/SearchForm";
-import NavbarContext from "../../context/NavbarContext/NavbarContext";
+import NavbarContext from "../../context/NavbarContext";
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import NavbarContext from "../../context/NavbarContext/NavbarContext";
+import NavbarContext from "../../context/NavbarContext";
 import ContentBox from "../ContentBox";
 
 const About = () => {

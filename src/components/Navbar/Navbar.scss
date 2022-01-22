@@ -10,7 +10,7 @@
       }
     }
     & .form {
-      border: 1px solid $lighgrey;
+      border: 1px solid $lightgrey;
       &__search {
         color: $black;
         &::placeholder {
@@ -35,11 +35,11 @@
       }
     }
     .form:focus-within {
-      @include glowEdge($lighgrey);
+      @include glowEdge($lightgrey);
     }
     & .btn-join {
       color: $black;
-      border: 1px solid $lighgrey;
+      border: 1px solid $lightgrey;
     }
   }
   transition: all 0.2s ease-in;
@@ -78,7 +78,7 @@
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease-in-out;
-    border: 1px solid $lighgrey;
+    border: 1px solid $lightgrey;
     border-radius: 50px;
     position: relative;
     padding: 0.2rem;
@@ -132,7 +132,7 @@
       padding: 0.5rem;
       color: $white;
       &::placeholder {
-        color: $lighgrey;
+        color: $lightgrey;
         font-weight: 800;
       }
     }
@@ -150,7 +150,7 @@
         justify-content: center;
         font-size: 1.2rem;
         border: none;
-        color: $lighgrey;
+        color: $lightgrey;
         background: none;
         &-search {
           margin-left: 5px;

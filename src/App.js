@@ -8,10 +8,12 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Join from "./components/Join";
 import Footer from "./components/Footer";
-import { NavbarProvider } from "./context/NavbarContext/NavbarContext";
+import { NavbarProvider } from "./context/NavbarContext";
 import ScrollToTop from "react-scroll-to-top";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import ScrollTopOnRouteChange from "./components/ScrollTopOnRouteChange";
+import { UserProvider } from "./context/UserContext";
+
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -20,7 +22,6 @@ const scrollToTopStyles = {
   alignItems: "center",
   justifyContent: "center",
   zIndex: "100",
-  // fontSize: "0rem",
 };
 const svgStyles = {
   color: "#f4b251",
@@ -28,6 +29,7 @@ const svgStyles = {
   fontSize: "3rem",
   borderRadius: "50px",
 };
+
 function App() {
   return (
     <div className="App">
@@ -38,17 +40,19 @@ function App() {
       />
       <Router>
         <ScrollTopOnRouteChange />
-        <NavbarProvider>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/become-a-seller" element={<BecomeASeller />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/join" element={<Join />} />
-          </Routes>
-          <Footer />
-        </NavbarProvider>
+        <UserProvider>
+          <NavbarProvider>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/become-a-seller" element={<BecomeASeller />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/join" element={<Join />} />
+            </Routes>
+            <Footer />
+          </NavbarProvider>
+        </UserProvider>
       </Router>
     </div>
   );
