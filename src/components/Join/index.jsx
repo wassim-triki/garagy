@@ -9,7 +9,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import ContentBox from "../ContentBox";
 import { useState } from "react/cjs/react.development";
-import UserContext from "../../context/UserContext";
+import UserContext, { useUserAuth } from "../../context/UserContext";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -33,7 +33,7 @@ const Join = () => {
 
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, signup } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -51,26 +51,7 @@ const Join = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const userCredintial = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const currentUser = {
-            uid: user.uid,
-            username,
-            email,
-            password,
-            type,
-            img: user.photoURL,
-          };
-          setUser(currentUser);
-          localStorage.setItem("user", JSON.stringify(currentUser));
-          navigate(currentUser.type === "seller" ? "/customers" : "/cars");
-        }
-      });
+      signup(email, password, username, type);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -86,6 +67,7 @@ const Join = () => {
         {user && <p>{JSON.stringify(user)}</p>}
         <form onSubmit={handleSubmit} className="form-join">
           <h1>Join</h1>
+          {error && <p className="alert">{error}</p>}
           <div className="form-join__control">
             <input
               onChange={handleUsernameChange}
@@ -140,7 +122,6 @@ const Join = () => {
             Already have an account? <Link to={"/login"}>Login</Link>
           </p>
         </form>
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
     </section>
   );

@@ -9,14 +9,13 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import UserContext from "../../context/UserContext";
-
 const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, signin } = useContext(UserContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -28,12 +27,9 @@ const Join = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setError("");
       setLoading(true);
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      signin(email, password);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -49,6 +45,7 @@ const Join = () => {
         {user && <p>{JSON.stringify(user)}</p>}
         <form onSubmit={handleSubmit} className="form-login">
           <h1>Login</h1>
+          {error && <p className="alert">{error}</p>}
           <div className="form-login__control">
             <input
               onChange={handleEmailChange}
@@ -77,7 +74,6 @@ const Join = () => {
             Don't have an account? <Link to={"/join"}>Sign up</Link>
           </p>
         </form>
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
     </section>
   );

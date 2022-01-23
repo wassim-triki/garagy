@@ -26,6 +26,17 @@
   font-weight: 500;
   text-align: center;
 }
+.container.join .form-join .alert,
+.container.join .form-login .alert,
+.container.login .form-join .alert,
+.container.login .form-login .alert {
+  padding: 1rem;
+  background: #ffadad;
+  border: 2px solid red;
+  border-radius: 8px;
+  font-weight: 600;
+  color: red;
+}
 .container.join .form-join__control,
 .container.join .form-login__control,
 .container.login .form-join__control,
