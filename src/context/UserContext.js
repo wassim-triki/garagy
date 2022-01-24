@@ -16,7 +16,9 @@ const UserProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || null
   );
   const navigate = useNavigate();
-
+  useEffect(() => {
+    console.log(auth.currentUser);
+  }, [auth.currentUser]);
   const signup = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };

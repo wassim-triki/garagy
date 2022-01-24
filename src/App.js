@@ -47,14 +47,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route
-                path="/cars"
-                element={
-                  <ProtectedRoute>
-                    <Cars />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="/cars" element={<Cars />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/about" element={<About />} />
               <Route path="/become-a-seller" element={<BecomeASeller />} />

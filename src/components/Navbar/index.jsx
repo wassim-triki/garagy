@@ -41,7 +41,8 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate("/");
+      setUser(null);
+      navigate("/login");
       closeMenu();
     } catch (err) {
       alert(err.message);

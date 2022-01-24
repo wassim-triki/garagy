@@ -16,7 +16,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 const radioStyles = {
   color: "#ababab",
@@ -34,7 +34,7 @@ const Join = () => {
 
   const navigate = useNavigate();
 
-  const { user, signup } = useUserAuth();
+  const { user, setUser, signup } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -58,10 +58,14 @@ const Join = () => {
         email,
         password,
         username,
+        type: [type],
         img: userCredentials.user.photoURL,
-        createdAt: new Date(),
+        createdAt: new Date().toLocaleString(),
       };
-      const usersRef = addDoc(collection(db, "users"), newUser);
+      const newUserDoc = doc(db, "users", userCredentials.user.uid);
+      await setDoc(newUserDoc, newUser);
+      setUser(newUser);
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -74,7 +78,6 @@ const Join = () => {
   return (
     <section className="section join">
       <div className="container join">
-        {user && <p>{JSON.stringify(user)}</p>}
         <form onSubmit={handleSubmit} className="form-join">
           <h1>Join</h1>
           {error && <p className="alert">{error}</p>}

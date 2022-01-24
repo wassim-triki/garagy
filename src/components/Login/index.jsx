@@ -9,13 +9,14 @@ import {
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import UserContext from "../../context/UserContext";
-const Join = () => {
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { user, signin } = useContext(UserContext);
+  const { user, signin, setUser } = useContext(UserContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -29,7 +30,11 @@ const Join = () => {
     try {
       setError("");
       setLoading(true);
-      await signin(email, password);
+      const userCredential = await signin(email, password);
+      const userDoc = doc(db, "users", userCredential.user.uid);
+      const userSnapShot = await getDoc(userDoc);
+      const userData = userSnapShot.data();
+      setUser(userData);
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -43,7 +48,6 @@ const Join = () => {
   return (
     <section className="section login">
       <div className="container login">
-        {user && <p>{JSON.stringify(user)}</p>}
         <form onSubmit={handleSubmit} className="form-login">
           <h1>Login</h1>
           {error && <p className="alert">{error}</p>}
@@ -80,4 +84,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default Login;
