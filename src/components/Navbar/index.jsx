@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaCar } from "react-icons/fa";
 import { BsArrowBarRight } from "react-icons/bs";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
@@ -13,6 +13,8 @@ import UserContext from "../../context/UserContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import { BiUser } from "react-icons/bi";
+import UserDropDown from "../UserDropdown";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 const Navbar = () => {
   const { user, setUser, logout } = useContext(UserContext);
   const navigate = useNavigate();
@@ -20,11 +22,16 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsVisible(!isVisible);
   };
+  const userRef = useRef();
   const closeMenu = () => {
     setIsVisible(false);
   };
+  useOnClickOutside(userRef, () => {
+    setUserDropdown(false);
+  });
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [expandForm, setExpandForm] = useState(false);
+  const [userDropdown, setUserDropdown] = useState(false);
   const { transparent, setTransparent } = useContext(NavbarContext);
   const location = useLocation();
   const applyScrollEffect = () => {
@@ -38,17 +45,6 @@ const Navbar = () => {
     setScreenWidth(window.innerWidth);
   };
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      setUser(null);
-      navigate("/login");
-      closeMenu();
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-
   useEffect(() => {
     window.addEventListener("resize", resizeOnWidth);
     window.addEventListener("scroll", applyScrollEffect);
@@ -59,7 +55,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", applyScrollEffect);
     };
   }, [location.pathname]);
-
+  useEffect(() => console.log(userDropdown));
   return (
     <nav className={`navbar${!transparent || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
@@ -110,14 +106,7 @@ const Navbar = () => {
           </>
         )}
         <li className="list__item login">
-          {user ? (
-            <span
-              className={`logout ${transparent && "white-logout"}`}
-              onClick={handleLogout}
-            >
-              Logout
-            </span>
-          ) : (
+          {!user && (
             <Link to="/login" onClick={closeMenu}>
               Login
             </Link>
@@ -128,9 +117,16 @@ const Navbar = () => {
       </ul>
       <div className="join__container">
         {user ? (
-          <div className={`userIconContainer ${transparent && "white"}`}>
-            <BiUser />
-          </div>
+          <>
+            <div
+              ref={userRef}
+              onClick={() => setUserDropdown(true)}
+              className={`userIconContainer ${transparent && "white"}`}
+            >
+              <BiUser />
+            </div>
+            <UserDropDown userDropdown={userDropdown} />
+          </>
         ) : (
           <Link to="/join" className="link-join">
             <button

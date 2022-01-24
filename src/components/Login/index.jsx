@@ -35,6 +35,7 @@ const Login = () => {
       const userSnapShot = await getDoc(userDoc);
       const userData = userSnapShot.data();
       setUser(userData);
+      localStorage.setItem("user", JSON.stringify(userData));
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -43,7 +44,7 @@ const Login = () => {
     }
   };
   useEffect(() => {
-    localStorage.clear();
+    // localStorage.clear();
   }, []);
   return (
     <section className="section login">

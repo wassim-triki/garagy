@@ -65,6 +65,7 @@ const Join = () => {
       const newUserDoc = doc(db, "users", userCredentials.user.uid);
       await setDoc(newUserDoc, newUser);
       setUser(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser));
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -72,9 +73,7 @@ const Join = () => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+  useEffect(() => {}, []);
   return (
     <section className="section join">
       <div className="container join">
