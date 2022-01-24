@@ -16,6 +16,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { addDoc, collection } from "firebase/firestore";
 
 const radioStyles = {
   color: "#ababab",
@@ -51,7 +52,16 @@ const Join = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      signup(email, password, username, type);
+      const userCredentials = await signup(email, password);
+      const newUser = {
+        uid: userCredentials.user.uid,
+        email,
+        password,
+        username,
+        img: userCredentials.user.photoURL,
+        createdAt: new Date(),
+      };
+      const usersRef = addDoc(collection(db, "users"), newUser);
     } catch (err) {
       setError(err.message);
     } finally {

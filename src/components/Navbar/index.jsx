@@ -14,7 +14,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import { BiUser } from "react-icons/bi";
 const Navbar = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, logout } = useContext(UserContext);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
@@ -38,14 +38,14 @@ const Navbar = () => {
     setScreenWidth(window.innerWidth);
   };
 
-  const handleLogout = () => {
-    closeMenu();
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-        setUser(null);
-      })
-      .catch((err) => alert(err.message));
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+      closeMenu();
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   useEffect(() => {
@@ -58,10 +58,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", applyScrollEffect);
     };
   }, [location.pathname]);
-  useEffect(() => {
-    console.log("auth: " + auth.currentUser);
-    console.log("state: " + user);
-  }, [user, auth.currentUser]);
+
   return (
     <nav className={`navbar${!transparent || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">

@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import UserContext from "../../context/UserContext";
 const Join = () => {
@@ -14,7 +14,7 @@ const Join = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const { user, signin } = useContext(UserContext);
 
   const handleEmailChange = (e) => {
@@ -29,7 +29,8 @@ const Join = () => {
     try {
       setError("");
       setLoading(true);
-      signin(email, password);
+      await signin(email, password);
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {

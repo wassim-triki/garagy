@@ -15,7 +15,7 @@ import ScrollTopOnRouteChange from "./components/ScrollTopOnRouteChange";
 import { UserProvider } from "./context/UserContext";
 import Cars from "./components/Cars";
 import Customers from "./components/Customers";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -47,7 +47,14 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/cars" element={<Cars />} />
+              <Route
+                path="/cars"
+                element={
+                  <ProtectedRoute>
+                    <Cars />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/customers" element={<Customers />} />
               <Route path="/about" element={<About />} />
               <Route path="/become-a-seller" element={<BecomeASeller />} />
