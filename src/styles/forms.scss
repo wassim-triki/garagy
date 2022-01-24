@@ -39,11 +39,12 @@
       outline: none;
       border-radius: 8px;
       border: 1px solid $grey;
+      border: none;
       transition: box-shadow 0.2s ease;
       font-family: $mainFont;
       font-weight: 500;
       &:focus {
-        box-shadow: 0 0 5px 1px $accentmedium;
+        box-shadow: 0 0 5px 2px $accentmedium;
       }
     }
 

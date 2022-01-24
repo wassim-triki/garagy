@@ -15,7 +15,9 @@ import ScrollTopOnRouteChange from "./components/ScrollTopOnRouteChange";
 import { UserProvider } from "./context/UserContext";
 import Cars from "./components/Cars";
 import Customers from "./components/Customers";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./components/Profile";
+import ProtectedRouteNotAuth from "./components/ProtectedRouteNotAuth";
+import ProtectedRouteAuth from "./components/ProtectedRouteAuth";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -51,8 +53,13 @@ function App() {
               <Route path="/customers" element={<Customers />} />
               <Route path="/about" element={<About />} />
               <Route path="/become-a-seller" element={<BecomeASeller />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/join" element={<Join />} />
+              <Route element={<ProtectedRouteAuth />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/join" element={<Join />} />
+              </Route>
+              <Route element={<ProtectedRouteNotAuth />}>
+                <Route path="/profile" element={<Profile />} />
+              </Route>
             </Routes>
             <Footer />
           </NavbarProvider>
