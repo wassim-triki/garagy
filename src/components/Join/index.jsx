@@ -1,22 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/forms.css";
-import { auth, db } from "../../firebase-config";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { db } from "../../firebase-config";
+
 import { Link, useNavigate } from "react-router-dom";
-import ContentBox from "../ContentBox";
-import { useState } from "react/cjs/react.development";
-import UserContext, { useUserAuth } from "../../context/UserContext";
+import { useUserAuth } from "../../context/UserContext";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const radioStyles = {
   color: "#ababab",
