@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
-import UserContext from "../../context/UserContext";
+import UserContext, { useUserAuth } from "../../context/UserContext";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { user, signin, setUser } = useContext(UserContext);
+  const { signin, setUser } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

@@ -34,7 +34,7 @@ const Join = () => {
 
   const navigate = useNavigate();
 
-  const { user, setUser, signup } = useUserAuth();
+  const { setUser, signup } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

@@ -17,7 +17,6 @@ import UserDropDown from "../UserDropdown";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 const Navbar = () => {
   const { user, setUser, logout } = useContext(UserContext);
-  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
     setIsVisible(!isVisible);
@@ -55,7 +54,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", applyScrollEffect);
     };
   }, [location.pathname]);
-  useEffect(() => console.log(userDropdown));
   return (
     <nav className={`navbar${!transparent || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
