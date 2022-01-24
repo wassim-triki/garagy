@@ -1,15 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../../styles/forms.css";
-import { auth, db } from "../../firebase-config";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { db } from "../../firebase-config";
+
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
-import UserContext, { useUserAuth } from "../../context/UserContext";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { useUserAuth } from "../../context/UserContext";
+import { doc, getDoc } from "firebase/firestore";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
