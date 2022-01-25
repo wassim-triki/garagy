@@ -15,12 +15,12 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      console.log(authUser);
-    });
-    return unsubscribe();
-  }, []);
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+  //     console.log(authUser);
+  //   });
+  //   return unsubscribe();
+  // }, []);
 
   const signup = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);

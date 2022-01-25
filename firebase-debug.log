@@ -1,0 +1,83 @@
+[debug] [2022-01-25T02:23:06.228Z] ----------------------------------------------------------------------
+[debug] [2022-01-25T02:23:06.231Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\wsmtr\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-01-25T02:23:06.231Z] CLI Version:   10.1.2
+[debug] [2022-01-25T02:23:06.231Z] Platform:      win32
+[debug] [2022-01-25T02:23:06.232Z] Node Version:  v16.13.1
+[debug] [2022-01-25T02:23:06.233Z] Time:          Tue Jan 25 2022 03:23:06 GMT+0100 (West Africa Standard Time)
+[debug] [2022-01-25T02:23:06.233Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-25T02:23:06.302Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-25T02:23:06.302Z] > authorizing via signed-in user (wsmtriki@gmail.com)
+[debug] [2022-01-25T02:23:06.303Z] [iam] checking project garagy-87d13 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-01-25T02:23:06.305Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/garagy-87d13:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-01-25T02:23:07.088Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 25 Jan 2022 02:23:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=609","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-25T02:23:07.090Z] > refreshing access token with scopes: []
+[debug] [2022-01-25T02:23:07.090Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-01-25T02:23:07.271Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Tue, 25 Jan 2022 02:23:07 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-25T02:23:07.286Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/garagy-87d13 [none]
+[debug] [2022-01-25T02:23:07.686Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/garagy-87d13 200
+[debug] [2022-01-25T02:23:07.686Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/garagy-87d13 {"projectId":"garagy-87d13","projectNumber":"13458868881","displayName":"garagy","name":"projects/garagy-87d13","resources":{"hostingSite":"garagy-87d13","storageBucket":"garagy-87d13.appspot.com","locationId":"europe-west6"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'garagy-87d13'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-01-25T02:23:07.692Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-01-25T02:23:07.693Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-01-25T02:23:07.873Z] <<< HTTP RESPONSE 200 {"date":"Tue, 25 Jan 2022 02:23:08 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-25T02:23:07.884Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-01-25T02:23:09.335Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 25 Jan 2022 02:23:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[garagy-87d13]: beginning deploy... 
+[info] i  hosting[garagy-87d13]: found 21 files in build 
+[debug] [2022-01-25T02:23:09.357Z] > refreshing access token with scopes: []
+[debug] [2022-01-25T02:23:09.357Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-01-25T02:23:09.359Z] [hosting] hash cache [YnVpbGQ] stored for 21 files
+[debug] [2022-01-25T02:23:09.360Z] [hosting][hash queue][FINAL] {"max":2,"min":0,"avg":0,"active":0,"complete":21,"success":21,"errored":0,"retried":0,"total":21,"elapsed":7}
+[debug] [2022-01-25T02:23:09.536Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 25 Jan 2022 02:23:09 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-25T02:23:09.546Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/versions/7e1b691daaa471b9:populateFiles [none]
+[debug] [2022-01-25T02:23:09.546Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/versions/7e1b691daaa471b9:populateFiles {"files":{"/asset-manifest.json":"c4288594a04cf4648c8fc193ae7d2a2d2666ab3a10fdf5b92894ef5080927ff1","/favicon.ico":"eae62e993eb980ec8a25058c39d5a51feab118bd2100c4deebb2a9c158ec11f9\r","/index.html":"b380b16fb2f86968d057e06965f1cb15f0ded48cc263097767f950c9d165dad3","/logo192.png":"3ee59515172ee198f3be375979df15ac5345183e656720a381b8872b2a39dc8b\r","/logo512.png":"ee7e2f3fdb8209c4b6fd7bef6ba50d1b9dba30a25bb5c3126df057e1cb6f5331\r","/manifest.json":"5c997de1364b8be939319fa9209abd77f2caf7f8844999a9e2e9173f844e7840\r","/robots.txt":"b2090cf9761ef60aa06e4fab97679bd43dfa5e5df073701ead5879d7c68f1ec5\r","/static/css/main.de21ded3.css":"6c342d8a6f58c603de9cb153e7042c2db0d51d3ee75b3597b48eb218ee05935c","/static/css/main.de21ded3.css.map":"fbf7440e63fb3420da0faa936eb0b70d441d08a8f4a6be6751b770e4e771b997","/static/js/787.b95d21ec.chunk.js":"fea347d8a0c77e75aa31168197bf8a739352ed49e5ec98ead66123eaad064cb2","/static/js/787.b95d21ec.chunk.js.map":"f1dbe486ca61699e7631e3357358797cec9d6e481d593fd1d5cb3bdf3753e703","/static/js/main.048d7bf1.js":"16cd583dc08ffb3e05b14933f91cd7f805715953be97cae719b5515ffd3dd8cb","/static/js/main.048d7bf1.js.LICENSE.txt":"60a9dfeb2708f7eec6c0af482be1c251adf98874034fe5c3712261e067f0a636","/static/js/main.048d7bf1.js.map":"081f7af8f9c2545182c80d201ddd0d1cfa8d07324871df1b2b3d1c5347a326c2","/static/media/customer.99655144a262ceca2802.png":"0125d468996c37e6b7a0858dc5d186785da4eb507db71d2c4c51a5a1115d9bb2","/static/media/delivery.54f566fb4969a7535c6666e7c21d5270.svg":"e84db48ffa27235adec8b7693dc952f3d7f0cba3a2f37877259b7b2f4af87032","/static/media/features.1f15c61e557d595ed6b5.png":"1238f5c29ba5b0af61cc19077aa9fa2886c3419287584b6a795737a69652bfc2","/static/media/fees.97d67a5715b901bf3837dc3b04e3fb6d.svg":"bffceaedd5df61316adc39d13328f7dd3e91f34aa5fc0e6593ed1a40dcbd4827","/static/media/flexible.b166c548bb03b3f95ba15b5ab5b5c0e2.svg":"42435c794f732eba830dce027e28deb993105a3bfa8d645b48536e46da3c1696","/static/media/hero.bab19579d41fe18c1a7d.png":"a022eeb2b6d026804103ecef4abfb34ff5e7d7432a82f7d1398dbd25811d497b","/static/media/seller.e4960cb3f667d0cabd2a.png":"e87ec9b2a5dadd0a543bc2d28ee9afad9a990d3db6e2420a33355244e856f3c1"}}
+[debug] [2022-01-25T02:23:10.690Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/versions/7e1b691daaa471b9:populateFiles 200
+[debug] [2022-01-25T02:23:10.690Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/versions/7e1b691daaa471b9:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/garagy-87d13/versions/7e1b691daaa471b9/files"}
+[debug] [2022-01-25T02:23:10.690Z] [hosting][populate queue][FINAL] {"max":1333,"min":1333,"avg":1333,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1333}
+[debug] [2022-01-25T02:23:10.691Z] [hosting] uploads queued: 0
+[debug] [2022-01-25T02:23:10.691Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1643077390691}
+[info] +  hosting[garagy-87d13]: file upload complete 
+[debug] [2022-01-25T02:23:10.691Z] [hosting] deploy completed after 1354ms
+[debug] [2022-01-25T02:23:10.694Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "garagy-87d13"
+    },
+    "site": "garagy-87d13",
+    "version": "sites/garagy-87d13/versions/7e1b691daaa471b9"
+  }
+]
+[info] i  hosting[garagy-87d13]: finalizing version... 
+[debug] [2022-01-25T02:23:10.695Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-01-25T02:23:10.695Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-01-25T02:23:10.882Z] <<< HTTP RESPONSE 200 {"date":"Tue, 25 Jan 2022 02:23:11 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-25T02:23:10.892Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/versions/7e1b691daaa471b9?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2022-01-25T02:23:11.963Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 25 Jan 2022 02:23:12 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-01-25T02:23:11.964Z] [hosting] finalized version for garagy-87d13: {"name":"sites/garagy-87d13/versions/7e1b691daaa471b9","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2022-01-25T02:23:08.913713Z","createUser":{"email":"wsmtriki@gmail.com"},"finalizeTime":"2022-01-25T02:23:12.122103Z","finalizeUser":{"email":"wsmtriki@gmail.com"}}
+[info] +  hosting[garagy-87d13]: version finalized 
+[info] i  hosting[garagy-87d13]: releasing new version... 
+[debug] [2022-01-25T02:23:11.965Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/garagy-87d13/releases?version_name=sites/garagy-87d13/versions/7e1b691daaa471b9  
+ {"message":null}

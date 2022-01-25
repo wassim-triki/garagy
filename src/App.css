@@ -50,3 +50,7 @@ button:active {
   background-color: #f4b251;
   border-radius: 50px;
 }
+
+circle {
+  stroke: #f5b45a !important;
+}

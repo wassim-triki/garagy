@@ -18,6 +18,8 @@ import Customers from "./components/Customers";
 import Profile from "./components/Profile";
 import ProtectedRouteNotAuth from "./components/ProtectedRouteNotAuth";
 import ProtectedRouteAuth from "./components/ProtectedRouteAuth";
+import { useState, useEffect } from "react";
+import { Oval } from "react-loader-spinner";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -35,36 +37,53 @@ const svgStyles = {
 };
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   return (
     <div className="App">
-      <ScrollToTop
-        smooth
-        style={scrollToTopStyles}
-        component={<BsFillArrowUpCircleFill style={svgStyles} />}
-      />
-      <Router>
-        <ScrollTopOnRouteChange />
-        <UserProvider>
-          <NavbarProvider>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cars" element={<Cars />} />
-              <Route path="/customers" element={<Customers />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/become-a-seller" element={<BecomeASeller />} />
-              <Route element={<ProtectedRouteAuth />}>
-                <Route path="/login" element={<Login />} />
-                <Route path="/join" element={<Join />} />
-              </Route>
-              <Route element={<ProtectedRouteNotAuth />}>
-                <Route path="/profile" element={<Profile />} />
-              </Route>
-            </Routes>
-            <Footer />
-          </NavbarProvider>
-        </UserProvider>
-      </Router>
+      {loading ? (
+        <section className="section">
+          <div className="container">
+            <Oval className="spinner" color="#f4b251" height={80} width={80} />
+          </div>
+        </section>
+      ) : (
+        <>
+          <ScrollToTop
+            smooth
+            style={scrollToTopStyles}
+            component={<BsFillArrowUpCircleFill style={svgStyles} />}
+          />
+          <Router>
+            <ScrollTopOnRouteChange />
+            <UserProvider>
+              <NavbarProvider>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/cars" element={<Cars />} />
+                  <Route path="/customers" element={<Customers />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/become-a-seller" element={<BecomeASeller />} />
+                  <Route element={<ProtectedRouteAuth />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/join" element={<Join />} />
+                  </Route>
+                  <Route element={<ProtectedRouteNotAuth />}>
+                    <Route path="/profile" element={<Profile />} />
+                  </Route>
+                </Routes>
+                <Footer />
+              </NavbarProvider>
+            </UserProvider>
+          </Router>
+        </>
+      )}
     </div>
   );
 }
