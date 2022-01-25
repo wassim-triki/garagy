@@ -118,8 +118,11 @@ const Navbar = () => {
           <>
             <div
               ref={userRef}
-              onClick={() => setUserDropdown(true)}
-              className={`userIconContainer ${transparent && "white"}`}
+              onClick={() => {
+                setUserDropdown(true);
+                closeMenu();
+              }}
+              className={`userIconContainer ${transparent ? "white" : ""}`}
             >
               <BiUser />
             </div>
