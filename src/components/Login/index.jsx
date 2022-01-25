@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/forms.css";
-import { db } from "../../firebase-config";
+import { auth, db, provider } from "../../firebase-config";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserContext";
 import { doc, getDoc } from "firebase/firestore";
+
+import GoogleButton from "react-google-button";
+import { signInWithPopup } from "firebase/auth";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { signin, setUser } = useUserAuth();
+  const { signin, getUserData, setUserData, handleGoogleSingIn } =
+    useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -25,22 +29,16 @@ const Login = () => {
     try {
       setError("");
       setLoading(true);
-      const userCredential = await signin(email, password);
-      const userDoc = doc(db, "users", userCredential.user.uid);
-      const userSnapShot = await getDoc(userDoc);
-      const userData = userSnapShot.data();
-      setUser(userData);
-      localStorage.setItem("user", JSON.stringify(userData));
-      navigate("/");
+      const credential = await signin(email, password);
+      const userData = await getUserData(credential.user.uid);
+      setUserData(userData);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    // localStorage.clear();
-  }, []);
+
   return (
     <section className="section login">
       <div className="container login">
@@ -71,6 +69,7 @@ const Login = () => {
           >
             Login
           </button>
+          <GoogleButton className="google-btn" onClick={handleGoogleSingIn} />
           <p className="question">
             Don't have an account? <Link to={"/join"}>Sign up</Link>
           </p>

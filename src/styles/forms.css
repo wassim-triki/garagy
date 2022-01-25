@@ -15,8 +15,29 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
   gap: 1rem;
   width: min(90%, 400px);
+}
+.container.join .form-join .google-btn,
+.container.join .form-login .google-btn,
+.container.login .form-join .google-btn,
+.container.login .form-login .google-btn {
+  width: 100% !important;
+  position: relative;
+}
+.container.join .form-join .google-btn::before,
+.container.join .form-login .google-btn::before,
+.container.login .form-join .google-btn::before,
+.container.login .form-login .google-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.5px;
+  top: -8px;
+  left: 0;
+  background: rgba(55, 55, 55, 0.3);
 }
 .container.join .form-join h1,
 .container.join .form-login h1,

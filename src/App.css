@@ -51,6 +51,6 @@ button:active {
   border-radius: 50px;
 }
 
-circle {
+#root > div > section > div > div > svg > g > g > circle {
   stroke: #f5b45a !important;
 }

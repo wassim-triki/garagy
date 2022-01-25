@@ -14,8 +14,24 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     gap: 1rem;
     width: min(90%, 400px);
+    & .google-btn {
+      width: 100% !important;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0.5px;
+        top: -8px;
+        left: 0;
+        background: $grey;
+      }
+    }
     & h1 {
       font-size: 3rem;
       font-weight: 500;
