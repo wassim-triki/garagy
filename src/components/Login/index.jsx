@@ -14,8 +14,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { signin, getUserData, setUserData, handleGoogleSingIn } =
-    useUserAuth();
+  const { signin, getUserData, setUserData, googleSignIn } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -32,6 +31,17 @@ const Login = () => {
       const credential = await signin(email, password);
       const userData = await getUserData(credential.user.uid);
       setUserData(userData);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      setError("");
+      await googleSignIn();
     } catch (err) {
       setError(err.message);
     } finally {
@@ -69,7 +79,11 @@ const Login = () => {
           >
             Login
           </button>
-          <GoogleButton className="google-btn" onClick={handleGoogleSingIn} />
+          <GoogleButton
+            className="google-btn"
+            onClick={handleGoogleSignIn}
+            disabled={loading}
+          />
           <p className="question">
             Don't have an account? <Link to={"/join"}>Sign up</Link>
           </p>

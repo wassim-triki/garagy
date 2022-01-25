@@ -21,6 +21,9 @@
     & .google-btn {
       width: 100% !important;
       position: relative;
+      &:disabled {
+        background: $grey !important;
+      }
 
       &::before {
         content: "";

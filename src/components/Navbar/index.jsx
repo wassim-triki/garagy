@@ -101,15 +101,25 @@ const Navbar = () => {
                 Become a Seller
               </Link>
             </li>
+            <li className="list__item">
+              <Link to="/cars" onClick={closeMenu}>
+                Cars
+              </Link>
+            </li>
+            <li className="list__item">
+              <Link to="/customers" onClick={closeMenu}>
+                Customers
+              </Link>
+            </li>
           </>
         )}
-        <li className="list__item login">
-          {!user && (
+        {!user && (
+          <li className="list__item login">
             <Link to="/login" onClick={closeMenu}>
               Login
             </Link>
-          )}
-        </li>
+          </li>
+        )}
 
         {maxTablet && <SearchForm showDropdown={false} />}
       </ul>

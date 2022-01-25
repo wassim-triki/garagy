@@ -29,7 +29,7 @@ const Join = () => {
   const [newGoogleUser, setNewGoogleUser] = useState(false);
   const navigate = useNavigate();
 
-  const { setUser, signup, getUserData, createUser, handleGoogleSingIn } =
+  const { setUser, signup, getUserData, createUser, googleSignIn } =
     useUserAuth();
 
   const handleEmailChange = (e) => {
@@ -134,7 +134,11 @@ const Join = () => {
             Create an Account
           </button>
           {!newGoogleUser && (
-            <GoogleButton className="google-btn" onClick={handleGoogleSingIn} />
+            <GoogleButton
+              className="google-btn"
+              onClick={googleSignIn}
+              disabled={loading}
+            />
           )}
 
           <p className="question">

@@ -35,7 +35,7 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const handleGoogleSingIn = async () => {
+  const googleSignIn = async () => {
     const credential = await signInWithPopup(auth, provider);
     const userData = await getUserData(credential.user.uid);
     if (!userData) {
@@ -78,7 +78,7 @@ const UserProvider = ({ children }) => {
         setUserData,
         getUserData,
         createUser,
-        handleGoogleSingIn,
+        googleSignIn,
       }}
     >
       {children}

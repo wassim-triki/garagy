@@ -27,6 +27,12 @@
   width: 100% !important;
   position: relative;
 }
+.container.join .form-join .google-btn:disabled,
+.container.join .form-login .google-btn:disabled,
+.container.login .form-join .google-btn:disabled,
+.container.login .form-login .google-btn:disabled {
+  background: rgba(55, 55, 55, 0.3) !important;
+}
 .container.join .form-join .google-btn::before,
 .container.join .form-login .google-btn::before,
 .container.login .form-join .google-btn::before,
