@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
 
   const setUserData = (userData) => {
     setUser(userData);
+    console.log(userData);
     localStorage.setItem("user", JSON.stringify(userData));
     // navigate("/");
   };

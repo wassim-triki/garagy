@@ -31,8 +31,9 @@ const Profile = () => {
   useEffect(async () => {
     // imageRef.current.src = profilePicURL;
     // console.log(await getProfilePicURL(user));
-    const userData = await getUserData(user.uid);
-    setUserData(userData);
+    // const userData = await getUserData(user.uid);
+    // setUserData(userData);
+    getUserData(user.uid);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -42,10 +43,9 @@ const Profile = () => {
       setLoading(true);
       setError(false);
       await uploadToStorage("images", user.uid, imageBlob);
-      const profilePicURL = await getProfilePicURL(user);
-
-      setUserData({ ...user, img: profilePicURL || user.img });
-      await setUserDoc(user);
+      const userData = await getUserData(user.uid);
+      setUserData(userData);
+      await setUserDoc(userData);
       console.log("updated Doc");
     } catch (err) {
       setError(err.message);

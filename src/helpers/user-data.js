@@ -7,11 +7,11 @@ export const uploadToStorage = async (folderPath, fileName, blob) => {
   return uploadBytes(fileRef, blob);
 };
 
-export const getProfilePicURL = async (user) => {
+export const getProfilePicURL = async (uid) => {
   try {
     const profilePicRef = ref(
       storage,
-      `gs://garagy-87d13.appspot.com/images/${user.uid}`
+      `gs://garagy-87d13.appspot.com/images/${uid}`
     );
     return await getDownloadURL(profilePicRef);
   } catch (err) {
@@ -20,10 +20,11 @@ export const getProfilePicURL = async (user) => {
 };
 export const getUserData = async (uid) => {
   try {
+    const profilPic = await getProfilePicURL(uid);
     const userDoc = doc(db, "users", uid);
     const userSnapShot = await getDoc(userDoc);
     const userData = userSnapShot.data();
-    return userData;
+    return { ...userData, img: profilPic ? profilPic : userData.img };
   } catch (err) {
     return null;
   }
