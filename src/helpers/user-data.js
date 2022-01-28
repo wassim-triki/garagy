@@ -20,11 +20,10 @@ export const getProfilePicURL = async (uid) => {
 };
 export const getUserData = async (uid) => {
   try {
-    const profilPic = await getProfilePicURL(uid);
+    // const profilPic = await getProfilePicURL(uid);
     const userDoc = doc(db, "users", uid);
     const userSnapShot = await getDoc(userDoc);
-    const userData = userSnapShot.data();
-    return { ...userData, img: profilPic ? profilPic : userData.img };
+    return userSnapShot.data();
   } catch (err) {
     return null;
   }

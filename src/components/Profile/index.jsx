@@ -13,7 +13,15 @@ import {
   setUserDoc,
   uploadToStorage,
 } from "../../helpers/user-data";
+import { TextField } from "@mui/material";
 const Profile = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [imageURL, setImageURL] = useState(null);
+  // const [username, setUsername] = useState("");
+  const handleChange = (e, setState) => {
+    setState(e.target.value);
+  };
   const { user, setUser, setUserData } = useUserAuth();
   const [imageBlob, setImageBlob] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -25,15 +33,21 @@ const Profile = () => {
     let fileReader = new FileReader();
     fileReader.readAsDataURL(blob);
     fileReader.onload = (fileReaderEvent) => {
-      imageRef.current.src = fileReaderEvent.target.result;
+      setImageURL(fileReaderEvent.target.result);
     };
   };
+
+  const handleDiscard = () => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    setEmail(userData.email);
+    setUsername(userData.username);
+    setImageURL(null);
+  };
+
   useEffect(async () => {
-    // imageRef.current.src = profilePicURL;
-    // console.log(await getProfilePicURL(user));
-    // const userData = await getUserData(user.uid);
-    // setUserData(userData);
-    getUserData(user.uid);
+    const userData = await getUserData(user.uid);
+    setUsername(userData.username);
+    setEmail(userData.email);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -43,10 +57,11 @@ const Profile = () => {
       setLoading(true);
       setError(false);
       await uploadToStorage("images", user.uid, imageBlob);
+      const profilePic = await getProfilePicURL(user.uid);
+      await setUserDoc({ ...user, img: profilePic, username, email });
+      console.log("updated Doc");
       const userData = await getUserData(user.uid);
       setUserData(userData);
-      await setUserDoc(userData);
-      console.log("updated Doc");
     } catch (err) {
       setError(err.message);
       alert(error);
@@ -61,7 +76,7 @@ const Profile = () => {
           <div className="profile-picture__container">
             <img
               className="profile-picture"
-              src={user.img || DefaultUserImg}
+              src={imageURL || user.img || DefaultUserImg}
               alt="profile picture"
               ref={imageRef}
             />
@@ -74,9 +89,40 @@ const Profile = () => {
               onChange={handleImageSelect}
             />
           </div>
-          <button className="btn save" type="submit">
-            {loading ? <Oval color="#fff" height={20} width={20} /> : "save"}
-          </button>
+          <div className="inputs">
+            <TextField
+              id="outlined-basic"
+              label="Username"
+              variant="outlined"
+              onChange={(e) => handleChange(e, setUsername)}
+              value={username}
+              required
+            />
+            <TextField
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              onChange={(e) => handleChange(e, setEmail)}
+              value={email}
+              disabled
+            />
+            <div className="form-btns">
+              <button
+                className="btn discard"
+                type="button"
+                onClick={handleDiscard}
+              >
+                Discard
+              </button>
+              <button className="btn save" type="submit">
+                {loading ? (
+                  <Oval color="#fff" height={20} width={20} />
+                ) : (
+                  "save"
+                )}
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </section>
