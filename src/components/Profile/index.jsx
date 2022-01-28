@@ -30,7 +30,7 @@ const Profile = () => {
   useEffect(() => {
     // imageRef.current.src = profilePicURL;
     // console.log(await getProfilePicURL(user));
-    console.log(user);
+    // console.log(user);
   }, [user]);
 
   const handleSubmit = async (e) => {
