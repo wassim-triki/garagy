@@ -27,10 +27,10 @@ const Profile = () => {
       imageRef.current.src = fileReaderEvent.target.result;
     };
   };
-  useEffect(() => {
+  useEffect(async () => {
     // imageRef.current.src = profilePicURL;
     // console.log(await getProfilePicURL(user));
-    console.log(user);
+    await setUserDoc(user);
   }, [user]);
 
   const handleSubmit = async (e) => {

@@ -32,6 +32,7 @@ const UserProvider = ({ children }) => {
     if (!userData) {
       navigate("/join");
     } else {
+      console.log(userData);
       setUserData({
         ...userData,
         img: userData.img || credential.user.photoURL,
