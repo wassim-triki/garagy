@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
-import { SiGmail } from "react-icons/si";
+
 import { useNavigate, Link } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
+import SocialLinks from "../SocialLinks";
 const Footer = () => {
   const navigate = useNavigate();
   return (
@@ -17,36 +17,7 @@ const Footer = () => {
         </div>
 
         <div className="container__bottom">
-          <div className="links">
-            <a
-              href="https://www.facebook.com/WassimTrikii/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsFacebook />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/wassimtriki/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsLinkedin />
-            </a>
-            <a
-              href="https://twitter.com/WassimTrikii"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BsTwitter />
-            </a>
-            <a
-              href="wsmtriki@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <SiGmail />
-            </a>
-          </div>
+          <SocialLinks theme="light" />
           <ul className="useful-links">
             <li className="link">
               <a href="#" target="_blank">

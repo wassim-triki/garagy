@@ -65,10 +65,11 @@
   color: #f4b251;
 }
 .navbar .brand__name {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: #373737;
   color: #ffffff;
+  font-family: "Architects Daughter", cursive, sans-serif;
 }
 .navbar .form {
   width: 100%;
@@ -358,6 +359,9 @@
     color: #373737;
     position: static !important;
   }
+  .navbar .brand {
+    margin-left: 2rem;
+  }
   .navbar .menu-icon-container {
     display: flex;
     align-items: center;
@@ -431,12 +435,12 @@
     bottom: 0;
     margin: 0;
     flex-direction: column;
-    padding-top: 2rem !important;
     padding: 0;
-    gap: 6rem;
+    gap: 4rem;
     padding: 0 4rem;
     background: #ffffff;
     margin-top: 83px;
+    justify-content: center;
     left: -100%;
     transition: all 0.2s ease-in-out;
   }

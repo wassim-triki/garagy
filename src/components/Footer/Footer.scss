@@ -59,19 +59,6 @@
       & h3 {
         font-weight: 500;
       }
-      & .links {
-        display: flex;
-        gap: 2rem;
-        color: $white;
-        & a {
-          color: $white;
-          font-size: 1.2rem;
-          &:hover {
-            opacity: 0.6;
-            transition: none;
-          }
-        }
-      }
     }
   }
 }

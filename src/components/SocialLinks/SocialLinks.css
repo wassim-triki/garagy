@@ -1,0 +1,24 @@
+.links {
+  display: flex;
+  gap: 2rem;
+}
+.links a {
+  font-size: 1.2rem;
+}
+.links a:hover {
+  opacity: 0.6;
+  transition: none;
+}
+.links.light {
+  color: #ffffff;
+}
+.links.light a {
+  color: #ffffff;
+}
+.links.dark {
+  color: #373737;
+}
+.links.dark a {
+  color: #373737;
+}
+/*# sourceMappingURL=SocialLinks.css.map */

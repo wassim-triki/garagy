@@ -15,6 +15,7 @@ import { auth } from "../../firebase-config";
 import { BiUser } from "react-icons/bi";
 import UserDropDown from "../UserDropdown";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
+import SocialLinks from "../SocialLinks";
 const Navbar = () => {
   const { user, setUser, logout } = useContext(UserContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -69,7 +70,7 @@ const Navbar = () => {
       </div>
       <Link to={"/"} onClick={closeMenu}>
         <div className="brand">
-          <GiSteeringWheel className="brand__logo" />
+          {/* <GiSteeringWheel className="brand__logo" /> */}
           <span className="brand__name">Garagy</span>
         </div>
       </Link>
@@ -121,7 +122,13 @@ const Navbar = () => {
           </li>
         )}
 
-        {maxTablet && <SearchForm showDropdown={false} />}
+        {maxTablet && (
+          <>
+            {" "}
+            <SearchForm showDropdown={false} />
+            <SocialLinks theme="dark" />
+          </>
+        )}
       </ul>
       <div className="join__container">
         {user ? (

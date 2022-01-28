@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+.links {
+  display: flex;
+  gap: 2rem;
+  & a {
+    font-size: 1.2rem;
+    &:hover {
+      opacity: 0.6;
+      transition: none;
+    }
+  }
+  &.light {
+    color: $white;
+    & a {
+      color: $white;
+    }
+  }
+  &.dark {
+    color: $black;
+    & a {
+      color: $black;
+    }
+  }
+}

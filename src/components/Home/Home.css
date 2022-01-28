@@ -9,8 +9,7 @@
 }
 
 .hero {
-  background: #4cb944;
-  background: radial-gradient(circle, #4cb944 0%, #276b22 100%);
+  background-image: url("../../assets/images/bg.svg");
   color: #ffffff;
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,7 +50,7 @@
 }
 .hero .container .hero__text .hero__subtitle {
   font-size: 1.2rem;
-  color: #dddddd;
+  color: #ebebeb;
   font-weight: 500;
   line-height: 2rem;
   width: 50%;

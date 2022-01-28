@@ -23,12 +23,13 @@
     background-size: contain;
     background-position: center center;
   }
-  background: rgb(76, 185, 68);
-  background: radial-gradient(
-    circle,
-    rgba(76, 185, 68, 1) 0%,
-    rgb(39, 107, 34) 100%
-  );
+  // background: rgb(76, 185, 68);
+  // background: radial-gradient(
+  //   circle,
+  //   rgba(76, 185, 68, 1) 0%,
+  //   rgb(39, 107, 34) 100%
+  // );
+  background-image: url("../../assets/images/bg.svg");
   color: $white;
   background-repeat: no-repeat;
   background-size: cover;
