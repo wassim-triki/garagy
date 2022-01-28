@@ -9,6 +9,7 @@ import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db, provider } from "../firebase-config";
+import { getProfilePicURL, getUserData } from "../helpers/user-data";
 
 const UserContext = createContext();
 
@@ -22,17 +23,7 @@ const UserProvider = ({ children }) => {
   const setUserData = (userData) => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
-    navigate("/");
-  };
-  const getUserData = async (uid) => {
-    try {
-      const userDoc = doc(db, "users", uid);
-      const userSnapShot = await getDoc(userDoc);
-      const userData = userSnapShot.data();
-      return userData;
-    } catch (err) {
-      return null;
-    }
+    // navigate("/");
   };
 
   const googleSignIn = async () => {
@@ -76,7 +67,6 @@ const UserProvider = ({ children }) => {
         signin,
         logout,
         setUserData,
-        getUserData,
         createUser,
         googleSignIn,
       }}

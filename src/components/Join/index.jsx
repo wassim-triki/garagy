@@ -12,6 +12,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 import { onAuthStateChanged } from "firebase/auth";
 import GoogleButton from "react-google-button";
+import { getUserData } from "../../helpers/user-data";
 
 const radioStyles = {
   color: "#ababab",
@@ -29,7 +30,7 @@ const Join = () => {
   const [newGoogleUser, setNewGoogleUser] = useState(false);
   const navigate = useNavigate();
 
-  const { setUser, signup, getUserData, createUser, googleSignIn } =
+  const { setUser, signup, createUser, googleSignIn, setUserData } =
     useUserAuth();
 
   const handleEmailChange = (e) => {
@@ -59,8 +60,7 @@ const Join = () => {
       const newUser = createUser(currentUser, username, type);
       const newUserDoc = doc(db, "users", currentUser.uid);
       await setDoc(newUserDoc, newUser);
-      setUser(newUser);
-      localStorage.setItem("user", JSON.stringify(newUser));
+      setUserData(newUser);
       navigate("/");
     } catch (err) {
       setError(err.message);

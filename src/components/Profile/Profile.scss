@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+.profile {
+  & .container {
+    & .profile-picture__container {
+      border: 1px solid $grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 110px;
+      border-radius: 500px;
+      padding: 1px;
+      position: relative;
+      // overflow: hidden;
+      & .upload {
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+      }
+      & .upload-label {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: 1px solid $grey;
+        background: $white;
+        background-image: url("../../assets/images/pen4.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 45%;
+        &:hover,
+        &:focus {
+          background-color: $lightgrey;
+        }
+        &:active {
+          background-color: $white;
+        }
+      }
+      & .profile-picture {
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        background-size: 30%;
+      }
+    }
+    & .btn.save {
+      @include buttonPrimary;
+      & circle {
+        stroke: $lightgrey;
+      }
+    }
+  }
+}

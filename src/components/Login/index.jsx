@@ -8,13 +8,14 @@ import { doc, getDoc } from "firebase/firestore";
 
 import GoogleButton from "react-google-button";
 import { signInWithPopup } from "firebase/auth";
+import { getUserData } from "../../helpers/user-data";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { signin, getUserData, setUserData, googleSignIn } = useUserAuth();
+  const { signin, setUserData, googleSignIn } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,6 +31,7 @@ const Login = () => {
       setLoading(true);
       const credential = await signin(email, password);
       const userData = await getUserData(credential.user.uid);
+      console.log(userData);
       setUserData(userData);
     } catch (err) {
       setError(err.message);
