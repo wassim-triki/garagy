@@ -49,7 +49,7 @@ function App() {
       {loading ? (
         <section className="section">
           <div className="container">
-            <Oval className="spinner" color="#f4b251" height={80} width={80} />
+            <Oval color="#f4b251" height={80} width={80} />
           </div>
         </section>
       ) : (

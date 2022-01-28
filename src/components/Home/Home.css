@@ -9,7 +9,7 @@
 }
 
 .hero {
-  background-image: url("../../assets/images/bg.svg");
+  background-image: url("../../assets/images/bg3.svg");
   color: #ffffff;
   background-repeat: no-repeat;
   background-size: cover;
@@ -45,8 +45,9 @@
 }
 .hero .container .hero__text .hero__title {
   font-size: 5rem;
-  font-weight: 800;
+  font-weight: 0;
   line-height: 6rem;
+  font-family: "Rubik", sans-serif;
 }
 .hero .container .hero__text .hero__subtitle {
   font-size: 1.2rem;

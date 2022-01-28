@@ -29,7 +29,7 @@
   //   rgba(76, 185, 68, 1) 0%,
   //   rgb(39, 107, 34) 100%
   // );
-  background-image: url("../../assets/images/bg.svg");
+  background-image: url("../../assets/images/bg3.svg");
   color: $white;
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,6 +51,7 @@
         font-size: 5rem;
         font-weight: 800;
         line-height: 6rem;
+        font-family: $heroFont;
       }
       & .hero__subtitle {
         font-size: 1.2rem;

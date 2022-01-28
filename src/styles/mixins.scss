@@ -1,4 +1,17 @@
+@import "./variables.scss";
 @mixin glowEdge($color) {
   border-color: rgba($color, 0.5) !important;
   box-shadow: 0px 0px 1px 2px rgba($color, 0.5) !important;
+}
+
+@mixin buttonPrimary {
+  background: $accent;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-family: $mainFont;
+  color: $white;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
 }
