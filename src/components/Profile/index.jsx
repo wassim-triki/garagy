@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 import React, { useRef, useEffect, useState } from "react";
-=======
-import React, { useRef } from "react";
-import { useEffect, useState } from "react/cjs/react.development";
->>>>>>> ad02df7 (add firebase storage to ulpad profile pics)
 import { useUserAuth } from "../../context/UserContext";
 import { BiUser } from "react-icons/bi";
 import { FaPen } from "react-icons/fa";
 import DefaultUserImg from "../../assets/images/default.svg";
 import "./Profile.css";
-<<<<<<< HEAD
 import { storage, storageRef } from "../../firebase-config";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { Oval } from "react-loader-spinner";
@@ -23,18 +17,6 @@ const Profile = () => {
   const [imageBlob, setImageBlob] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-=======
-import { storageRef } from "../../firebase-config";
-import { uploadBytes, ref } from "firebase/storage";
-import { Oval } from "react-loader-spinner";
-import uploadToStorage from "../../helpers/uploadToStorage";
-const Profile = () => {
-  const { user, setUser } = useUserAuth();
-  const [imageBlob, setImageBlob] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  console.log(loading);
->>>>>>> ad02df7 (add firebase storage to ulpad profile pics)
   const imageRef = useRef();
   const handleImageSelect = async (e) => {
     const blob = e.target.files[0];
@@ -46,17 +28,10 @@ const Profile = () => {
     };
   };
   useEffect(() => {
-<<<<<<< HEAD
     // imageRef.current.src = profilePicURL;
     // console.log(await getProfilePicURL(user));
     console.log(user);
   }, [user]);
-=======
-    // setUser({ ...user, img: null });
-    // console.log(image);
-    // console.log(user);
-  });
->>>>>>> ad02df7 (add firebase storage to ulpad profile pics)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,16 +39,10 @@ const Profile = () => {
     try {
       setLoading(true);
       setError(false);
-<<<<<<< HEAD
       await uploadToStorage("images", user.uid, imageBlob);
 
       setUserData({ ...user, img: (await getProfilePicURL(user)) || user.img });
       await setUserDoc(user);
-=======
-      // const profilePicRef = ref(storageRef, `images/${user.uid}`);
-      // const snapshot = await uploadBytes(profilePicRef, imageBlob);
-      await uploadToStorage("images", user.uid, imageBlob);
->>>>>>> ad02df7 (add firebase storage to ulpad profile pics)
     } catch (err) {
       setError(err.message);
       alert(error);

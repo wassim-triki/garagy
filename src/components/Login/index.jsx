@@ -31,7 +31,6 @@ const Login = () => {
       setLoading(true);
       const credential = await signin(email, password);
       const userData = await getUserData(credential.user.uid);
-      console.log(userData);
       setUserData(userData);
     } catch (err) {
       setError(err.message);
