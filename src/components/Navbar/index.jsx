@@ -55,6 +55,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", applyScrollEffect);
     };
   }, [location.pathname]);
+
   return (
     <nav className={`navbar${!transparent || isVisible ? " scrolled" : ""}`}>
       <div className="menu-icon-container">
@@ -139,7 +140,9 @@ const Navbar = () => {
                 setUserDropdown(true);
                 closeMenu();
               }}
-              className={`userIconContainer ${transparent ? "white" : ""}`}
+              className={`userIconContainer ${
+                transparent && !isVisible ? "white" : ""
+              }`}
             >
               <BiUser />
             </div>
