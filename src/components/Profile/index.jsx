@@ -9,6 +9,7 @@ import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { Oval } from "react-loader-spinner";
 import {
   getProfilePicURL,
+  getUserData,
   setUserDoc,
   uploadToStorage,
 } from "../../helpers/user-data";
@@ -30,8 +31,9 @@ const Profile = () => {
   useEffect(async () => {
     // imageRef.current.src = profilePicURL;
     // console.log(await getProfilePicURL(user));
-    await setUserDoc(user);
-  }, [user]);
+    const userData = await getUserData(user.uid);
+    setUserData(userData);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,9 +42,11 @@ const Profile = () => {
       setLoading(true);
       setError(false);
       await uploadToStorage("images", user.uid, imageBlob);
+      const profilePicURL = await getProfilePicURL(user);
 
-      setUserData({ ...user, img: (await getProfilePicURL(user)) || user.img });
+      setUserData({ ...user, img: profilePicURL || user.img });
       await setUserDoc(user);
+      console.log("updated Doc");
     } catch (err) {
       setError(err.message);
       alert(error);
