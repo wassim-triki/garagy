@@ -423,7 +423,7 @@
     }
   }
   .navbar .list {
-    height: calc(100vh - 80px) !important;
+    height: calc(100vh - 75px) !important;
     z-index: 100;
     height: -webkit-max-content;
     height: -moz-max-content;
@@ -439,7 +439,7 @@
     gap: 4rem;
     padding: 0 4rem;
     background: #ffffff;
-    margin-top: 83px;
+    margin-top: 80px;
     justify-content: center;
     left: -100%;
     transition: all 0.2s ease-in-out;
