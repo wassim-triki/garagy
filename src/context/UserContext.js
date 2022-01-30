@@ -22,7 +22,6 @@ const UserProvider = ({ children }) => {
 
   const setUserData = (userData) => {
     setUser(userData);
-    console.log(userData);
     localStorage.setItem("user", JSON.stringify(userData));
     // navigate("/");
   };
@@ -41,14 +40,10 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const createUser = (currentUser, username, type) => {
+  const createUser = (currentUser, type) => {
     return {
-      uid: currentUser.uid,
-      email: currentUser.email,
-      username: username || currentUser.displayName,
       type: [type],
-      img: currentUser.photoURL,
-      createdAt: new Date().toLocaleString(),
+      creationDate: new Date().toLocaleString(),
     };
   };
   const signup = async (email, password) => {

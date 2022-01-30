@@ -10,7 +10,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { doc, setDoc } from "firebase/firestore";
 
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, updateEmail, updateProfile } from "firebase/auth";
 import GoogleButton from "react-google-button";
 import { getUserData } from "../../helpers/user-data";
 
@@ -50,17 +50,22 @@ const Join = () => {
     try {
       setLoading(true);
 
-      let currentUser = null;
-      if (auth.currentUser) {
-        currentUser = auth.currentUser;
+      // let currentUser = null;
+      if (newGoogleUser) {
+        console.log("google signup");
+        // currentUser = auth.currentUser;
       } else {
+        console.log("normal signup");
         const credential = await signup(email, password);
-        currentUser = credential.user;
+        // currentUser = credential.user;
+        await updateProfile(auth.currentUser, { displayName: username });
       }
-      const newUser = createUser(currentUser, username, type);
-      const newUserDoc = doc(db, "users", currentUser.uid);
+
+      const newUser = createUser(auth.currentUser, type);
+      const newUserDoc = doc(db, "users", auth.currentUser.uid);
       await setDoc(newUserDoc, newUser);
       setUserData(newUser);
+
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -68,7 +73,6 @@ const Join = () => {
       setLoading(false);
     }
   };
-  useEffect(async () => {}, []);
   useEffect(async () => {
     if (auth.currentUser) {
       const data = await getUserData(auth.currentUser?.uid);

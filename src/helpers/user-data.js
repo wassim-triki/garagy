@@ -20,7 +20,6 @@ export const getProfilePicURL = async (uid) => {
 };
 export const getUserData = async (uid) => {
   try {
-    // const profilPic = await getProfilePicURL(uid);
     const userDoc = doc(db, "users", uid);
     const userSnapShot = await getDoc(userDoc);
     return userSnapShot.data();
