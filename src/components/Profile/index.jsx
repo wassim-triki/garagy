@@ -65,7 +65,7 @@ const Profile = () => {
     }
     setDisplayName(auth.currentUser?.displayName);
     setEmail(auth.currentUser?.email);
-    const userData = await getUserData(auth.currentUser.uid);
+    const userData = await getUserData(auth.currentUser?.uid);
     setUserData(userData);
   }, []);
 
