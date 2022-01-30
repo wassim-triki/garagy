@@ -45,9 +45,9 @@ const Profile = () => {
   };
 
   useEffect(async () => {
-    const userData = await getUserData(user.uid);
-    setUsername(userData.username);
-    setEmail(userData.email);
+    const userData = await getUserData(user?.uid);
+    setUsername(userData?.username);
+    setEmail(userData?.email);
   }, []);
 
   const handleSubmit = async (e) => {
