@@ -42,8 +42,10 @@ const UserProvider = ({ children }) => {
 
   const createUser = (currentUser, type) => {
     return {
+      displayName: currentUser?.displayName,
       type: type,
       creationDate: new Date().toLocaleString(),
+      profilePic: currentUser?.photoURL,
     };
   };
   const signup = async (email, password) => {

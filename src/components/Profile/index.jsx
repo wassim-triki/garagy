@@ -67,6 +67,7 @@ const Profile = () => {
     setEmail(auth.currentUser?.email);
     const userData = await getUserData(auth.currentUser?.uid);
     setUserData(userData);
+    console.log(auth);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -90,7 +91,12 @@ const Profile = () => {
         displayName: displayName,
       });
       await updateEmail(auth.currentUser, email);
-      const updatedUser = { ...user, type };
+      const updatedUser = {
+        ...user,
+        type,
+        profilePic: auth.currentUser.photoURL,
+        displayName: auth.currentUser.displayName,
+      };
       setUserData(updatedUser);
       await setUserDoc(auth.currentUser.uid, updatedUser);
       alert("updated with success");
