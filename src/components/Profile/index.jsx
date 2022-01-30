@@ -13,9 +13,18 @@ import {
   setUserDoc,
   uploadToStorage,
 } from "../../helpers/user-data";
-import { TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+} from "@mui/material";
 import { updateEmail, updateProfile } from "firebase/auth";
-import UserTypeOptions from "../UserTypeOptions/UserTypeOptions";
+import {
+  handleTypeChange,
+  typeOptionsStyles,
+} from "../../helpers/user-type-options";
+
 const Profile = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
@@ -47,6 +56,7 @@ const Profile = () => {
     setEmail(auth.currentUser?.email);
     setDisplayName(auth.currentUser?.displayName);
     setProfilePic(auth.currentUser?.photoURL || null);
+    setType(user.type);
   };
 
   useEffect(async () => {
@@ -55,6 +65,8 @@ const Profile = () => {
     }
     setDisplayName(auth.currentUser?.displayName);
     setEmail(auth.currentUser?.email);
+    const userData = await getUserData(auth.currentUser.uid);
+    setUserData(userData);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -63,6 +75,9 @@ const Profile = () => {
     try {
       setLoading(true);
       setError(false);
+      if (type.length === 0) {
+        throw new Error("You must check atleast one option !");
+      }
       if (imageBlob) {
         await uploadToStorage("images", user.uid, imageBlob);
         const profilePic = await getProfilePicURL(user.uid);
@@ -75,18 +90,18 @@ const Profile = () => {
         displayName: displayName,
       });
       await updateEmail(auth.currentUser, email);
+      const updatedUser = { ...user, type };
+      setUserData(updatedUser);
+      await setUserDoc(auth.currentUser.uid, updatedUser);
+      alert("updated with success");
     } catch (err) {
       setError(err.message);
       alert(err);
     } finally {
       setLoading(false);
-      !error && alert("updated with success");
     }
   };
-  const handleTypeChange = (e) =>
-    e.target.checked
-      ? setType([...type, e.target.value])
-      : setType(type.filter((t) => t !== e.target.value));
+
   return (
     <section className="section profile">
       <div className="container">
@@ -128,7 +143,30 @@ const Profile = () => {
               onChange={(e) => handleChange(e, setEmail)}
               value={email}
             />
-            <UserTypeOptions handleOnChange={handleTypeChange} />
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={type.includes("customer")}
+                    sx={typeOptionsStyles}
+                    value={"customer"}
+                    onChange={(e) => handleTypeChange(e, type, setType)}
+                  />
+                }
+                label="Customer"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={type.includes("seller")}
+                    sx={typeOptionsStyles}
+                    onChange={(e) => handleTypeChange(e, type, setType)}
+                    value={"seller"}
+                  />
+                }
+                label="Seller"
+              />
+            </FormGroup>
             <div className="form-btns">
               <button
                 className="btn discard"

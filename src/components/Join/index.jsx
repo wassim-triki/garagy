@@ -12,9 +12,12 @@ import { doc, setDoc } from "firebase/firestore";
 
 import { onAuthStateChanged, updateEmail, updateProfile } from "firebase/auth";
 import GoogleButton from "react-google-button";
-import { getUserData } from "../../helpers/user-data";
+import { getUserData, setUserDoc } from "../../helpers/user-data";
 import { Checkbox, FormGroup } from "@mui/material";
-import UserTypeOptions from "../UserTypeOptions/UserTypeOptions";
+import {
+  handleTypeChange,
+  typeOptionsStyles,
+} from "../../helpers/user-type-options";
 
 const Join = () => {
   const [email, setEmail] = useState("");
@@ -38,10 +41,7 @@ const Join = () => {
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
-  const handleTypeChange = (e) =>
-    e.target.checked
-      ? setType([...type, e.target.value])
-      : setType(type.filter((t) => t !== e.target.value));
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -59,9 +59,8 @@ const Join = () => {
       }
 
       const newUser = createUser(auth.currentUser, type);
-      const newUserDoc = doc(db, "users", auth.currentUser.uid);
-      await setDoc(newUserDoc, newUser);
       setUserData(newUser);
+      await setUserDoc(auth.currentUser.uid, newUser);
 
       navigate("/");
     } catch (err) {
@@ -76,6 +75,7 @@ const Join = () => {
       setNewGoogleUser(data == null);
     }
   }, [auth.currentUser]);
+
   return (
     <section className="section join">
       <div className="container join">
@@ -108,7 +108,30 @@ const Join = () => {
             </div>
           )}
 
-          <UserTypeOptions handleOnChange={handleTypeChange} />
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={type.includes("customer")}
+                  sx={typeOptionsStyles}
+                  value={"customer"}
+                  onChange={(e) => handleTypeChange(e, type, setType)}
+                />
+              }
+              label="Customer"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={type.includes("seller")}
+                  sx={typeOptionsStyles}
+                  onChange={(e) => handleTypeChange(e, type, setType)}
+                  value={"seller"}
+                />
+              }
+              label="Seller"
+            />
+          </FormGroup>
 
           <button
             className="form-join__submit"

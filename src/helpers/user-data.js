@@ -28,7 +28,7 @@ export const getUserData = async (uid) => {
   }
 };
 
-export const setUserDoc = async (userData) => {
-  const userDoc = doc(db, "users", userData.uid);
+export const setUserDoc = async (uid, userData) => {
+  const userDoc = doc(db, "users", uid);
   return setDoc(userDoc, userData);
 };
