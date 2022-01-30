@@ -42,7 +42,7 @@ const UserProvider = ({ children }) => {
 
   const createUser = (currentUser, type) => {
     return {
-      type: [type],
+      type: type,
       creationDate: new Date().toLocaleString(),
     };
   };

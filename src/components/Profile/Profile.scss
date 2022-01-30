@@ -21,6 +21,17 @@
         padding: 1px;
         position: relative;
         // overflow: hidden;
+        & .defaultPic {
+          height: 5em;
+          width: 5em;
+          fill: $grey;
+        }
+        & .default-container {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          overflow: hidden;
+        }
         & .upload {
           opacity: 0;
           position: absolute;

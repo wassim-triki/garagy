@@ -13,17 +13,13 @@ import { doc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged, updateEmail, updateProfile } from "firebase/auth";
 import GoogleButton from "react-google-button";
 import { getUserData } from "../../helpers/user-data";
+import { Checkbox, FormGroup } from "@mui/material";
+import UserTypeOptions from "../UserTypeOptions/UserTypeOptions";
 
-const radioStyles = {
-  color: "#ababab",
-  "&.Mui-checked": {
-    color: "#f4b251",
-  },
-};
 const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [type, SetType] = useState("customer");
+  const [type, setType] = useState(["customer"]);
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -42,22 +38,23 @@ const Join = () => {
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
-  const handleTypeChange = (e) => {
-    SetType(e.target.value);
-  };
+  const handleTypeChange = (e) =>
+    e.target.checked
+      ? setType([...type, e.target.value])
+      : setType(type.filter((t) => t !== e.target.value));
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
+      if (type.length === 0) {
+        throw new Error("You must check atleast one option !");
+      }
 
-      // let currentUser = null;
       if (newGoogleUser) {
         console.log("google signup");
-        // currentUser = auth.currentUser;
       } else {
         console.log("normal signup");
         const credential = await signup(email, password);
-        // currentUser = credential.user;
         await updateProfile(auth.currentUser, { displayName: username });
       }
 
@@ -111,24 +108,7 @@ const Join = () => {
             </div>
           )}
 
-          <RadioGroup
-            className="types"
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="customer"
-            name="radio-buttons-group"
-            onChange={handleTypeChange}
-          >
-            <FormControlLabel
-              value="customer"
-              control={<Radio sx={radioStyles} />}
-              label="Customer"
-            />
-            <FormControlLabel
-              value="seller"
-              control={<Radio sx={radioStyles} />}
-              label="Seller"
-            />
-          </RadioGroup>
+          <UserTypeOptions handleOnChange={handleTypeChange} />
 
           <button
             className="form-join__submit"

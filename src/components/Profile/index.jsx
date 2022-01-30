@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useUserAuth } from "../../context/UserContext";
 import { BiUser } from "react-icons/bi";
 import { FaPen } from "react-icons/fa";
-import DefaultUserImg from "../../assets/images/default.svg";
+import { ReactComponent as DefaultUserPic } from "../../assets/images/default.svg";
 import "./Profile.css";
 import { auth, storage, storageRef } from "../../firebase-config";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
@@ -15,11 +15,12 @@ import {
 } from "../../helpers/user-data";
 import { TextField } from "@mui/material";
 import { updateEmail, updateProfile } from "firebase/auth";
+import UserTypeOptions from "../UserTypeOptions/UserTypeOptions";
 const Profile = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [profilePic, setProfilePic] = useState(null);
-  // const [displayName, setDisplayName] = useState("");
+
   const handleChange = (e, setState) => {
     setState(e.target.value);
   };
@@ -27,6 +28,7 @@ const Profile = () => {
   const [imageBlob, setImageBlob] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [type, setType] = useState(user.type);
   const imageRef = useRef();
 
   const handleImageSelect = async (e) => {
@@ -40,19 +42,17 @@ const Profile = () => {
       };
     }
   };
-  useEffect(() => {
-    console.log(auth.currentUser);
-  }, [auth.currentUser]);
 
   const handleDiscard = () => {
-    const userData = JSON.parse(localStorage.getItem("user"));
     setEmail(auth.currentUser?.email);
     setDisplayName(auth.currentUser?.displayName);
-    setProfilePic(auth.currentUser?.photoURL);
+    setProfilePic(auth.currentUser?.photoURL || null);
   };
 
   useEffect(async () => {
-    setProfilePic(auth.currentUser?.photoURL?.replace("s96-c", "s400-c"));
+    if (auth.currentUser?.photoURL) {
+      setProfilePic(auth.currentUser?.photoURL?.replace("s96-c", "s400-c"));
+    }
     setDisplayName(auth.currentUser?.displayName);
     setEmail(auth.currentUser?.email);
   }, []);
@@ -83,17 +83,26 @@ const Profile = () => {
       !error && alert("updated with success");
     }
   };
+  const handleTypeChange = (e) =>
+    e.target.checked
+      ? setType([...type, e.target.value])
+      : setType(type.filter((t) => t !== e.target.value));
   return (
     <section className="section profile">
       <div className="container">
         <form className="form-profile" onSubmit={handleSubmit}>
           <div className="profile-picture__container">
-            <img
-              className="profile-picture"
-              src={profilePic}
-              alt="profile picture"
-              ref={imageRef}
-            />
+            {profilePic ? (
+              <img
+                className="profile-picture"
+                src={profilePic}
+                alt="profile picture"
+                ref={imageRef}
+              />
+            ) : (
+              <BiUser className="defaultPic" />
+            )}
+
             <label className="upload-label" htmlFor="upload"></label>
             <input
               type="file"
@@ -119,6 +128,7 @@ const Profile = () => {
               onChange={(e) => handleChange(e, setEmail)}
               value={email}
             />
+            <UserTypeOptions handleOnChange={handleTypeChange} />
             <div className="form-btns">
               <button
                 className="btn discard"
