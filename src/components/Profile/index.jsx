@@ -24,7 +24,8 @@ import {
   handleTypeChange,
   typeOptionsStyles,
 } from "../../helpers/user-type-options";
-
+import Alert from "../Alert";
+import random from "../../utils/random";
 const Profile = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,6 +39,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [type, setType] = useState([]);
+  const [alert, setAlert] = useState({ state: "", text: "", id: 0 });
   const imageRef = useRef();
 
   const handleImageSelect = async (e) => {
@@ -61,10 +63,10 @@ const Profile = () => {
 
   useEffect(async () => {
     const userData = await getUserData(auth.currentUser?.uid);
-    setProfilePic(userData.profilePic);
-    setDisplayName(userData.displayName);
-    setEmail(auth.currentUser.email);
-    setType(userData.type);
+    setProfilePic(userData?.profilePic);
+    setDisplayName(userData?.displayName);
+    setEmail(auth.currentUser?.email);
+    setType(userData?.type);
     setUserData(userData);
   }, []);
 
@@ -97,10 +99,10 @@ const Profile = () => {
       };
       setUserData(updatedUser);
       await setUserDoc(auth.currentUser.uid, updatedUser);
-      alert("updated with success");
+      setAlert({ state: "success", text: "Profile Updated", id: random() });
     } catch (err) {
       setError(err.message);
-      alert(err);
+      setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);
     }
@@ -109,6 +111,7 @@ const Profile = () => {
   return (
     <section className="section profile">
       <div className="container">
+        <Alert variant={alert.state} text={alert.text} id={alert.id} />
         <form className="form-profile" onSubmit={handleSubmit}>
           <div className="profile-picture__container">
             {profilePic ? (

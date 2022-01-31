@@ -1,0 +1,39 @@
+.alert {
+  width: 350px;
+  border-radius: 8px;
+  padding: 0.8rem;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: -110%;
+  transition: all 0.5s cubic-bezier(0.29, 1, 0.77, 1.05);
+  z-index: 100;
+  border: 2px solid transparent;
+  color: transparent;
+  font-weight: 600;
+  background-color: transparent;
+}
+.alert.visible {
+  bottom: 10px;
+}
+.alert.visible.danger {
+  border: 2px solid red;
+  color: red;
+  font-weight: 600;
+  background-color: #ffa3a3;
+}
+.alert.visible.success {
+  border: 2px solid #00e759;
+  color: #00e759;
+  font-weight: 600;
+  background-color: #caffe2;
+}
+.alert__close {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.alert__text {
+  width: 90%;
+  word-wrap: break-word;
+}
+/*# sourceMappingURL=Alert.css.map */
