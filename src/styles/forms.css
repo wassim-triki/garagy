@@ -33,17 +33,40 @@
 .container.login .form-login .google-btn:disabled {
   background: rgba(55, 55, 55, 0.3) !important;
 }
-.container.join .form-join .google-btn::before,
-.container.join .form-login .google-btn::before,
-.container.login .form-join .google-btn::before,
-.container.login .form-login .google-btn::before {
+.container.join .form-join .or,
+.container.join .form-login .or,
+.container.login .form-join .or,
+.container.login .form-login .or {
+  text-align: center;
+  position: relative;
+  color: #636363;
+  font-weight: 500;
+}
+.container.join .form-join .or::after, .container.join .form-join .or:before,
+.container.join .form-login .or::after,
+.container.join .form-login .or:before,
+.container.login .form-join .or::after,
+.container.login .form-join .or:before,
+.container.login .form-login .or::after,
+.container.login .form-login .or:before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 0.5px;
-  top: -8px;
+  width: 45%;
+  height: 1px;
+  background: #636363;
+  top: 50%;
+}
+.container.join .form-join .or::after,
+.container.join .form-login .or::after,
+.container.login .form-join .or::after,
+.container.login .form-login .or::after {
+  right: 0;
+}
+.container.join .form-join .or::before,
+.container.join .form-login .or::before,
+.container.login .form-join .or::before,
+.container.login .form-login .or::before {
   left: 0;
-  background: rgba(55, 55, 55, 0.3);
 }
 .container.join .form-join h1,
 .container.join .form-login h1,

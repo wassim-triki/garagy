@@ -37,7 +37,7 @@ const Profile = () => {
   const [imageBlob, setImageBlob] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [type, setType] = useState(user.type);
+  const [type, setType] = useState([]);
   const imageRef = useRef();
 
   const handleImageSelect = async (e) => {
@@ -60,12 +60,11 @@ const Profile = () => {
   };
 
   useEffect(async () => {
-    console.log(auth.currentUser);
-
-    setProfilePic(auth.currentUser?.photoURL?.replace("s96-c", "s400-c"));
-    setDisplayName(auth.currentUser?.displayName);
-    setEmail(auth.currentUser?.email);
     const userData = await getUserData(auth.currentUser?.uid);
+    setProfilePic(userData.profilePic);
+    setDisplayName(userData.displayName);
+    setEmail(auth.currentUser.email);
+    setType(userData.type);
     setUserData(userData);
   }, []);
 

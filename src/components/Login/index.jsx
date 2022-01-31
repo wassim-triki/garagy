@@ -80,6 +80,7 @@ const Login = () => {
           >
             Login
           </button>
+          <span className="or">OR</span>
           <GoogleButton
             className="google-btn"
             onClick={handleGoogleSignIn}

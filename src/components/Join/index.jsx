@@ -42,39 +42,69 @@ const Join = () => {
     setDisplayName(e.target.value);
   };
 
+  const handleTypeOptionsError = () => {
+    if (type.length === 0) {
+      throw new Error("You must check atleast one option !");
+    }
+  };
+
+  const handleGoogleSignin = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      handleTypeOptionsError();
+      const credential = await googleSignIn();
+      const user = credential.user;
+      const userData = await getUserData(user.uid);
+      console.log("google signin");
+      if (!userData) {
+        console.log("new google user");
+        await updateProfile(user, {
+          photoURL: user.photoURL.replace("s96-c", "s400-c"),
+        });
+        setNewGoogleUser(true);
+        const newUser = createUser(user, type);
+        await setUserDoc(user.uid, newUser);
+      }
+      navigate("/profile");
+    } catch (err) {
+      setError(err.message);
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      if (type.length === 0) {
-        throw new Error("You must check atleast one option !");
-      }
-
-      if (newGoogleUser) {
-        console.log("google signup");
-      } else {
-        console.log("normal signup");
-        const credential = await signup(email, password);
-        await updateProfile(auth.currentUser, { displayName: displayName });
-      }
+      handleTypeOptionsError();
+      console.log("normal signup");
+      const credential = await signup(email, password);
+      await updateProfile(auth.currentUser, { displayName: displayName });
 
       const newUser = createUser(auth.currentUser, type);
       setUserData(newUser);
       await setUserDoc(auth.currentUser.uid, newUser);
 
-      navigate("/");
+      navigate("/profile");
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-  useEffect(async () => {
-    if (auth.currentUser) {
-      const data = await getUserData(auth.currentUser?.uid);
-      setNewGoogleUser(data == null);
-    }
-  }, [auth.currentUser]);
+  // useEffect(async () => {
+  //   if (auth.currentUser) {
+  //     let data = await getUserData(auth.currentUser?.uid);
+  //     if (!data) {
+  //       data = null;
+  //     }
+  //     setNewGoogleUser(data == null);
+  //     console.log(newGoogleUser, data);
+  //   }
+  // }, [auth.currentUser]);
 
   return (
     <section className="section join">
@@ -82,31 +112,29 @@ const Join = () => {
         <form onSubmit={handleSubmit} className="form-join">
           <h1>Join</h1>
           {error && <p className="alert">{error}</p>}
-          {!newGoogleUser && (
-            <div className="form-join__control">
-              <input
-                onChange={handledisplayNameChange}
-                value={displayName}
-                className="form-join__input"
-                type="text"
-                placeholder="displayName"
-              />
-              <input
-                onChange={handleEmailChange}
-                value={email}
-                className="form-join__input"
-                type="email"
-                placeholder="Email Address"
-              />
-              <input
-                onChange={handlePasswordChange}
-                value={password}
-                className="form-join__input"
-                type="password"
-                placeholder="Password"
-              />
-            </div>
-          )}
+          <div className="form-join__control">
+            <input
+              onChange={handledisplayNameChange}
+              value={displayName}
+              className="form-join__input"
+              type="text"
+              placeholder="displayName"
+            />
+            <input
+              onChange={handleEmailChange}
+              value={email}
+              className="form-join__input"
+              type="email"
+              placeholder="Email Address"
+            />
+            <input
+              onChange={handlePasswordChange}
+              value={password}
+              className="form-join__input"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
 
           <FormGroup>
             <FormControlLabel
@@ -140,13 +168,13 @@ const Join = () => {
           >
             Create an Account
           </button>
-          {!newGoogleUser && (
-            <GoogleButton
-              className="google-btn"
-              onClick={googleSignIn}
-              disabled={loading}
-            />
-          )}
+
+          <span className="or">OR</span>
+          <GoogleButton
+            className="google-btn"
+            onClick={handleGoogleSignin}
+            disabled={loading}
+          />
 
           <p className="question">
             Already have an account? <Link to={"/login"}>Login</Link>

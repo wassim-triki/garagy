@@ -27,17 +27,16 @@ const UserProvider = ({ children }) => {
   };
 
   const googleSignIn = async () => {
-    const credential = await signInWithPopup(auth, provider);
-    const userData = await getUserData(credential.user.uid);
-    if (!userData) {
-      navigate("/join");
-    } else {
-      console.log(userData);
-      setUserData({
-        ...userData,
-        img: userData.img || credential.user.photoURL,
-      });
-    }
+    return signInWithPopup(auth, provider);
+
+    // const userData = await getUserData(credential.user.uid);
+    // if (userData) {
+    //   console.log(userData);
+    //   setUserData({
+    //     ...userData,
+    //     img: userData.img || credential.user.photoURL,
+    //   });
+    // }
   };
 
   const createUser = (currentUser, type) => {
