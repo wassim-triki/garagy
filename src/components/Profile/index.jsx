@@ -60,14 +60,13 @@ const Profile = () => {
   };
 
   useEffect(async () => {
-    if (auth.currentUser?.photoURL) {
-      setProfilePic(auth.currentUser?.photoURL?.replace("s96-c", "s400-c"));
-    }
+    console.log(auth.currentUser);
+
+    setProfilePic(auth.currentUser?.photoURL?.replace("s96-c", "s400-c"));
     setDisplayName(auth.currentUser?.displayName);
     setEmail(auth.currentUser?.email);
     const userData = await getUserData(auth.currentUser?.uid);
     setUserData(userData);
-    console.log(auth);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -80,8 +79,8 @@ const Profile = () => {
         throw new Error("You must check atleast one option !");
       }
       if (imageBlob) {
-        await uploadToStorage("images", user.uid, imageBlob);
-        const profilePic = await getProfilePicURL(user.uid);
+        await uploadToStorage("images", auth.currentUser?.uid, imageBlob);
+        const profilePic = await getProfilePicURL(auth.currentUser?.uid);
         setProfilePic(profilePic);
         await updateProfile(auth.currentUser, {
           photoURL: profilePic,
@@ -148,6 +147,7 @@ const Profile = () => {
               variant="outlined"
               onChange={(e) => handleChange(e, setEmail)}
               value={email}
+              required
             />
             <FormGroup>
               <FormControlLabel

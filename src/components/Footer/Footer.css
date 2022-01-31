@@ -8,7 +8,7 @@
 }
 .footer .container {
   padding: 2rem 0;
-  width: 60%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +21,7 @@
 }
 .footer .container .useful-links .link {
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 .footer .container .useful-links .link a {
   color: #ffffff;
@@ -57,6 +58,13 @@
 }
 .footer .container__bottom h3 {
   font-weight: 500;
+}
+.footer .container__bottom .copyright {
+  text-align: center;
+  white-space: nowrap;
+}
+.footer .container__bottom .copyright span {
+  display: inline-block;
 }
 
 @media (max-width: 900px) {

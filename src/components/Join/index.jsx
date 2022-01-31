@@ -23,7 +23,7 @@ const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState(["customer"]);
-  const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [newGoogleUser, setNewGoogleUser] = useState(false);
@@ -38,8 +38,8 @@ const Join = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handledisplayNameChange = (e) => {
+    setDisplayName(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -55,7 +55,7 @@ const Join = () => {
       } else {
         console.log("normal signup");
         const credential = await signup(email, password);
-        await updateProfile(auth.currentUser, { displayName: username });
+        await updateProfile(auth.currentUser, { displayName: displayName });
       }
 
       const newUser = createUser(auth.currentUser, type);
@@ -85,11 +85,11 @@ const Join = () => {
           {!newGoogleUser && (
             <div className="form-join__control">
               <input
-                onChange={handleUsernameChange}
-                value={username}
+                onChange={handledisplayNameChange}
+                value={displayName}
                 className="form-join__input"
                 type="text"
-                placeholder="Username"
+                placeholder="displayName"
               />
               <input
                 onChange={handleEmailChange}

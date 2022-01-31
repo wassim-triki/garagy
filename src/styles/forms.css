@@ -148,6 +148,7 @@
   font-weight: 700;
   font-size: 1rem;
   transition: none;
+  white-space: nowrap;
 }
 .container.join .form-join .question a:hover, .container.join .form-join .question a:focus,
 .container.join .form-login .question a:hover,
