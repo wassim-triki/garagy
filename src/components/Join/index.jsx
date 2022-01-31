@@ -60,7 +60,6 @@ const Join = () => {
 
       const user = credential.user;
       const userData = await getUserData(user.uid);
-      console.log("google signin");
       if (!userData) {
         console.log("new google user");
         await updateProfile(user, {
