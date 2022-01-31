@@ -7,8 +7,8 @@ import { useUserAuth } from "../../context/UserContext";
 import { doc, getDoc } from "firebase/firestore";
 
 import GoogleButton from "react-google-button";
-import { signInWithPopup } from "firebase/auth";
-import { getUserData } from "../../helpers/user-data";
+import { signInWithPopup, updateProfile } from "firebase/auth";
+import { getUserData, setUserDoc } from "../../helpers/user-data";
 import random from "../../utils/random";
 import Alert from "../Alert";
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [alert, setAlert] = useState({ state: "", text: "", id: 0 });
   const navigate = useNavigate();
-  const { signin, setUserData, googleSignIn } = useUserAuth();
+  const { signin, setUserData, googleSignIn, createUser } = useUserAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -46,7 +46,21 @@ const Login = () => {
     try {
       setLoading(true);
       setError(null);
-      await googleSignIn();
+      const credential = await googleSignIn();
+      const user = credential.user;
+      const userData = await getUserData(user.uid);
+      if (userData) {
+        console.log("google signin");
+        setUserData(userData);
+      } else {
+        console.log("new google user");
+        await updateProfile(user, {
+          photoURL: user.photoURL.replace("s96-c", "s400-c"),
+        });
+        const newUser = createUser(user, ["customer"]);
+        await setUserDoc(user.uid, newUser);
+      }
+      navigate("/profile");
     } catch (err) {
       setError(err.message);
       setAlert({ state: "danger", text: err.message, id: random() });

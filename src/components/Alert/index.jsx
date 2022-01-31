@@ -6,9 +6,17 @@ const Alert = ({ variant = "success", text, id }) => {
   const handleCloseAlert = () => {
     setVisible(false);
   };
+
   useEffect(() => {
     setVisible(text.length > 0);
   }, [id]);
+  useEffect(() => {
+    setTimeout(() => {
+      if (visible) {
+        setVisible(false);
+      }
+    }, 4000);
+  });
   return (
     <div className={`alert ${variant} ${visible ? "visible" : ""}`}>
       <p className="alert__text">{text}</p>
