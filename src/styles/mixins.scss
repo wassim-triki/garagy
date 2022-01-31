@@ -21,3 +21,10 @@
     box-shadow: 0px 1px 4px 0px rgba(156, 156, 156, 1);
   }
 }
+
+@mixin alert($color, $bgColor) {
+  border: 2px solid $color;
+  color: $color;
+  font-weight: 600;
+  background-color: $bgColor;
+}

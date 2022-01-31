@@ -9,11 +9,14 @@ import { doc, getDoc } from "firebase/firestore";
 import GoogleButton from "react-google-button";
 import { signInWithPopup } from "firebase/auth";
 import { getUserData } from "../../helpers/user-data";
+import random from "../../utils/random";
+import Alert from "../Alert";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [alert, setAlert] = useState({ state: "", text: "", id: 0 });
   const navigate = useNavigate();
   const { signin, setUserData, googleSignIn } = useUserAuth();
 
@@ -27,13 +30,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setError("");
+      setError(null);
       setLoading(true);
       const credential = await signin(email, password);
       const userData = await getUserData(credential.user.uid);
       setUserData(userData);
     } catch (err) {
       setError(err.message);
+      setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);
     }
@@ -41,10 +45,11 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     try {
       setLoading(true);
-      setError("");
+      setError(null);
       await googleSignIn();
     } catch (err) {
       setError(err.message);
+      setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);
     }
@@ -52,6 +57,7 @@ const Login = () => {
 
   return (
     <section className="section login">
+      <Alert variant={alert.state} text={alert.text} id={alert.id} />
       <div className="container login">
         <form onSubmit={handleSubmit} className="form-login">
           <h1>Login</h1>

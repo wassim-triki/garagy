@@ -18,7 +18,8 @@ import {
   handleTypeChange,
   typeOptionsStyles,
 } from "../../helpers/user-type-options";
-
+import Alert from "../Alert";
+import random from "../../utils/random";
 const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,6 +28,7 @@ const Join = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [newGoogleUser, setNewGoogleUser] = useState(false);
+  const [alert, setAlert] = useState({ state: "", text: "", id: 0 });
   const navigate = useNavigate();
 
   const { setUser, signup, createUser, googleSignIn, setUserData } =
@@ -52,8 +54,10 @@ const Join = () => {
     try {
       setLoading(true);
       setError(null);
-      handleTypeOptionsError();
+      // handleTypeOptionsError();
+
       const credential = await googleSignIn();
+
       const user = credential.user;
       const userData = await getUserData(user.uid);
       console.log("google signin");
@@ -63,13 +67,13 @@ const Join = () => {
           photoURL: user.photoURL.replace("s96-c", "s400-c"),
         });
         setNewGoogleUser(true);
-        const newUser = createUser(user, type);
+        const newUser = createUser(user, type.length > 0 ? type : ["customer"]);
         await setUserDoc(user.uid, newUser);
       }
       navigate("/profile");
     } catch (err) {
       setError(err.message);
-      alert(error);
+      setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);
     }
@@ -79,6 +83,7 @@ const Join = () => {
     e.preventDefault();
     try {
       setLoading(true);
+      setError(null);
       handleTypeOptionsError();
       console.log("normal signup");
       const credential = await signup(email, password);
@@ -91,6 +96,7 @@ const Join = () => {
       navigate("/profile");
     } catch (err) {
       setError(err.message);
+      setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);
     }
@@ -108,10 +114,11 @@ const Join = () => {
 
   return (
     <section className="section join">
+      <Alert variant={alert.state} text={alert.text} id={alert.id} />
       <div className="container join">
         <form onSubmit={handleSubmit} className="form-join">
           <h1>Join</h1>
-          {error && <p className="alert">{error}</p>}
+
           <div className="form-join__control">
             <input
               onChange={handledisplayNameChange}
@@ -119,6 +126,7 @@ const Join = () => {
               className="form-join__input"
               type="text"
               placeholder="displayName"
+              required
             />
             <input
               onChange={handleEmailChange}
@@ -126,6 +134,7 @@ const Join = () => {
               className="form-join__input"
               type="email"
               placeholder="Email Address"
+              required
             />
             <input
               onChange={handlePasswordChange}
@@ -133,6 +142,7 @@ const Join = () => {
               className="form-join__input"
               type="password"
               placeholder="Password"
+              required
             />
           </div>
 
