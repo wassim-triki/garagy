@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/forms.css";
 import { auth, db, provider } from "../../firebase-config";
 
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserContext";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -80,6 +80,9 @@ const Login = () => {
           >
             Login
           </button>
+          <Link className="forgot-password" to={"/password-reset"}>
+            Forgot your password?
+          </Link>
           <span className="or">OR</span>
           <GoogleButton
             className="google-btn"

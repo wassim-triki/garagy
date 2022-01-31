@@ -20,6 +20,8 @@ import ProtectedRouteNotAuth from "./components/ProtectedRouteNotAuth";
 import ProtectedRouteAuth from "./components/ProtectedRouteAuth";
 import { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
+import PasswordReset from "./components/PasswordReset";
+import NotFound from "./components/NotFound";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -70,13 +72,16 @@ function App() {
                   <Route path="/customers" element={<Customers />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/become-a-seller" element={<BecomeASeller />} />
+
                   <Route element={<ProtectedRouteAuth />}>
+                    <Route path="/password-reset" element={<PasswordReset />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/join" element={<Join />} />
                   </Route>
                   <Route element={<ProtectedRouteNotAuth />}>
                     <Route path="/profile" element={<Profile />} />
                   </Route>
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />
               </NavbarProvider>
