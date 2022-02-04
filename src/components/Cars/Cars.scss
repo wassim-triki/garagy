@@ -1,0 +1,32 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+.cars {
+  & .container {
+    border: 1px solid green;
+    width: 100%;
+    margin-top: 8rem;
+    height: 90%;
+    .alert {
+      width: 100%;
+      @include alert($warning, $warningbg);
+      display: none;
+      &.visible {
+        display: inline-flex;
+      }
+    }
+  }
+}
+.formGroup-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  & > * {
+    flex: 1;
+  }
+}
+
+@media (max-width: $tablet-max-breakpoint) {
+  .formGroup-container {
+    flex-direction: column;
+  }
+}

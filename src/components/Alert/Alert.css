@@ -2,27 +2,18 @@
   width: 350px;
   border-radius: 8px;
   padding: 0.8rem;
-  position: absolute;
   display: flex;
   justify-content: space-between;
-  bottom: -110%;
   transition: all 0.5s cubic-bezier(0.29, 1, 0.77, 1.05);
   z-index: 100;
-  border: 2px solid transparent;
-  color: transparent;
-  font-weight: 600;
-  background-color: transparent;
 }
-.alert.visible {
-  bottom: 10px;
-}
-.alert.visible.danger {
+.alert.danger {
   border: 2px solid red;
   color: red;
   font-weight: 600;
   background-color: #ffa3a3;
 }
-.alert.visible.success {
+.alert.success {
   border: 2px solid #00e759;
   color: #00e759;
   font-weight: 600;

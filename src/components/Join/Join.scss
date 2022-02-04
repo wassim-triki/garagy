@@ -1,0 +1,21 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+.join {
+  & .container {
+    & .alert {
+      position: absolute;
+      bottom: -110%;
+
+      @include alert(transparent, transparent);
+      &.visible {
+        bottom: 10px;
+        &.danger {
+          @include alert($danger, $dangerbg);
+        }
+        &.success {
+          @include alert($success, $successbg);
+        }
+      }
+    }
+  }
+}

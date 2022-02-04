@@ -5,6 +5,21 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    & .alert {
+      position: absolute;
+      bottom: -110%;
+
+      @include alert(transparent, transparent);
+      &.visible {
+        bottom: 10px;
+        &.danger {
+          @include alert($danger, $dangerbg);
+        }
+        &.success {
+          @include alert($success, $successbg);
+        }
+      }
+    }
     & .form-profile {
       display: flex;
       flex-direction: column;

@@ -1,21 +1,27 @@
 import "./Alert.css";
 import { RiCloseLine } from "react-icons/ri";
 import { useState, useEffect } from "react";
-const Alert = ({ variant = "success", text, id }) => {
-  const [visible, setVisible] = useState(false);
+const Alert = ({
+  variant = "success",
+  text,
+  id = 0,
+  defaultVisible = false,
+}) => {
+  const [visible, setVisible] = useState(defaultVisible);
   const handleCloseAlert = () => {
     setVisible(false);
   };
 
   useEffect(() => {
     setVisible(text.length > 0);
+    console.log(text);
   }, [id]);
   useEffect(() => {
-    setTimeout(() => {
-      if (visible) {
-        setVisible(false);
-      }
-    }, 4000);
+    // setTimeout(() => {
+    //   if (visible) {
+    //     setVisible(false);
+    //   }
+    // }, 4000);
   });
   return (
     <div className={`alert ${variant} ${visible ? "visible" : ""}`}>

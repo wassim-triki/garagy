@@ -1,0 +1,2 @@
+.cars .container{border:1px solid green;width:100%;margin-top:8rem;height:90%}.cars .container .alert{width:100%;border:2px solid #ffc402;color:#ffc402;font-weight:600;background-color:#fff4ce;display:none}.cars .container .alert.visible{display:inline-flex}.formGroup-container{display:flex;justify-content:space-between;gap:2rem}.formGroup-container>*{flex:1}@media(max-width: 900px){.formGroup-container{flex-direction:column}}
+/*# sourceMappingURL=Cars.min.css.map */

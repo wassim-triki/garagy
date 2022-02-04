@@ -4,7 +4,7 @@ import { auth, db } from "../../firebase-config";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserContext";
-
+import "./Join.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -113,8 +113,8 @@ const Join = () => {
 
   return (
     <section className="section join">
-      <Alert variant={alert.state} text={alert.text} id={alert.id} />
       <div className="container join">
+        <Alert variant={alert.state} text={alert.text} id={alert.id} />
         <form onSubmit={handleSubmit} className="form-join">
           <h1>Join</h1>
 

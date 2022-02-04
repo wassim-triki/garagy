@@ -7,10 +7,13 @@
   align-items: center;
   flex-direction: column;
 }
+.container.join .form,
 .container.join .form-join,
 .container.join .form-login,
+.container.login .form,
 .container.login .form-join,
 .container.login .form-login,
+.container.password-reset .form,
 .container.password-reset .form-join,
 .container.password-reset .form-login {
   background: #f3f3f3;
@@ -23,27 +26,36 @@
   gap: 0.5rem;
   width: min(90%, 400px);
 }
+.container.join .form .google-btn,
 .container.join .form-join .google-btn,
 .container.join .form-login .google-btn,
+.container.login .form .google-btn,
 .container.login .form-join .google-btn,
 .container.login .form-login .google-btn,
+.container.password-reset .form .google-btn,
 .container.password-reset .form-join .google-btn,
 .container.password-reset .form-login .google-btn {
   width: 100% !important;
   position: relative;
 }
+.container.join .form .google-btn:disabled,
 .container.join .form-join .google-btn:disabled,
 .container.join .form-login .google-btn:disabled,
+.container.login .form .google-btn:disabled,
 .container.login .form-join .google-btn:disabled,
 .container.login .form-login .google-btn:disabled,
+.container.password-reset .form .google-btn:disabled,
 .container.password-reset .form-join .google-btn:disabled,
 .container.password-reset .form-login .google-btn:disabled {
   background: rgba(55, 55, 55, 0.3) !important;
 }
+.container.join .form .or,
 .container.join .form-join .or,
 .container.join .form-login .or,
+.container.login .form .or,
 .container.login .form-join .or,
 .container.login .form-login .or,
+.container.password-reset .form .or,
 .container.password-reset .form-join .or,
 .container.password-reset .form-login .or {
   text-align: center;
@@ -51,13 +63,19 @@
   color: #636363;
   font-weight: 500;
 }
-.container.join .form-join .or::after, .container.join .form-join .or:before,
+.container.join .form .or::after, .container.join .form .or:before,
+.container.join .form-join .or::after,
+.container.join .form-join .or:before,
 .container.join .form-login .or::after,
 .container.join .form-login .or:before,
+.container.login .form .or::after,
+.container.login .form .or:before,
 .container.login .form-join .or::after,
 .container.login .form-join .or:before,
 .container.login .form-login .or::after,
 .container.login .form-login .or:before,
+.container.password-reset .form .or::after,
+.container.password-reset .form .or:before,
 .container.password-reset .form-join .or::after,
 .container.password-reset .form-join .or:before,
 .container.password-reset .form-login .or::after,
@@ -69,26 +87,35 @@
   background: #636363;
   top: 50%;
 }
+.container.join .form .or::after,
 .container.join .form-join .or::after,
 .container.join .form-login .or::after,
+.container.login .form .or::after,
 .container.login .form-join .or::after,
 .container.login .form-login .or::after,
+.container.password-reset .form .or::after,
 .container.password-reset .form-join .or::after,
 .container.password-reset .form-login .or::after {
   right: 0;
 }
+.container.join .form .or::before,
 .container.join .form-join .or::before,
 .container.join .form-login .or::before,
+.container.login .form .or::before,
 .container.login .form-join .or::before,
 .container.login .form-login .or::before,
+.container.password-reset .form .or::before,
 .container.password-reset .form-join .or::before,
 .container.password-reset .form-login .or::before {
   left: 0;
 }
+.container.join .form h1,
 .container.join .form-join h1,
 .container.join .form-login h1,
+.container.login .form h1,
 .container.login .form-join h1,
 .container.login .form-login h1,
+.container.password-reset .form h1,
 .container.password-reset .form-join h1,
 .container.password-reset .form-login h1 {
   font-size: 2.8rem;
@@ -96,10 +123,13 @@
   text-align: center;
   white-space: nowrap;
 }
+.container.join .form .alert,
 .container.join .form-join .alert,
 .container.join .form-login .alert,
+.container.login .form .alert,
 .container.login .form-join .alert,
 .container.login .form-login .alert,
+.container.password-reset .form .alert,
 .container.password-reset .form-join .alert,
 .container.password-reset .form-login .alert {
   padding: 1rem;
@@ -109,20 +139,26 @@
   font-weight: 600;
   color: red;
 }
+.container.join .form__control,
 .container.join .form-join__control,
 .container.join .form-login__control,
+.container.login .form__control,
 .container.login .form-join__control,
 .container.login .form-login__control,
+.container.password-reset .form__control,
 .container.password-reset .form-join__control,
 .container.password-reset .form-login__control {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
+.container.join .form__input,
 .container.join .form-join__input,
 .container.join .form-login__input,
+.container.login .form__input,
 .container.login .form-join__input,
 .container.login .form-login__input,
+.container.password-reset .form__input,
 .container.password-reset .form-join__input,
 .container.password-reset .form-login__input {
   padding: 0.8rem;
@@ -134,27 +170,36 @@
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
 }
+.container.join .form__input:focus,
 .container.join .form-join__input:focus,
 .container.join .form-login__input:focus,
+.container.login .form__input:focus,
 .container.login .form-join__input:focus,
 .container.login .form-login__input:focus,
+.container.password-reset .form__input:focus,
 .container.password-reset .form-join__input:focus,
 .container.password-reset .form-login__input:focus {
   box-shadow: 0 0 5px 2px #ffe2b8;
 }
+.container.join .form .types span,
 .container.join .form-join .types span,
 .container.join .form-login .types span,
+.container.login .form .types span,
 .container.login .form-join .types span,
 .container.login .form-login .types span,
+.container.password-reset .form .types span,
 .container.password-reset .form-join .types span,
 .container.password-reset .form-login .types span {
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
 }
+.container.join .form__submit,
 .container.join .form-join__submit,
 .container.join .form-login__submit,
+.container.login .form__submit,
 .container.login .form-join__submit,
 .container.login .form-login__submit,
+.container.password-reset .form__submit,
 .container.password-reset .form-join__submit,
 .container.password-reset .form-login__submit {
   padding: 0.6rem 1rem;
@@ -174,31 +219,43 @@
   font-weight: 500;
   letter-spacing: 0.1rem;
 }
-.container.join .form-join__submit:hover, .container.join .form-join__submit:focus,
+.container.join .form__submit:hover, .container.join .form__submit:focus,
+.container.join .form-join__submit:hover,
+.container.join .form-join__submit:focus,
 .container.join .form-login__submit:hover,
 .container.join .form-login__submit:focus,
+.container.login .form__submit:hover,
+.container.login .form__submit:focus,
 .container.login .form-join__submit:hover,
 .container.login .form-join__submit:focus,
 .container.login .form-login__submit:hover,
 .container.login .form-login__submit:focus,
+.container.password-reset .form__submit:hover,
+.container.password-reset .form__submit:focus,
 .container.password-reset .form-join__submit:hover,
 .container.password-reset .form-join__submit:focus,
 .container.password-reset .form-login__submit:hover,
 .container.password-reset .form-login__submit:focus {
   box-shadow: 0px 1px 4px 0px #9c9c9c;
 }
+.container.join .form__submit:disabled,
 .container.join .form-join__submit:disabled,
 .container.join .form-login__submit:disabled,
+.container.login .form__submit:disabled,
 .container.login .form-join__submit:disabled,
 .container.login .form-login__submit:disabled,
+.container.password-reset .form__submit:disabled,
 .container.password-reset .form-join__submit:disabled,
 .container.password-reset .form-login__submit:disabled {
   background: rgba(55, 55, 55, 0.3);
 }
+.container.join .form .forgot-password,
 .container.join .form-join .forgot-password,
 .container.join .form-login .forgot-password,
+.container.login .form .forgot-password,
 .container.login .form-join .forgot-password,
 .container.login .form-login .forgot-password,
+.container.password-reset .form .forgot-password,
 .container.password-reset .form-join .forgot-password,
 .container.password-reset .form-login .forgot-password {
   font-size: 0.8rem;
@@ -206,14 +263,20 @@
   font-weight: 600;
   color: #636363;
 }
+.container.join .form .forgot-password:hover,
+.container.join .form .forgot-password :focus,
 .container.join .form-join .forgot-password:hover,
 .container.join .form-join .forgot-password :focus,
 .container.join .form-login .forgot-password:hover,
 .container.join .form-login .forgot-password :focus,
+.container.login .form .forgot-password:hover,
+.container.login .form .forgot-password :focus,
 .container.login .form-join .forgot-password:hover,
 .container.login .form-join .forgot-password :focus,
 .container.login .form-login .forgot-password:hover,
 .container.login .form-login .forgot-password :focus,
+.container.password-reset .form .forgot-password:hover,
+.container.password-reset .form .forgot-password :focus,
 .container.password-reset .form-join .forgot-password:hover,
 .container.password-reset .form-join .forgot-password :focus,
 .container.password-reset .form-login .forgot-password:hover,
@@ -221,18 +284,24 @@
   color: #373737;
   text-decoration: underline;
 }
+.container.join .form .question,
 .container.join .form-join .question,
 .container.join .form-login .question,
+.container.login .form .question,
 .container.login .form-join .question,
 .container.login .form-login .question,
+.container.password-reset .form .question,
 .container.password-reset .form-join .question,
 .container.password-reset .form-login .question {
   text-align: center;
 }
+.container.join .form .question a,
 .container.join .form-join .question a,
 .container.join .form-login .question a,
+.container.login .form .question a,
 .container.login .form-join .question a,
 .container.login .form-login .question a,
+.container.password-reset .form .question a,
 .container.password-reset .form-join .question a,
 .container.password-reset .form-login .question a {
   color: #373737;
@@ -241,13 +310,19 @@
   transition: none;
   white-space: nowrap;
 }
-.container.join .form-join .question a:hover, .container.join .form-join .question a:focus,
+.container.join .form .question a:hover, .container.join .form .question a:focus,
+.container.join .form-join .question a:hover,
+.container.join .form-join .question a:focus,
 .container.join .form-login .question a:hover,
 .container.join .form-login .question a:focus,
+.container.login .form .question a:hover,
+.container.login .form .question a:focus,
 .container.login .form-join .question a:hover,
 .container.login .form-join .question a:focus,
 .container.login .form-login .question a:hover,
 .container.login .form-login .question a:focus,
+.container.password-reset .form .question a:hover,
+.container.password-reset .form .question a:focus,
 .container.password-reset .form-join .question a:hover,
 .container.password-reset .form-join .question a:focus,
 .container.password-reset .form-login .question a:hover,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/forms.css";
 import { auth, db, provider } from "../../firebase-config";
-
+import "./Login.css";
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserContext";
 import { doc, getDoc } from "firebase/firestore";
@@ -71,11 +71,11 @@ const Login = () => {
 
   return (
     <section className="section login">
-      <Alert variant={alert.state} text={alert.text} id={alert.id} />
       <div className="container login">
+        <Alert variant={alert.state} text={alert.text} id={alert.id} />
         <form onSubmit={handleSubmit} className="form-login">
           <h1>Login</h1>
-          {error && <p className="alert">{error}</p>}
+
           <div className="form-login__control">
             <input
               onChange={handleEmailChange}
