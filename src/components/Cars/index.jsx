@@ -10,6 +10,8 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import Stack from "@mui/material/Stack";
+
+import { IoCloseOutline } from "react-icons/io5";
 Modal.setAppElement("#root");
 
 const modalStyles = {
@@ -52,6 +54,7 @@ const Cars = () => {
         <h1>Cars</h1>
 
         <Modal isOpen={modalIsOpen} style={modalStyles}>
+          <IoCloseOutline className="closeModal" onClick={closeModal} />
           <form className="form form-publish">
             <Stack spacing={3}>
               <h2 style={{ textAlign: "center" }}>Publish your car</h2>
