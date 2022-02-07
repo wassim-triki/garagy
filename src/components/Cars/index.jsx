@@ -12,6 +12,7 @@ import DatePicker from "@mui/lab/DatePicker";
 import Stack from "@mui/material/Stack";
 
 import { IoCloseOutline } from "react-icons/io5";
+import { BsCloudUpload } from "react-icons/bs";
 Modal.setAppElement("#root");
 
 const modalStyles = {
@@ -34,11 +35,20 @@ const Cars = () => {
     new Date(new Date().setDate(dateFrom.getDate() + 1))
   );
   const [year, setYear] = useState(1970);
+  const [carPicBlob, setCarPicBlob] = useState(null);
   const handleDateFromChange = (date) => {
     setDateFrom(date);
     setDateTo(new Date(new Date().setDate(date.getDate() + 1)));
   };
-
+  const handleCarPicSelect = (e) => {
+    const blob = e.target.files[0];
+    if (blob) {
+      setCarPicBlob(blob);
+      let fileReader = new FileReader();
+      fileReader.readAsDataURL(blob);
+      fileReader.onload = (fileReaderEvent) => {};
+    }
+  };
   const handleDateToChange = (date) => {
     setDateTo(date);
   };
@@ -46,8 +56,9 @@ const Cars = () => {
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
   useEffect(() => {
-    console.log(`car will be rented from ${dateFrom} to ${dateTo}`);
-  });
+    // console.log(`car will be rented from ${dateFrom} to ${dateTo}`);
+    console.log(carPicBlob);
+  }, [carPicBlob]);
   return (
     <section className="section cars">
       <div className="container">
@@ -89,6 +100,7 @@ const Cars = () => {
                     views={["day"]}
                     label="From"
                     value={dateFrom}
+                    minDate={new Date()}
                     onChange={handleDateFromChange}
                     renderInput={(params) => (
                       <TextField {...params} helperText={null} />
@@ -98,12 +110,32 @@ const Cars = () => {
                     views={["day"]}
                     label="To"
                     value={dateTo}
+                    minDate={
+                      new Date(new Date().setDate(dateFrom.getDate() + 1))
+                    }
                     onChange={handleDateToChange}
                     renderInput={(params) => (
                       <TextField {...params} helperText={null} />
                     )}
                   />
                 </LocalizationProvider>
+              </div>
+              <div className="car-pic-container">
+                <label htmlFor="car-pic-input">
+                  <BsCloudUpload />
+                  <p>
+                    {carPicBlob
+                      ? carPicBlob.name
+                      : "Upload a picture of your car"}{" "}
+                  </p>
+                </label>
+                <input
+                  type="file"
+                  className="car-pic-input"
+                  id="car-pic-input"
+                  accept="image/*"
+                  onChange={handleCarPicSelect}
+                />
               </div>
             </Stack>
           </form>

@@ -16,6 +16,41 @@
   display: inline-flex;
 }
 
+.car-pic-container {
+  border: 2px dashed rgba(55, 55, 55, 0.3);
+  border-radius: 8px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.car-pic-container .car-pic-input {
+  position: absolute;
+  opacity: 0;
+  top: -99999%;
+  left: -99999%;
+}
+.car-pic-container label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.car-pic-container label svg {
+  font-size: 3rem;
+}
+.car-pic-container label svg,
+.car-pic-container label p {
+  opacity: 0.5;
+}
+.car-pic-container label p {
+  font-weight: 500;
+}
+
 .closeModal {
   cursor: pointer;
   font-size: 1.5rem;
