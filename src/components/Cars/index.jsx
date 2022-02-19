@@ -13,6 +13,11 @@ import Stack from "@mui/material/Stack";
 
 import { IoCloseOutline } from "react-icons/io5";
 import { BsCloudUpload } from "react-icons/bs";
+import { getYear } from "date-fns";
+import uploadToStorage from "../../helpers/uploadToStorage";
+import nextId from "react-id-generator";
+import { auth } from "../../firebase-config";
+
 Modal.setAppElement("#root");
 
 const modalStyles = {
@@ -27,6 +32,10 @@ const modalStyles = {
 };
 
 const Cars = () => {
+  let randId = nextId();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { user } = useUserAuth();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [model, setModel] = useState("");
@@ -46,7 +55,6 @@ const Cars = () => {
       setCarPicBlob(blob);
       let fileReader = new FileReader();
       fileReader.readAsDataURL(blob);
-      fileReader.onload = (fileReaderEvent) => {};
     }
   };
   const handleDateToChange = (date) => {
@@ -55,10 +63,34 @@ const Cars = () => {
   const handleModelChange = (e) => setModel(e.target.value);
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
-  useEffect(() => {
-    // console.log(`car will be rented from ${dateFrom} to ${dateTo}`);
-    console.log(carPicBlob);
-  }, [carPicBlob]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setError(null);
+      if (carPicBlob) {
+        console.log(user);
+        await uploadToStorage(
+          "images/cars",
+          `${auth.currentUser.uid}${randId}`,
+          carPicBlob
+        );
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+    const proposal = {
+      model,
+      year: year.getFullYear(),
+      dateFrom,
+      dateTo,
+      carPicBlob,
+    };
+    console.log(proposal);
+  };
   return (
     <section className="section cars">
       <div className="container">
@@ -66,7 +98,7 @@ const Cars = () => {
 
         <Modal isOpen={modalIsOpen} style={modalStyles}>
           <IoCloseOutline className="closeModal" onClick={closeModal} />
-          <form className="form form-publish">
+          <form className="form form-publish" onSubmit={handleSubmit}>
             <Stack spacing={3}>
               <h2 style={{ textAlign: "center" }}>Publish your car</h2>
               <h3>Car Information</h3>
@@ -138,11 +170,18 @@ const Cars = () => {
                 />
               </div>
             </Stack>
+            <div className="publish-container">
+              <button className="publish" type="submit">
+                Publish
+              </button>
+            </div>
           </form>
         </Modal>
-        <button className="publishCar" type="button" onClick={openModal}>
-          Publish a car
-        </button>
+        {user && (
+          <button className="publishCar" type="button" onClick={openModal}>
+            Publish a car
+          </button>
+        )}
       </div>
     </section>
   );

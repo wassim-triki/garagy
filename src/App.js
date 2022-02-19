@@ -22,6 +22,7 @@ import { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import PasswordReset from "./components/PasswordReset";
 import NotFound from "./components/NotFound";
+import { auth } from "./firebase-config";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -46,6 +47,7 @@ function App() {
       setLoading(false);
     }, 2000);
   }, []);
+
   return (
     <div className="App">
       {loading ? (

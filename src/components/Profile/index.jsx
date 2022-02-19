@@ -42,7 +42,7 @@ const Profile = () => {
   const [alert, setAlert] = useState({ state: "", text: "", id: 0 });
   const imageRef = useRef();
 
-  const handleImageSelect = async (e) => {
+  const handleImageSelect = (e) => {
     const blob = e.target.files[0];
     if (blob) {
       setImageBlob(blob);
@@ -63,7 +63,7 @@ const Profile = () => {
 
   useEffect(async () => {
     const userData = await getUserData(auth.currentUser?.uid);
-    setProfilePic(userData?.profilePic);
+    setProfilePic(userData?.profilePic || auth.currentUser?.photoURL);
     setDisplayName(userData?.displayName);
     setEmail(auth.currentUser?.email);
     setType(userData?.type);
@@ -80,7 +80,8 @@ const Profile = () => {
         throw new Error("You must check atleast one option !");
       }
       if (imageBlob) {
-        await uploadToStorage("images", auth.currentUser?.uid, imageBlob);
+        console.log(imageBlob);
+        await uploadToStorage("images/users", auth.currentUser?.uid, imageBlob);
         const profilePic = await getProfilePicURL(auth.currentUser?.uid);
         setProfilePic(profilePic);
         await updateProfile(auth.currentUser, {

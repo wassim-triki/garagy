@@ -100,16 +100,6 @@ const Join = () => {
       setLoading(false);
     }
   };
-  // useEffect(async () => {
-  //   if (auth.currentUser) {
-  //     let data = await getUserData(auth.currentUser?.uid);
-  //     if (!data) {
-  //       data = null;
-  //     }
-  //     setNewGoogleUser(data == null);
-  //     console.log(newGoogleUser, data);
-  //   }
-  // }, [auth.currentUser]);
 
   return (
     <section className="section join">

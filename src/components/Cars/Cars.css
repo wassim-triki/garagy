@@ -56,6 +56,29 @@
   font-size: 1.5rem;
 }
 
+.publish-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.publish-container .publish {
+  margin-top: 1rem;
+  width: 100%;
+  background: #f4b251;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-family: "Quicksand", sans-serif;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+.publish-container .publish:hover, .publish-container .publish:focus {
+  box-shadow: 0px 1px 4px 0px #9c9c9c;
+}
+
 .formGroup-container {
   display: flex;
   justify-content: space-between;
@@ -68,6 +91,10 @@
 @media (max-width: 900px) {
   .formGroup-container {
     flex-direction: column;
+  }
+
+  .publish {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=Cars.css.map */

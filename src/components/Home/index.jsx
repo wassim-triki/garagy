@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as FlexibleRentalIcon } from "../../assets/images/flexible.svg";
 import { ReactComponent as FeesIcon } from "../../assets/images/fees.svg";
 import { ReactComponent as DeliveryIcon } from "../../assets/images/delivery.svg";
 import ContentBox from "../ContentBox";
+import { auth } from "../../firebase-config";
 const Home = () => {
+  useEffect(() => {
+    console.log(auth.currentUser);
+  });
   return (
     <>
       <section className="section hero">

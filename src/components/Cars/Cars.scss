@@ -54,6 +54,22 @@
   cursor: pointer;
   font-size: 1.5rem;
 }
+.publish-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  & .publish {
+    margin-top: 1rem;
+    width: 100%;
+    // font-family: $mainFont;
+    // font-weight: 600;
+    // font-size: 1.1rem;
+    // padding: 1rem;
+    @include buttonPrimary;
+  }
+}
+
 .formGroup-container {
   display: flex;
   justify-content: space-between;
@@ -66,5 +82,8 @@
 @media (max-width: $tablet-max-breakpoint) {
   .formGroup-container {
     flex-direction: column;
+  }
+  .publish {
+    width: 100%;
   }
 }

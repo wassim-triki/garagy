@@ -11,7 +11,7 @@ export const getProfilePicURL = async (uid) => {
   try {
     const profilePicRef = ref(
       storage,
-      `gs://garagy-87d13.appspot.com/images/${uid}`
+      `gs://garagy-87d13.appspot.com/images/users/${uid}`
     );
     return await getDownloadURL(profilePicRef);
   } catch (err) {
