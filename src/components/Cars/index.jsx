@@ -16,7 +16,9 @@ import { BsCloudUpload } from "react-icons/bs";
 import { getYear } from "date-fns";
 import uploadToStorage from "../../helpers/uploadToStorage";
 import nextId from "react-id-generator";
-import { auth } from "../../firebase-config";
+import { auth, db, storage } from "../../firebase-config";
+import { doc, setDoc } from "firebase/firestore";
+import { getDownloadURL, ref } from "firebase/storage";
 
 Modal.setAppElement("#root");
 
@@ -69,27 +71,31 @@ const Cars = () => {
     try {
       setLoading(true);
       setError(null);
+      const proposalId = `${auth.currentUser.uid}${randId}`;
       if (carPicBlob) {
-        console.log(user);
-        await uploadToStorage(
-          "images/cars",
-          `${auth.currentUser.uid}${randId}`,
-          carPicBlob
-        );
+        await uploadToStorage("images/cars", proposalId, carPicBlob);
+      } else {
+        throw new Error("Select a car picture");
       }
+      const carPic = await getDownloadURL(
+        ref(storage, `gs://garagy-87d13.appspot.com/images/cars/${proposalId}`)
+      );
+      const proposal = {
+        user: auth.currentUser.uid,
+        model,
+        year: typeof year == "object" ? year.getFullYear() : year,
+        dateFrom,
+        dateTo,
+        carPic,
+      };
+      console.log(proposal);
+      const carDoc = doc(db, "cars", proposalId);
+      await setDoc(carDoc, proposal);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
-    const proposal = {
-      model,
-      year: year.getFullYear(),
-      dateFrom,
-      dateTo,
-      carPicBlob,
-    };
-    console.log(proposal);
   };
   return (
     <section className="section cars">
@@ -152,9 +158,13 @@ const Cars = () => {
                   />
                 </LocalizationProvider>
               </div>
+              {error && (
+                <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+              )}
               <div className="car-pic-container">
                 <label htmlFor="car-pic-input">
                   <BsCloudUpload />
+
                   <p>
                     {carPicBlob
                       ? carPicBlob.name
@@ -171,7 +181,7 @@ const Cars = () => {
               </div>
             </Stack>
             <div className="publish-container">
-              <button className="publish" type="submit">
+              <button className="publish" type="submit" disabled={loading}>
                 Publish
               </button>
             </div>

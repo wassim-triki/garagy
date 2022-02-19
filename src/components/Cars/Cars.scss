@@ -2,7 +2,6 @@
 @import "../../styles/variables.scss";
 .cars {
   & .container {
-    border: 1px solid green;
     width: 100%;
     margin-top: 8rem;
     height: 90%;
@@ -67,6 +66,9 @@
     // font-size: 1.1rem;
     // padding: 1rem;
     @include buttonPrimary;
+    &:disabled {
+      background: $grey;
+    }
   }
 }
 
