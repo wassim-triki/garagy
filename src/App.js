@@ -23,6 +23,8 @@ import { Oval } from "react-loader-spinner";
 import PasswordReset from "./components/PasswordReset";
 import NotFound from "./components/NotFound";
 import { auth } from "./firebase-config";
+import Proposal from "./components/Proposal";
+import { ProposalsProvider } from "./context/ProposalsContext";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -66,27 +68,37 @@ function App() {
           <Router>
             <ScrollTopOnRouteChange />
             <UserProvider>
-              <NavbarProvider>
-                <Navbar />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/cars" element={<Cars />} />
-                  <Route path="/customers" element={<Customers />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/become-a-seller" element={<BecomeASeller />} />
+              <ProposalsProvider>
+                <NavbarProvider>
+                  <Navbar />
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/cars" element={<Cars />} />
+                    <Route path="/cars/:id" element={<Proposal />} />
 
-                  <Route element={<ProtectedRouteAuth />}>
-                    <Route path="/password-reset" element={<PasswordReset />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/join" element={<Join />} />
-                  </Route>
-                  <Route element={<ProtectedRouteNotAuth />}>
-                    <Route path="/profile" element={<Profile />} />
-                  </Route>
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-                <Footer />
-              </NavbarProvider>
+                    <Route path="/customers" element={<Customers />} />
+                    <Route path="/about" element={<About />} />
+                    <Route
+                      path="/become-a-seller"
+                      element={<BecomeASeller />}
+                    />
+
+                    <Route element={<ProtectedRouteAuth />}>
+                      <Route
+                        path="/password-reset"
+                        element={<PasswordReset />}
+                      />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/join" element={<Join />} />
+                    </Route>
+                    <Route element={<ProtectedRouteNotAuth />}>
+                      <Route path="/profile" element={<Profile />} />
+                    </Route>
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                  <Footer />
+                </NavbarProvider>
+              </ProposalsProvider>
             </UserProvider>
           </Router>
         </>

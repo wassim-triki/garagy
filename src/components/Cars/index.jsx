@@ -1,7 +1,7 @@
 import Alert from "../Alert";
 import "./Cars.css";
 import { useUserAuth } from "../../context/UserContext";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../../styles/forms.css";
 import Modal from "react-modal";
 import { TextField } from "@mui/material";
@@ -21,6 +21,8 @@ import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import MenuItem from "@mui/material/MenuItem";
 import ProposalCard from "../ProposalCard";
+import { Outlet } from "react-router-dom";
+import ProposalsContext from "../../context/ProposalsContext";
 Modal.setAppElement("#root");
 const currencies = [
   {
@@ -93,6 +95,7 @@ const modalStyles = {
 
 const Cars = () => {
   let randId = nextId();
+  const { proposals, setProposals } = useContext(ProposalsContext);
   const [price, setPrice] = useState(0);
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
@@ -101,7 +104,7 @@ const Cars = () => {
   const handleCurrencyChange = (event) => {
     setCurrency(event.target.value);
   };
-  const [proposals, setProposals] = useState([]);
+  // const [proposals, setProposals] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { user } = useUserAuth();
