@@ -67,6 +67,8 @@ const Profile = () => {
     setDisplayName(auth.currentUser?.displayName);
     setProfilePic(auth.currentUser?.photoURL || null);
     setType(user.type);
+    setPhone(user.phone);
+    setBio(user.bio);
   };
   useEffect(() => console.log(phone));
 
