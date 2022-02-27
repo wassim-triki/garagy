@@ -23,6 +23,8 @@ import random from "../../utils/random";
 const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const handlePhoneChange = (e) => setPhone(e.target.value);
   const [type, setType] = useState(["customer"]);
   const [displayName, setDisplayName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -54,7 +56,7 @@ const Join = () => {
     try {
       setLoading(true);
       setError(null);
-      // handleTypeOptionsError();
+      handleTypeOptionsError();
 
       const credential = await googleSignIn();
 
@@ -66,7 +68,11 @@ const Join = () => {
           photoURL: user.photoURL.replace("s96-c", "s400-c"),
         });
         setNewGoogleUser(true);
-        const newUser = createUser(user, type.length > 0 ? type : ["customer"]);
+        const newUser = createUser(
+          user,
+          type.length > 0 ? type : ["customer"],
+          phone
+        );
         await setUserDoc(user.uid, newUser);
       }
       navigate("/profile");
@@ -88,10 +94,11 @@ const Join = () => {
       const credential = await signup(email, password);
       await updateProfile(auth.currentUser, { displayName: displayName });
 
-      const newUser = createUser(auth.currentUser, type);
+      const newUser = createUser(auth.currentUser, type, phone);
       setUserData(newUser);
+      console.log(newUser);
       await setUserDoc(auth.currentUser.uid, newUser);
-
+      console.log("doc set!");
       navigate("/profile");
     } catch (err) {
       setError(err.message);
@@ -131,6 +138,16 @@ const Join = () => {
               className="form-join__input"
               type="password"
               placeholder="Password"
+              required
+            />
+            <input
+              onChange={handlePhoneChange}
+              className="form-join__input"
+              type="text"
+              pattern="\d*"
+              maxLength={8}
+              placeholder="Phone N°"
+              value={phone}
               required
             />
           </div>

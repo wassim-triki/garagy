@@ -39,12 +39,14 @@ const UserProvider = ({ children }) => {
     // }
   };
 
-  const createUser = (currentUser, type) => {
+  const createUser = (currentUser, type, phone = "") => {
     return {
       displayName: currentUser?.displayName,
-      type: type,
+      type,
       creationDate: new Date().toLocaleString(),
       profilePic: currentUser?.photoURL,
+      email: currentUser.email,
+      phone,
     };
   };
   const signup = async (email, password) => {

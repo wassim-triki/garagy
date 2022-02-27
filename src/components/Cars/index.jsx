@@ -114,6 +114,10 @@ const Cars = () => {
   const [dateTo, setDateTo] = useState(
     new Date(new Date().setDate(dateFrom.getDate() + 1))
   );
+  const [discription, setDiscription] = useState("");
+  const handleDiscriptionChange = (e) => {
+    setDiscription(e.target.value);
+  };
   const [year, setYear] = useState(1970);
   const [carPicBlob, setCarPicBlob] = useState(null);
   const handleDateFromChange = (date) => {
@@ -163,6 +167,7 @@ const Cars = () => {
         carPic,
         price,
         currency,
+        discription,
       };
       const carDoc = doc(db, "cars", proposalId);
       await setDoc(carDoc, proposal);
@@ -283,6 +288,15 @@ const Cars = () => {
                   ))}
                 </TextField>
               </div>
+              <TextField
+                id="outlined-multiline-static"
+                label="Discription"
+                multiline
+                rows={4}
+                placeholder="Additional information"
+                value={discription}
+                onChange={handleDiscriptionChange}
+              />
               {error && (
                 <p style={{ color: "red", textAlign: "center" }}>{error}</p>
               )}
@@ -290,7 +304,11 @@ const Cars = () => {
                 <label htmlFor="car-pic-input">
                   <BsCloudUpload />
 
-                  <p>
+                  <p
+                    style={{
+                      padding: "0 1rem",
+                    }}
+                  >
                     {carPicBlob
                       ? carPicBlob.name
                       : "Upload a picture of your car"}{" "}

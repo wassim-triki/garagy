@@ -2,6 +2,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
 }
 .profile .container .alert {
   position: absolute;
@@ -29,7 +31,7 @@
 .profile .container .form-profile {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 0.5rem;
   align-items: center;
 }
 .profile .container .form-profile .profile-picture__container {
@@ -89,7 +91,7 @@
 .profile .container .form-profile .inputs {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 .profile .container .form-profile .form-btns {
   display: flex;

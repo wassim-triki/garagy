@@ -13,13 +13,16 @@ import {
   setUserDoc,
   uploadToStorage,
 } from "../../helpers/user-data";
+import PhoneInput from "react-phone-input-2";
+// import "react-phone-input-2/lib/style.css";
+import "react-phone-input-2/lib/material.css";
 import {
   Checkbox,
   FormControlLabel,
   FormGroup,
   TextField,
 } from "@mui/material";
-import { updateEmail, updateProfile } from "firebase/auth";
+import { updateEmail, updatePhoneNumber, updateProfile } from "firebase/auth";
 import {
   handleTypeChange,
   typeOptionsStyles,
@@ -30,7 +33,10 @@ const Profile = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [profilePic, setProfilePic] = useState(null);
-
+  const [bio, setBio] = useState("");
+  const handleBioChange = (e) => {
+    setBio(e.target.value);
+  };
   const handleChange = (e, setState) => {
     setState(e.target.value);
   };
@@ -40,6 +46,8 @@ const Profile = () => {
   const [error, setError] = useState(null);
   const [type, setType] = useState([]);
   const [alert, setAlert] = useState({ state: "", text: "", id: 0 });
+  const [phone, setPhone] = useState("");
+  const handlePhoneChange = (e) => setPhone(e.target.value || "");
   const imageRef = useRef();
 
   const handleImageSelect = (e) => {
@@ -60,13 +68,17 @@ const Profile = () => {
     setProfilePic(auth.currentUser?.photoURL || null);
     setType(user.type);
   };
+  useEffect(() => console.log(phone));
 
   useEffect(async () => {
     const userData = await getUserData(auth.currentUser?.uid);
+    console.log(userData);
     setProfilePic(userData?.profilePic || auth.currentUser?.photoURL);
     setDisplayName(userData?.displayName);
     setEmail(auth.currentUser?.email);
     setType(userData?.type);
+    setPhone(userData?.phone || auth.currentUser.phoneNumber || "");
+    setBio(userData?.bio);
     setUserData(userData);
   }, []);
 
@@ -88,6 +100,7 @@ const Profile = () => {
           photoURL: profilePic,
         });
       }
+      await updatePhoneNumber(auth.currentUser, phone);
       await updateProfile(auth.currentUser, {
         displayName: displayName,
       });
@@ -97,6 +110,8 @@ const Profile = () => {
         type,
         profilePic: auth.currentUser.photoURL,
         displayName: auth.currentUser.displayName,
+        bio,
+        phone,
       };
       setUserData(updatedUser);
       await setUserDoc(auth.currentUser.uid, updatedUser);
@@ -137,6 +152,15 @@ const Profile = () => {
           </div>
           <div className="inputs">
             <TextField
+              id="outlined-multiline-static"
+              label="Bio"
+              multiline
+              rows={2}
+              placeholder="Additional information"
+              onChange={handleBioChange}
+              value={bio}
+            />
+            <TextField
               id="outlined-basic"
               label="displayName"
               variant="outlined"
@@ -151,6 +175,11 @@ const Profile = () => {
               onChange={(e) => handleChange(e, setEmail)}
               value={email}
               required
+            />
+            <PhoneInput
+              country={"tn"}
+              value={phone}
+              onChange={(p) => setPhone(p)}
             />
             <FormGroup>
               <FormControlLabel
@@ -167,7 +196,7 @@ const Profile = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={type.includes("seller")}
+                    checked={type.includes("seller") || false}
                     sx={typeOptionsStyles}
                     onChange={(e) => handleTypeChange(e, type, setType)}
                     value={"seller"}
