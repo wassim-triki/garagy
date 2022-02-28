@@ -35,6 +35,10 @@
   align-items: center;
 }
 .profile .container .form-profile .profile-picture__container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(55, 55, 55, 0.3);
   display: flex;
   align-items: center;
@@ -44,6 +48,7 @@
   border-radius: 1000px;
   padding: 1px;
   position: relative;
+  background: #373737;
 }
 .profile .container .form-profile .profile-picture__container .defaultPic {
   height: 5em;
@@ -63,8 +68,8 @@
 }
 .profile .container .form-profile .profile-picture__container .upload-label {
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50px;
   position: absolute;
   bottom: 10px;
@@ -75,6 +80,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 45%;
+  z-index: 10000;
 }
 .profile .container .form-profile .profile-picture__container .upload-label:hover, .profile .container .form-profile .profile-picture__container .upload-label:focus {
   background-color: #ebebeb;
@@ -83,8 +89,7 @@
   background-color: #ffffff;
 }
 .profile .container .form-profile .profile-picture__container .profile-picture {
-  border-radius: inherit;
-  width: 100%;
+  width: auto;
   height: 100%;
   background-size: 30%;
 }
