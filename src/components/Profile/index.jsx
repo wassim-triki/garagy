@@ -70,7 +70,6 @@ const Profile = () => {
     setPhone(user.phone);
     setBio(user.bio);
   };
-  useEffect(() => console.log(phone));
 
   useEffect(async () => {
     const userData = await getUserData(auth.currentUser?.uid);
@@ -93,8 +92,8 @@ const Profile = () => {
       if (type.length === 0) {
         throw new Error("You must check atleast one option !");
       }
+
       if (imageBlob) {
-        console.log(imageBlob);
         await uploadToStorage("images/users", auth.currentUser?.uid, imageBlob);
         const profilePic = await getProfilePicURL(auth.currentUser?.uid);
         setProfilePic(profilePic);
@@ -102,7 +101,10 @@ const Profile = () => {
           photoURL: profilePic,
         });
       }
-      await updatePhoneNumber(auth.currentUser, phone);
+
+      // await updatePhoneNumber(auth.currentUser, phone);
+      // console.log("sdfsdfsdf");
+
       await updateProfile(auth.currentUser, {
         displayName: displayName,
       });
@@ -110,9 +112,9 @@ const Profile = () => {
       const updatedUser = {
         ...user,
         type,
-        profilePic: auth.currentUser.photoURL,
-        displayName: auth.currentUser.displayName,
-        bio,
+        profilePic: auth.currentUser?.photoURL,
+        displayName: auth.currentUser?.displayName,
+        bio: bio ? bio : "",
         phone,
       };
       setUserData(updatedUser);
@@ -120,6 +122,7 @@ const Profile = () => {
       setAlert({ state: "success", text: "Profile Updated", id: random() });
     } catch (err) {
       setError(err.message);
+      console.log(err);
       setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);

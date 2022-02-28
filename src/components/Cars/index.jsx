@@ -43,45 +43,6 @@ const currencies = [
   },
 ];
 
-// const data = [
-//   {
-//     id: "4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2id39",
-//     price: "150",
-//     year: 2018,
-//     user: "4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2",
-//     model: "Zentorno",
-//     dateFrom: { seconds: 1645702344, nanoseconds: 0 },
-//     dateTo: { seconds: 1645788754, nanoseconds: 112000000 },
-//     currency: "TND",
-//     carPic:
-//       "https://firebasestorage.googleapis.com/v0/b/garagy-87d13.appspot.com/o/images%2Fcars%2F4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2id39?alt=media&token=fe6e8b49-4f99-4ec3-b48c-811b7176a52e",
-//   },
-//   {
-//     id: "4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2id39",
-//     dateFrom: { seconds: 1645702344, nanoseconds: 0 },
-//     dateTo: { seconds: 1645788754, nanoseconds: 112000000 },
-//     carPic:
-//       "https://firebasestorage.googleapis.com/v0/b/garagy-87d13.appspot.com/o/images%2Fcars%2F4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2id39?alt=media&token=fe6e8b49-4f99-4ec3-b48c-811b7176a52e",
-//     currency: "TND",
-//     year: 2018,
-//     user: "4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2",
-//     model: "Zentorno",
-//     price: "150",
-//   },
-//   {
-//     id: "4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2id39",
-//     currency: "TND",
-//     dateFrom: { seconds: 1645702344, nanoseconds: 0 },
-//     price: "150",
-//     year: 2018,
-//     user: "4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2",
-//     carPic:
-//       "https://firebasestorage.googleapis.com/v0/b/garagy-87d13.appspot.com/o/images%2Fcars%2F4ZTwmgx6I5Ovq3oiE7CgEZDCGKc2id39?alt=media&token=fe6e8b49-4f99-4ec3-b48c-811b7176a52e",
-//     dateTo: { seconds: 1645788754, nanoseconds: 112000000 },
-//     model: "Zentorno",
-//   },
-// ];
-
 const modalStyles = {
   content: {
     top: "50%",
@@ -172,23 +133,25 @@ const Cars = () => {
       const carDoc = doc(db, "cars", proposalId);
       await setDoc(carDoc, proposal);
       setModalIsOpen(false);
+      setProposals(await fetchCollection("cars"));
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(async () => {
-    const q = query(collection(db, "cars"));
+  const fetchCollection = async (coll) => {
+    const q = query(collection(db, coll));
     const querySnapshot = await getDocs(q);
     const data = [];
     querySnapshot.forEach((doc) => {
-      // setProposals([...proposals, { id: doc.id, ...doc.data() }]);
       data.push({ id: doc.id, ...doc.data() });
     });
-    setProposals(data);
-    console.log(data);
+    return data;
+  };
+
+  useEffect(async () => {
+    setProposals(await fetchCollection("cars"));
   }, []);
   return (
     <section className="section cars">

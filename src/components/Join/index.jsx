@@ -20,6 +20,9 @@ import {
 } from "../../helpers/user-type-options";
 import Alert from "../Alert";
 import random from "../../utils/random";
+import PhoneInput from "react-phone-input-2";
+// import "react-phone-input-2/lib/material.css";
+import "react-phone-input-2/lib/style.css";
 const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -140,7 +143,7 @@ const Join = () => {
               placeholder="Password"
               required
             />
-            <input
+            {/* <input
               onChange={handlePhoneChange}
               className="form-join__input"
               type="text"
@@ -149,6 +152,11 @@ const Join = () => {
               placeholder="Phone N°"
               value={phone}
               required
+            /> */}
+            <PhoneInput
+              country={"tn"}
+              value={phone}
+              onChange={(p) => setPhone(p)}
             />
           </div>
 

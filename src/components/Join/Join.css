@@ -21,4 +21,12 @@
   font-weight: 600;
   background-color: #caffe2;
 }
+
+.react-tel-input .form-control {
+  width: 100% !important;
+}
+
+.react-tel-input .special-label {
+  display: none !important;
+}
 /*# sourceMappingURL=Join.css.map */
