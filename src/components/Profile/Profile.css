@@ -80,7 +80,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 45%;
-  z-index: 10000;
 }
 .profile .container .form-profile .profile-picture__container .upload-label:hover, .profile .container .form-profile .profile-picture__container .upload-label:focus {
   background-color: #ebebeb;

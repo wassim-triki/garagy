@@ -120,7 +120,7 @@ const Cars = () => {
       }
       const proposal = {
         createdAt: new Date(),
-        user: auth.currentUser.uid,
+        userUid: auth.currentUser.uid,
         model,
         year: typeof year == "object" ? year.getFullYear() : year,
         dateFrom,
