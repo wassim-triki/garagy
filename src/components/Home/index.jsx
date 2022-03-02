@@ -7,9 +7,6 @@ import { ReactComponent as DeliveryIcon } from "../../assets/images/delivery.svg
 import ContentBox from "../ContentBox";
 import { auth } from "../../firebase-config";
 const Home = () => {
-  useEffect(() => {
-    console.log(auth.currentUser);
-  });
   return (
     <>
       <section className="section hero">

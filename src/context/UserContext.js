@@ -18,25 +18,16 @@ const UserProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || null
   );
 
-  const navigate = useNavigate();
-
   const setUserData = (userData) => {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
-    // navigate("/");
   };
 
+  useEffect(() => {
+    console.log(user);
+  }, []);
   const googleSignIn = async () => {
     return signInWithPopup(auth, provider);
-
-    // const userData = await getUserData(credential.user.uid);
-    // if (userData) {
-    //   console.log(userData);
-    //   setUserData({
-    //     ...userData,
-    //     img: userData.img || credential.user.photoURL,
-    //   });
-    // }
   };
 
   const createUser = (currentUser, type, phone = "") => {
