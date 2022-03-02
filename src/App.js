@@ -25,6 +25,7 @@ import NotFound from "./components/NotFound";
 import { auth } from "./firebase-config";
 import Proposal from "./components/Proposal";
 import { ProposalsProvider } from "./context/ProposalsContext";
+import MyCars from "./components/MyCars";
 const scrollToTopStyles = {
   borderRadius: "50px",
   padding: "0",
@@ -82,6 +83,7 @@ function App() {
                       path="/become-a-seller"
                       element={<BecomeASeller />}
                     />
+                    <Route path="/my-cars" element={<MyCars />} />
 
                     <Route element={<ProtectedRouteAuth />}>
                       <Route

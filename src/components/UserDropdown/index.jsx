@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../context/UserContext";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import { IoCarSportOutline } from "react-icons/io5";
 import "./UserDropdown.css";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 const UserDropDown = ({ userDropdown }) => {
@@ -26,6 +27,10 @@ const UserDropDown = ({ userDropdown }) => {
       <Link className="user-dropdown__link" to={"/profile"}>
         <CgProfile className="user-dropdown__icon" />
         Profile
+      </Link>
+      <Link className="user-dropdown__link" to={"/my-cars"}>
+        <IoCarSportOutline className="user-dropdown__icon" />
+        My Cars
       </Link>
       <div className="user-dropdown__link" onClick={handleLogout}>
         <BiLogOut className="user-dropdown__icon" />

@@ -71,7 +71,6 @@ const Navbar = () => {
       </div>
       <Link to={"/"} onClick={closeMenu}>
         <div className="brand">
-          {/* <GiSteeringWheel className="brand__logo" /> */}
           <span className="brand__name">Garagy</span>
         </div>
       </Link>
@@ -98,11 +97,7 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            <li className="list__item">
-              <Link to="/become-a-seller" onClick={closeMenu}>
-                Become a Seller
-              </Link>
-            </li>
+
             <li className="list__item">
               <Link to="/cars" onClick={closeMenu}>
                 Cars

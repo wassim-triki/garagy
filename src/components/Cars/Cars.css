@@ -1,9 +1,9 @@
-.cars .container {
+.cars .container-cards {
   width: 100%;
   margin-top: 8rem;
   height: 90%;
 }
-.cars .container .alert {
+.cars .container-cards .alert {
   width: 100%;
   border: 2px solid #ffc402;
   color: #ffc402;
@@ -11,7 +11,7 @@
   background-color: #fff4ce;
   display: none;
 }
-.cars .container .alert.visible {
+.cars .container-cards .alert.visible {
   display: inline-flex;
 }
 
@@ -152,5 +152,9 @@
   .proposal-cards {
     justify-content: center;
   }
+}
+#root > div > section.cars > div {
+  justify-content: center;
+  background: transparent;
 }
 /*# sourceMappingURL=Cars.css.map */

@@ -56,7 +56,7 @@ const modalStyles = {
 
 const Cars = () => {
   let randId = nextId();
-  const { proposals, setProposals } = useContext(ProposalsContext);
+  const { proposals, setProposals, fetchCars } = useContext(ProposalsContext);
   useEffect(() => {
     setProposals([
       ...proposals.sort((a, b) => b.createdAt.toDate() - a.createdAt.toDate()),
@@ -138,29 +138,20 @@ const Cars = () => {
       const carDoc = doc(db, "cars", proposalId);
       await setDoc(carDoc, proposal);
       setModalIsOpen(false);
-      setProposals(await fetchCollection("cars"));
+      setProposals(await fetchCars("cars"));
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-  const fetchCollection = async (coll) => {
-    const q = query(collection(db, coll));
-    const querySnapshot = await getDocs(q);
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
-    });
-    return data;
-  };
 
   useEffect(async () => {
-    setProposals(await fetchCollection("cars"));
+    setProposals(await fetchCars("cars"));
   }, []);
   return (
     <section className="section cars">
-      <div className="container">
+      <div className="container-cards">
         <div className="page-header-container">
           <h1>Browse Available Cars</h1>
           {user && (
