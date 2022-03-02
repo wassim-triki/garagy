@@ -57,6 +57,11 @@ const modalStyles = {
 const Cars = () => {
   let randId = nextId();
   const { proposals, setProposals } = useContext(ProposalsContext);
+  useEffect(() => {
+    setProposals([
+      ...proposals.sort((a, b) => b.createdAt.toDate() - a.createdAt.toDate()),
+    ]);
+  }, []);
   const [price, setPrice] = useState(0);
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
