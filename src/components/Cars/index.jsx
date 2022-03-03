@@ -21,7 +21,7 @@ import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import MenuItem from "@mui/material/MenuItem";
 import ProposalCard from "../ProposalCard";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import ProposalsContext from "../../context/ProposalsContext";
 Modal.setAppElement("#root");
 const currencies = [
@@ -154,10 +154,12 @@ const Cars = () => {
       <div className="container-cards">
         <div className="page-header-container">
           <h1>Browse Available Cars</h1>
-          {user && (
+          {user ? (
             <button className="share-car-btn" type="button" onClick={openModal}>
               Share Your Own
             </button>
+          ) : (
+            <Link to={"/login"}>Login to share</Link>
           )}
         </div>
         <div className="proposal-cards">

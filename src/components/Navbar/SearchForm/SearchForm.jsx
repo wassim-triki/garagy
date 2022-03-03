@@ -75,15 +75,6 @@ const SearchForm = ({
               </div>
             </li>
           </Link>
-          <Link to={"/customers"}>
-            <li onClick={() => setDropdown(false)} className="dropDown__item">
-              <FaUser />
-              <div className="dropDown__item__text">
-                <p className="dropDown__item__title">Customers</p>
-                <p className="dropDown__item__desc">Browse looking for cars.</p>
-              </div>
-            </li>
-          </Link>
         </ul>
       )}
     </form>

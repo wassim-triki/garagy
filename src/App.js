@@ -14,7 +14,6 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import ScrollTopOnRouteChange from "./components/ScrollTopOnRouteChange";
 import { UserProvider } from "./context/UserContext";
 import Cars from "./components/Cars";
-import Customers from "./components/Customers";
 import Profile from "./components/Profile";
 import ProtectedRouteNotAuth from "./components/ProtectedRouteNotAuth";
 import ProtectedRouteAuth from "./components/ProtectedRouteAuth";
@@ -77,7 +76,6 @@ function App() {
                     <Route path="/cars" element={<Cars />} />
                     <Route path="/cars/:id" element={<Proposal />} />
 
-                    <Route path="/customers" element={<Customers />} />
                     <Route path="/about" element={<About />} />
                     <Route
                       path="/become-a-seller"

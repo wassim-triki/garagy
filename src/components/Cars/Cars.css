@@ -2,6 +2,7 @@
   width: 100%;
   margin-top: 8rem;
   height: 90%;
+  overflow: scroll;
 }
 .cars .container-cards .alert {
   width: 100%;
@@ -69,7 +70,7 @@
   background: #f4b251;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1.1rem;
   font-family: "Quicksand", sans-serif;
   color: #ffffff;
@@ -101,7 +102,7 @@
   background: #f4b251;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1.1rem;
   font-family: "Quicksand", sans-serif;
   color: #ffffff;
@@ -121,6 +122,23 @@
 }
 .page-header-container h1 {
   font-weight: 500;
+}
+.page-header-container a {
+  border: 1px solid #f4b251;
+  color: #f4b251;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+.page-header-container a:hover, .page-header-container a:focus {
+  background: #f4b251;
+  color: #ffffff;
+}
+.page-header-container a:active {
+  color: #f4b251;
+  background-color: #ffffff;
 }
 
 @media (max-width: 900px) {
@@ -154,7 +172,6 @@
   }
 }
 #root > div > section.cars > div {
-  justify-content: center;
   background: transparent;
 }
 /*# sourceMappingURL=Cars.css.map */

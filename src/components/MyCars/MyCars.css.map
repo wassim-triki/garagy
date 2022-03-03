@@ -1,1 +1,1 @@
-{"version":3,"sources":["MyCars.scss","MyCars.css","../../styles/variables.scss"],"names":[],"mappings":"AAEA;EACE,WAAA;ACDF;ADEE;EACE,gBAAA;ACAJ;ADGE;EACE,yBEKQ;EFJR,aAAA;EACA,kBAAA;ACDJ","file":"MyCars.css"}
+{"version":3,"sources":["MyCars.scss","MyCars.css","../../styles/variables.scss"],"names":[],"mappings":"AAEA;EACE,WAAA;ACDF;ADEE;EACE,gBAAA;ACAJ;ADGE;EACE,yBEKQ;EFJR,aAAA;EACA,kBAAA;EACA,gBAAA;ACDJ","file":"MyCars.css"}

@@ -207,15 +207,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   margin-left: 4rem;
 }
 .navbar .list__item {
-  margin-left: auto;
   white-space: nowrap;
   list-style: none;
   font-size: 1.1 rem;
   font-weight: 600;
+}
+.navbar .list__item:nth-of-type(2) {
+  margin-left: auto;
 }
 .navbar .list__itemForm {
   margin-left: 0;
@@ -436,19 +438,32 @@
     margin: 0;
     flex-direction: column;
     padding: 0;
-    gap: 4rem;
-    padding: 0 4rem;
+    gap: 6rem;
+    padding: 5rem 0;
     background: #ffffff;
     margin-top: 80px;
-    justify-content: center;
+    justify-content: flex-start;
     left: -100%;
     transition: all 0.2s ease-in-out;
+  }
+  .navbar .list__item *, .navbar .list .links * {
+    font-size: 2rem;
+  }
+  .navbar .list .form {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .navbar .list .form * {
+    font-size: 1.2rem;
+  }
+  .navbar .list div:last-of-type {
+    margin-top: auto;
   }
   .navbar .list.visible {
     left: 0;
   }
   .navbar .list__item {
-    margin: 0;
+    margin: 0 !important;
     font-size: 1.5rem;
   }
   .navbar .list__item.login {

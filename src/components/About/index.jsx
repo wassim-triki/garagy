@@ -5,7 +5,12 @@ import ContentBox from "../ContentBox";
 
 const About = () => {
   return (
-    <section className="section about">
+    <section
+      className="section about"
+      style={{
+        marginTop: "3rem",
+      }}
+    >
       <div className="container">
         <ContentBox>
           <h2 className="title">About us</h2>

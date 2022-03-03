@@ -103,11 +103,6 @@ const Navbar = () => {
                 Cars
               </Link>
             </li>
-            <li className="list__item">
-              <Link to="/customers" onClick={closeMenu}>
-                Customers
-              </Link>
-            </li>
           </>
         )}
         {!user && (

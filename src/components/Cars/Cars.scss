@@ -5,6 +5,7 @@
     width: 100%;
     margin-top: 8rem;
     height: 90%;
+    overflow: scroll;
     .alert {
       width: 100%;
       @include alert($warning, $warningbg);
@@ -100,6 +101,24 @@
   align-items: center;
   & h1 {
     font-weight: 500;
+  }
+  & a {
+    border: 1px solid $accent;
+    color: $accent;
+    background-color: $white;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    &:hover,
+    &:focus {
+      background: $accent;
+      color: $white;
+    }
+    &:active {
+      color: $accent;
+      background-color: $white;
+    }
   }
 }
 
