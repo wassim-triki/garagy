@@ -50,10 +50,8 @@ const Login = () => {
       const user = credential.user;
       const userData = await getUserData(user.uid);
       if (userData) {
-        console.log("google signin");
         setUserData(userData);
       } else {
-        console.log("new google user");
         await updateProfile(user, {
           photoURL: user.photoURL.replace("s96-c", "s400-c"),
         });

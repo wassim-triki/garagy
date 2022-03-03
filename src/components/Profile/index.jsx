@@ -73,7 +73,6 @@ const Profile = () => {
 
   useEffect(async () => {
     const userData = await getUserData(auth.currentUser?.uid);
-    console.log(userData);
     setProfilePic(userData?.profilePic || auth.currentUser?.photoURL);
     setDisplayName(userData?.displayName);
     setEmail(auth.currentUser?.email);
@@ -102,9 +101,6 @@ const Profile = () => {
         });
       }
 
-      // await updatePhoneNumber(auth.currentUser, phone);
-      // console.log("sdfsdfsdf");
-
       await updateProfile(auth.currentUser, {
         displayName: displayName,
       });
@@ -122,7 +118,6 @@ const Profile = () => {
       setAlert({ state: "success", text: "Profile Updated", id: random() });
     } catch (err) {
       setError(err.message);
-      console.log(err);
       setAlert({ state: "danger", text: err.message, id: random() });
     } finally {
       setLoading(false);

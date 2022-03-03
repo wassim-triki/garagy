@@ -57,7 +57,6 @@ const ProposalDetails = ({
 
   useEffect(() => {
     if (user?.bookings.includes(id) && booked) {
-      console.log("booked by me");
       setBookedByUser(true);
     }
   }, []);

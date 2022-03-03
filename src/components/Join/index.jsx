@@ -66,7 +66,6 @@ const Join = () => {
       const user = credential.user;
       const userData = await getUserData(user.uid);
       if (!userData) {
-        console.log("new google user");
         await updateProfile(user, {
           photoURL: user.photoURL.replace("s96-c", "s400-c"),
         });
@@ -93,15 +92,12 @@ const Join = () => {
       setLoading(true);
       setError(null);
       handleTypeOptionsError();
-      console.log("normal signup");
       const credential = await signup(email, password);
       await updateProfile(auth.currentUser, { displayName: displayName });
 
       const newUser = createUser(auth.currentUser, type, phone);
       setUserData(newUser);
-      console.log(newUser);
       await setUserDoc(auth.currentUser.uid, newUser);
-      console.log("doc set!");
       navigate("/profile");
     } catch (err) {
       setError(err.message);

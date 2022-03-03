@@ -23,9 +23,6 @@ const UserProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  useEffect(() => {
-    console.log(user);
-  }, []);
   const googleSignIn = async () => {
     return signInWithPopup(auth, provider);
   };
