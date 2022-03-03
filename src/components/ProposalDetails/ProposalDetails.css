@@ -1,0 +1,210 @@
+.proposal-details {
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proposal-details .container {
+  overflow: scroll;
+  margin-top: 4rem;
+  width: min(100%, 1000px);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(55, 55, 55, 0.3);
+  border-radius: 8px;
+  min-width: 300px;
+  height: 80%;
+}
+.proposal-details .container .header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.proposal-details .container .header .trash {
+  margin-left: auto;
+  font-size: 1.8rem;
+  color: #636363;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+.proposal-details .container .header .trash:hover, .proposal-details .container .header .trash:focus {
+  color: #373737;
+}
+.proposal-details .container .header .trash:active {
+  color: #636363;
+  transform: scale(0.95);
+}
+.proposal-details .container .title {
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: center;
+}
+.proposal-details .container h4 {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+.proposal-details .container .car-details, .proposal-details .container .owner-details {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+.proposal-details .container .car-details {
+  border-bottom: 2px solid rgba(55, 55, 55, 0.3);
+}
+.proposal-details .container .car-details .img-container {
+  background-color: #727272;
+  border-radius: 8px;
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  min-width: 200px;
+  align-self: flex-start;
+  max-height: 200px;
+}
+.proposal-details .container .car-details .img-container img {
+  width: 100%;
+  height: auto;
+}
+.proposal-details .container .car-details .img-container:hover, .proposal-details .container .car-details .img-container:focus {
+  cursor: pointer;
+}
+.proposal-details .container .car-details .img-container:hover img, .proposal-details .container .car-details .img-container:focus img {
+  width: 130%;
+}
+.proposal-details .container .car-details .img-container:hover::after, .proposal-details .container .car-details .img-container:focus::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+}
+.proposal-details .container .car-details__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 55%;
+  gap: 0rem;
+}
+.proposal-details .container .car-details__text .model {
+  font-size: 2.1rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.proposal-details .container .car-details__text .model span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.proposal-details .container .car-details__text .car-discription {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.proposal-details .container .car-details__text .car-discription a {
+  color: #f4b251;
+  font-weight: 600;
+  word-wrap: normal;
+  word-break: keep-all;
+}
+.proposal-details .container .car-details__text .car-discription a:hover, .proposal-details .container .car-details__text .car-discription a:focus {
+  text-decoration: underline;
+}
+.proposal-details .container .car-details__text .availability {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.proposal-details .container .car-details__text .availability .date {
+  display: flex;
+  gap: 0.5rem;
+}
+.proposal-details .container .car-details__text .availability .date span {
+  font-weight: 700;
+}
+.proposal-details .container .car-details .button-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 160px;
+}
+.proposal-details .container .car-details .button-container .car-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  background: #f4b251;
+  font-family: "Quicksand", sans-serif;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.proposal-details .container .car-details .button-container .car-btn:disabled {
+  background-color: rgba(55, 55, 55, 0.3) !important;
+}
+.proposal-details .container .car-details .button-container .car-btn.cancel {
+  background-color: #fc5050;
+}
+.proposal-details .container .owner-details {
+  flex-direction: column;
+}
+.proposal-details .container .owner-details .owner-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.proposal-details .container .owner-details .owner-container img {
+  border-radius: 10000px;
+  width: 150px;
+  height: 150px;
+}
+.proposal-details .container .owner-details .owner-container .owner-details__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.proposal-details .container .owner-details .owner-container .owner-details__text .info span {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .proposal-details .container .car-details, .proposal-details .container .owner-details {
+    flex-direction: column;
+  }
+  .proposal-details .container .car-details .img-container {
+    width: 100%;
+    max-height: 200px;
+  }
+  .proposal-details .container .car-details__text {
+    width: 100%;
+  }
+  .proposal-details .container .owner-details .owner-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .proposal-details .container .owner-details__text {
+    align-items: center;
+    gap: 1rem;
+  }
+  .proposal-details .container .owner-details__text .info h3 {
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=ProposalDetails.css.map */

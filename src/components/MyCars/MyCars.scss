@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+.section {
+  width: 100%;
+  &.my-cars {
+    margin-top: 4rem;
+  }
+  // height: 100;
+  & .container-cards {
+    background-color: $lightgrey;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+}
