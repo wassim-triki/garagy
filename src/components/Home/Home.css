@@ -1,7 +1,6 @@
 .section {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0 100px;
   height: 100vh;
   width: 100vw;
@@ -77,6 +76,17 @@
   top: -40%;
 }
 
+.features {
+  justify-content: flex-start;
+  padding: 0px;
+}
+.features .container {
+  width: 100%;
+}
+.features .container .feature__text__disc {
+  width: 70%;
+}
+
 @media (max-width: 1199px) {
   .hero::after {
     right: 20px;
@@ -101,40 +111,8 @@
     width: 29%;
   }
 }
-@media (max-width: 900px) {
-  .section {
-    padding: 0 20px;
-  }
-
-  .hero::after {
-    display: none;
-  }
-  .hero .container {
-    justify-content: center;
-    text-align: center;
-  }
-  .hero .container .hero__img {
-    top: 9%;
-    right: -710px;
-    display: none;
-  }
-  .hero .container .hero__text {
-    max-width: 450px;
-  }
-  .hero .container .hero__text .hero__title {
-    font-size: 2.5rem;
-  }
-  .hero .container .hero__text .hero__subtitle {
-    font-size: 0.9rem;
-  }
-  .hero .container .hero__text .btn {
-    margin-top: 2.5rem;
-    width: 50%;
-  }
-}
 .features {
   padding-top: 50px;
-  justify-content: flex-start;
 }
 .features::after {
   content: "";
@@ -175,6 +153,9 @@
 }
 
 @media (max-width: 1199px) {
+  .features {
+    justify-content: flex-start;
+  }
   .features::after {
     min-width: 900px;
     right: -5%;
@@ -222,12 +203,17 @@
   .features .container .feature__text__disc {
     margin-top: 1rem;
     font-size: initial;
+    width: 80%;
   }
 }
 .customer,
 .seller {
   position: relative;
   padding-top: 50px;
+  margin: 5rem 0;
+  height: -webkit-fit-content !important;
+  height: -moz-fit-content !important;
+  height: fit-content !important;
 }
 .customer .container,
 .seller .container {
@@ -312,6 +298,36 @@
   .seller::after {
     left: 20%;
     width: 350px;
+  }
+}
+@media (max-width: 900px) {
+  .section {
+    padding: 0 20px;
+  }
+
+  .hero::after {
+    display: none;
+  }
+  .hero .container {
+    text-align: center;
+  }
+  .hero .container .hero__img {
+    top: 9%;
+    right: -710px;
+    display: none;
+  }
+  .hero .container .hero__text {
+    max-width: 450px;
+  }
+  .hero .container .hero__text .hero__title {
+    font-size: 2.5rem;
+  }
+  .hero .container .hero__text .hero__subtitle {
+    font-size: 0.9rem;
+  }
+  .hero .container .hero__text .btn {
+    margin-top: 2.5rem;
+    width: 50%;
   }
 }
 /*# sourceMappingURL=Home.css.map */

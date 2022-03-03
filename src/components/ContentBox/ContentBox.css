@@ -54,6 +54,7 @@
   .preview {
     padding: 2rem 2.5rem;
     gap: 2rem;
+    width: 100% !important;
   }
   .preview h2 {
     font-size: 1.8rem;

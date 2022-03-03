@@ -1,4 +1,5 @@
 .footer {
+  z-index: 0 !important;
   position: relative;
   background: #373737;
   height: 100vh;
