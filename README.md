@@ -1,4 +1,4 @@
-# Demo Link: https://garagy-87d13.web.app
+# Demo Link: https://shrinke.me/garagy
 
 # Getting Started with Create React App
 
